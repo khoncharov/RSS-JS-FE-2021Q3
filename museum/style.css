@@ -1,0 +1,116 @@
+/* Basic setup */
+
+:root {
+  /* Colors */
+
+  /* prime colors */
+  --dark-red: #710707;
+  /* background */
+  --background-black: #030303;
+  --background-white: #ffffff;
+  /* text */
+  --text-font-gold: #9d8665;
+  --text-font-gold-dark: #7e6c51;
+  --text-white: #ffffff;
+  /* dev colors */
+  --dev-magenta: magenta;
+  --dev-blue: blue;
+  --dev-tomato: red;
+
+  /* Fonts */
+  --font-roboto: "Roboto", sans-serif;
+  --font-forum: "Forum", cursive;
+}
+
+html {
+  font-family: var(--font-stack);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Main containers */
+
+.page-section {
+  margin: 0 auto;
+  width: 1440px;
+
+  background-color: var(--background-black);
+  color: var(--text-white);
+}
+
+.page-header {
+  height: 150px;
+}
+
+.page-main {
+  background-color: var(--background-white);
+}
+
+.page-footer {
+  height: 392px;
+}
+
+/* Section containers */
+
+.section {
+  padding: 75px 0;
+  background-color: var(--background-white);
+}
+
+.section-dark {
+  background-color: var(--background-black);
+}
+
+.welcome-section {
+  height: 100px;
+}
+
+.visiting-section {
+  height: 100px;
+}
+
+.exploter-section {
+  height: 100px;
+}
+
+.video-section {
+  height: 100px;
+}
+
+.gallery-section {
+  height: 100px;
+}
+
+.tickets-section {
+  height: 100px;
+}
+
+.contacts-section {
+  height: 100px;
+}
