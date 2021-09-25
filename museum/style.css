@@ -68,11 +68,6 @@ a {
 
 /* Links */
 
-/* .link {
-  text-decoration: none;
-  color: inherit;
-} */
-
 .link:hover {
   color: var(--text-font-gold);
 }
@@ -166,6 +161,7 @@ a {
 
 .section {
   padding: 75px 0;
+  height: max-content;
   background-color: var(--background-white);
 }
 
@@ -177,7 +173,9 @@ a {
 
 .welcome-section {
   height: calc(750px + 60px);
-  background-image: url("./assets/img/mona-lisa--da-vinci-000.jpg");
+  background-image: linear-gradient(to right, black 30%, transparent 50%),
+    url("./assets/img/w-mona-lisa--da-vinci-001.jpg");
+
   background-repeat: no-repeat;
   background-position: right top;
   color: var(--text-white);
@@ -226,36 +224,175 @@ a {
   background-color: var(--text-font-gold);
 }
 
+/* Pagination slider (Sweper) */
+
 .pagination-slider_wrapper {
   margin-top: 152px;
-}
-
-.pagination-slider {
   height: 120px;
   width: 600px;
+  align-self: flex-end;
   background-color: var(--dev-magenta);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.swiper {
+  font-size: 2.2rem;
+  display: flex;
+  align-content: center;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-content: center;
 }
 
 /* Visiting section */
+
 .visiting-section {
   color: var(--text-black);
+  min-height: 1116px;
 }
+
+.underline-title {
+  position: relative;
+}
+
+.underline-title::after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--dark-red);
+}
+
+.visiting-container {
+  margin-top: 100px;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 75px;
+}
+
+.visiting-card {
+  display: block;
+  height: 424px;
+  width: 440px;
+}
+
+.visiting-card-img {
+  width: 440px;
+  height: 285px;
+}
+
+.visiting-card-title {
+  margin-top: 25px;
+  text-transform: uppercase;
+}
+
+.visiting-card-paragraph {
+  margin-top: 22px;
+}
+
+.visiting-card-paragraph2 {
+  margin-top: 10px;
+}
+
+.section-text-F-32-400 {
+  font-family: var(--font-forum);
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 3.5rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+
+.underline-card-title {
+  position: relative;
+}
+
+.underline-card-title::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  bottom: -10px;
+  left: 0px;
+  height: 2px;
+  background-color: var(--dark-red);
+}
+
+.section-text-22-200 {
+  font-size: 2.2rem;
+  font-weight: 200;
+  line-height: 2.6rem;
+  letter-spacing: normal;
+}
+
+.section-text-18-200 {
+  font-size: 1.8rem;
+  font-weight: 200;
+  line-height: 2.1rem;
+  letter-spacing: normal;
+}
+
+/* Explore section */
 
 .exploter-section {
   color: var(--text-white);
+  min-height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.explore-description {
+  width: 660px;
+}
+
+.explore-text {
+  margin-top: 25px;
+  line-height: 3.8rem;
+  letter-spacing: normal;
+}
+
+.explore-text-wrapper {
+  margin-top: 103px;
+}
+
+.emphasize-text {
+  color: var(--text-font-gold);
+}
+
+.explore-picture {
+  height: 700px;
+  width: 720px;
+}
+
+/* Video section */
 
 .video-section {
   color: var(--text-black);
 }
 
+/* Gallery section */
+
 .gallery-section {
   color: var(--text-white);
 }
 
+/* Tickets section */
+
 .tickets-section {
   color: var(--text-black);
 }
+
+/* Contacts section */
 
 .contacts-section {
   color: var(--text-white);
