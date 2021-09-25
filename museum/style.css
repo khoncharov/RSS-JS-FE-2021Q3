@@ -361,7 +361,7 @@ a {
   letter-spacing: normal;
 }
 
-.explore-text-wrapper {
+.text-wrapper {
   margin-top: 103px;
 }
 
@@ -390,6 +390,17 @@ a {
 
 .tickets-section {
   color: var(--text-black);
+}
+
+/* Parallax section */
+
+.parallax-container {
+  height: 400px;
+  width: 100%;
+  background-image: url("./assets/img/f1e2b77f1032189f03e7ed0ce2f81cca.jfif");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* Contacts section */
