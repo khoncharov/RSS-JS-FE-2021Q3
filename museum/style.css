@@ -107,7 +107,6 @@ a {
   height: 392px;
   background-color: var(--background-black);
   color: var(--text-white);
-  border: 1px solid var(--dev-magenta);
 }
 
 .container {
@@ -407,4 +406,30 @@ a {
 
 .contacts-section {
   color: var(--text-white);
+  min-height: 813px;
+}
+
+.contacts-wrapper {
+  margin-top: 103px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.address-wrapper {
+  color: var(--text-black);
+}
+
+.address-caption {
+  margin-bottom: 50px;
+  font-weight: 500;
+  font-size: 2.8rem;
+  line-height: 3.3rem;
+}
+
+.address {
+  margin-bottom: 25px;
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 3.3rem;
 }
