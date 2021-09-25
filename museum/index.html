@@ -19,17 +19,76 @@
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <header class="page-section page-header"></header>
-    <main class="page-section page-main">
-      <section class="section section-dark welcome-section"></section>
-      <section class="section visiting-section"></section>
-      <section class="section section-dark exploter-section"></section>
-      <section class="section video-section"></section>
-      <section class="section section-dark gallery-section"></section>
-      <section class="section tickets-section"></section>
-      <section class="section section-dark contacts-section"></section>
+    <header class="page-header">
+      <div class="container">
+        <div class="header-container">
+          <a class="logo" href="#">Louvre</a>
+          <nav class="navigation">
+            <ul class="nav-list">
+              <li class="menu-item"><a class="link" href="#visiting">Visiting</a></li>
+              <li class="menu-item"><a class="link" href="#explore">Explore</a></li>
+              <li class="menu-item"><a class="link" href="#video">Video</a></li>
+              <li class="menu-item"><a class="link" href="#gallery">Gallery</a></li>
+              <li class="menu-item"><a class="link" href="#tickets">Tickets</a></li>
+              <li class="menu-item"><a class="link" href="#contacts">Contacts</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="page-main">
+      <section class="section-dark">
+        <div class="container welcome-section">
+          <h1 class="welcome-section_h1-wrapper section-title">
+            Welcome<br />to the Louvre
+          </h1>
+          <p class="welcome-section_p-wrapper section-text-28-300">
+            From the castle to the museum
+          </p>
+          <a
+            class="welcome-section_btn-wrapper section-text-22-300 welcome-section-btn"
+            href="#"
+            >Discover the Louvre</a
+          >
+          <div class="pagination-slider_wrapper pagination-slider"></div>
+        </div>
+      </section>
+      <section class="section visiting-section" id="visiting">
+        <div class="container">
+          <h2 class="section-title gold-title">Virtual tour</h2>
+        </div>
+      </section>
+      <section class="section section-dark exploter-section" id="explore">
+        <div class="container">
+          <h2 class="section-title">Picture explore</h2>
+        </div>
+      </section>
+      <section class="section video-section" id="video">
+        <div class="container">
+          <h2 class="section-title gold-title">Video journey</h2>
+        </div>
+      </section>
+      <section class="section section-dark gallery-section" id="gallery">
+        <div class="container">
+          <h2 class="section-title">Art gallery</h2>
+        </div>
+      </section>
+      <section class="section tickets-section" id="tickets">
+        <div class="container">
+          <h2 class="section-title gold-title">Buy tickets</h2>
+        </div>
+      </section>
+      <section class="section contacts-section" id="contacts">
+        <div class="container">
+          <h2 class="section-title gold-title">contacts</h2>
+          <img
+            src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3576,48.8469,15.2,0/960x620?access_token=YOUR_MAPBOX_ACCESS_TOKEN"
+            alt="ZZZZZZ"
+          />
+        </div>
+      </section>
     </main>
-    <footer class="page-section page-footer"></footer>
+    <footer class="page-footer"><div class="container"></div></footer>
     <script src="./index.js"></script>
   </body>
 </html>
