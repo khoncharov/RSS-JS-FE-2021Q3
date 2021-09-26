@@ -203,7 +203,19 @@
       </section>
       <section class="section" id="video">
         <div class="container video-section">
-          <h2 class="section-title gold-title">Video journey</h2>
+          <div class="video-title-wrapper">
+            <h2 class="section-title gold-title">Video journey</h2>
+            <p class="video-description">
+              Enter and visit one of the most famous museums in the world and enjoy
+              masterpieces such as Mona Lisa or Hammurabi's Code
+            </p>
+          </div>
+          <div class="video__inner-container">
+            <img
+              src="./assets/img/43949a1332ea6150e413fd6a0a39f62d.jfif"
+              alt="Video poster"
+            />
+          </div>
         </div>
       </section>
       <section class="section section-dark" id="gallery">
@@ -214,13 +226,128 @@
       <section class="section" id="tickets">
         <div class="container tickets-section">
           <h2 class="section-title gold-title underline-title">Buy tickets</h2>
+          <div class="tickets-section--wrapper">
+            <img
+              class="tickets-section__img"
+              src="./assets/img/6f775ea411d6c323623ede977e4190d4.jfif"
+              alt="Section picture"
+            />
+            <div class="tickets-selector">
+              <div class="tickets-selector__type">
+                <h3 class="tickets-selector__caption">Ticket Type</h3>
+                <!-- checkbox 1 -->
+                <label
+                  class="tickets-selector__text checkmark-container margin-top50"
+                  for="perm-ticket"
+                  >Permanent exhibition
+                  <input
+                    type="radio"
+                    name="ticket-type"
+                    id="perm-ticket"
+                    value="permanent"
+                    checked
+                  />
+                  <span class="checkmark"></span>
+                </label>
+                <!-- checkbox 2 -->
+                <label class="tickets-selector__text checkmark-container margin-top25"
+                  >Temporary exhibition
+                  <input
+                    type="radio"
+                    name="ticket-type"
+                    id="temp-ticket"
+                    value="temporary"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+                <!-- checkbox 3 -->
+                <label class="tickets-selector__text checkmark-container margin-top25"
+                  >Combined Admission
+                  <input
+                    type="radio"
+                    name="ticket-type"
+                    id="comb-ticket"
+                    value="combined"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="tickets-selector__amount">
+                <h3 class="tickets-selector__caption">Amount</h3>
+                <label
+                  class="tickets-selector__text margin-top25 counter__caption1"
+                  for="counter1"
+                  >Basic 18+</label
+                >
+                <div class="counter__container margin-top15">
+                  <button
+                    class="counter__btn counter__btn--longdash"
+                    type="button"
+                    onclick="this.nextElementSibling.stepDown()"
+                  >
+                    &#8211;
+                  </button>
+                  <input
+                    class="counter__number"
+                    id="counter1"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="1"
+                    readonly
+                  />
+                  <button
+                    class="counter__btn"
+                    type="button"
+                    onclick="this.previousElementSibling.stepUp()"
+                  >
+                    +
+                  </button>
+                </div>
+                <label
+                  class="tickets-selector__text margin-top10 counter__caption2"
+                  for="counter2"
+                  >Senoir 65+</label
+                >
+                <div class="counter__container margin-top15">
+                  <button
+                    class="counter__btn counter__btn--longdash"
+                    type="button"
+                    onclick="this.nextElementSibling.stepDown()"
+                  >
+                    &#8211;
+                  </button>
+                  <input
+                    class="counter__number"
+                    id="counter2"
+                    type="number"
+                    min="0"
+                    max="20"
+                    value="1"
+                    readonly
+                  />
+                  <button
+                    class="counter__btn"
+                    type="button"
+                    onclick="this.previousElementSibling.stepUp()"
+                  >
+                    +
+                  </button>
+                </div>
+                <h3 class="tickets-selector__caption margin-top50 letter-spacing1-65">
+                  Total &#8364;200
+                </h3>
+                <button class="tickets-selector__btn">Buy Now</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="parallax-container"></section>
       <section class="section" id="contacts">
         <div class="container contacts-section">
           <h2 class="section-title gold-title underline-title">Contacts</h2>
-          <div class="contacts-wrapper">
+          <div class="inner-content-wrapper">
             <div class="address-wrapper">
               <h3 class="address-caption">Palais Royal<br />Musee du Louvre</h3>
               <p class="address">address: 75001 Paris, France</p>

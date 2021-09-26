@@ -64,6 +64,17 @@ a {
   color: inherit;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #000;
+  font-family: var(--font-roboto);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--text-white);
+}
+
 /* Common classes */
 
 /* Links */
@@ -270,7 +281,7 @@ a {
 }
 
 .visiting-container {
-  margin-top: 100px;
+  margin-top: 103px;
   height: 200px;
   width: 100%;
   display: flex;
@@ -379,6 +390,25 @@ a {
   color: var(--text-black);
 }
 
+.video-title-wrapper {
+  margin-bottom: 75px;
+  min-height: 90;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-description {
+  max-width: 720px;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 3.8rem;
+}
+
+.video__inner-container {
+  /* tbd */
+}
+
 /* Gallery section */
 
 .gallery-section {
@@ -388,6 +418,188 @@ a {
 /* Tickets section */
 
 .tickets-section {
+  color: var(--text-black);
+  min-height: 743px;
+}
+
+.tickets-section--wrapper {
+  margin-top: 103px;
+  display: flex;
+  column-gap: 60px;
+}
+
+.tickets-section-img {
+  height: 550px;
+  width: 720px;
+}
+
+/* Tickets selector */
+
+.tickets-selector {
+  display: flex;
+  flex-grow: 2;
+}
+
+.tickets-selector__type {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tickets-selector__amount {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tickets-selector__caption {
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 3.3rem;
+}
+
+.tickets-selector__text {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 2.6rem;
+}
+
+.margin-top50 {
+  margin-top: 50px;
+}
+
+.margin-top25 {
+  margin-top: 25px;
+}
+
+.margin-top15 {
+  margin-top: 15px;
+}
+
+.margin-top10 {
+  margin-top: 10px;
+}
+
+.letter-spacing1-65 {
+  letter-spacing: 0.165rem;
+}
+
+/* Custom checkmark */
+
+.checkmark-container {
+  display: block;
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkmark-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background-color: var(--background-white);
+  border: 2px solid var(--background-black);
+  border-radius: 50%;
+}
+
+/* .checkmark-container:hover input ~ .checkmark {
+  background-color: var(--text-font-gold);
+} */
+
+.checkmark-container input:checked ~ .checkmark {
+  background-color: var(--background-white);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkmark-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkmark-container .checkmark:after {
+  top: 3px;
+  left: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--background-black);
+}
+
+/* Ticket counter */
+
+.counter__container {
+  border: 3px solid #000;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.counter__number {
+  all: unset;
+  width: 2em;
+  text-align: center;
+  padding-left: 12px;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 2.6rem;
+}
+
+.counter__btn {
+  background-color: var(--background-white);
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.2rem;
+  font-weight: 400;
+  line-height: 3.8rem;
+  color: var(--text-black);
+}
+
+.counter__btn--longdash {
+  font-weight: 550;
+}
+
+.counter__caption1 {
+  margin-right: 57px;
+}
+
+.counter__caption2 {
+  margin-right: 47px;
+}
+
+/* Button */
+
+.tickets-selector__btn {
+  margin-top: 60px;
+  height: 50px;
+  width: 175px;
+  letter-spacing: 0.2rem;
+  line-height: 2.6rem;
+}
+
+.tickets-selector__btn:hover {
+  background-color: var(--text-font-gold);
   color: var(--text-black);
 }
 
@@ -409,7 +621,7 @@ a {
   min-height: 813px;
 }
 
-.contacts-wrapper {
+.inner-content-wrapper {
   margin-top: 103px;
   display: flex;
   flex-direction: row;
