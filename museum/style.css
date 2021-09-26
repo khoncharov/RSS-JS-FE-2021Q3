@@ -236,7 +236,7 @@ button {
 
 /* Pagination slider (Sweper) */
 
-.pagination-slider_wrapper {
+/* .pagination-slider_wrapper {
   margin-top: 152px;
   height: 120px;
   width: 600px;
@@ -246,18 +246,34 @@ button {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
+} */
 
 .swiper {
-  font-size: 2.2rem;
+  /* font-size: 2.2rem;
   display: flex;
-  align-content: center;
+  align-content: center; */
+  width: 600px;
+  height: 300px;
 }
 
-.swiper-wrapper {
+.swiper-button-prev {
+  background-image: url("./assets/svg/arrow-left.svg");
+  background-repeat: no-repeat;
+}
+
+.swiper-button-prev:hover {
+  fill: red;
+}
+
+.swiper-button-next {
+  background-image: url("./assets/svg/arrow-right.svg");
+  background-repeat: no-repeat;
+}
+
+/* .swiper-wrapper {
   display: flex;
   align-content: center;
-}
+} */
 
 /* Visiting section */
 
@@ -405,9 +421,9 @@ button {
   line-height: 3.8rem;
 }
 
-.video__inner-container {
-  /* tbd */
-}
+/* .video__inner-container {
+  tbd
+} */
 
 /* Gallery section */
 
