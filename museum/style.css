@@ -115,7 +115,7 @@ button {
 }
 
 .page-footer {
-  height: 392px;
+  height: max-content;
   background-color: var(--background-black);
   color: var(--text-white);
 }
@@ -138,10 +138,11 @@ button {
   padding-left: 74px;
   background-image: url(./assets/svg/logo.svg);
   background-repeat: no-repeat;
+  background-position-y: 0px;
   font-family: var(--font-forum);
   font-weight: 400;
   font-size: 2.8rem;
-  line-height: 3.1rem;
+  line-height: 3.5rem;
   letter-spacing: 0.5rem;
   text-transform: uppercase;
 }
@@ -657,7 +658,7 @@ button {
 .parallax-container {
   height: 400px;
   width: 100%;
-  background-image: url("./assets/img/f1e2b77f1032189f03e7ed0ce2f81cca.jfif");
+  background-image: url("./assets/parallax.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -693,4 +694,74 @@ button {
   font-weight: 300;
   font-size: 2.2rem;
   line-height: 3.3rem;
+}
+
+/* Footer section */
+
+.footer-inner-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 265px;
+}
+
+.footer-inner__logo-nav {
+  align-self: flex-start;
+  padding-top: 86px;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-nav-container1 {
+  padding-left: 145px;
+}
+
+.footer-nav-container2 {
+  padding-left: 169px;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.social-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 55px;
+  width: 340px;
+  align-self: flex-end;
+}
+
+.social-link-container {
+  height: 48px;
+  width: 48px;
+  border: 1px solid #666666;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  border: none;
+  background-color: #666666;
+  height: 3px;
+  margin: 0;
+}
+
+.footer-bottom-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 124px;
+}
+
+.footer-text-22-200 {
+  font-size: 2.2rem;
+  font-weight: 200;
+  letter-spacing: 0.2rem;
 }
