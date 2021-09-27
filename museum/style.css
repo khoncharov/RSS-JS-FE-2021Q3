@@ -185,7 +185,7 @@ button {
 .welcome-section {
   height: calc(750px + 60px);
   background-image: linear-gradient(to right, black 30%, transparent 50%),
-    url("./assets/img/w-mona-lisa--da-vinci-001.jpg");
+    url("./assets/img/welcome-slider/1.jpg");
 
   background-repeat: no-repeat;
   background-position: right top;
@@ -251,7 +251,7 @@ button {
 .underline-title::after {
   content: "";
   position: absolute;
-  bottom: -25px;
+  bottom: -28px;
   left: 0;
   right: 0;
   height: 3px;
@@ -280,7 +280,7 @@ button {
 }
 
 .visiting-card-title {
-  margin-top: 25px;
+  margin-top: 23px;
   text-transform: uppercase;
 }
 
@@ -344,7 +344,7 @@ button {
 }
 
 .explore-text {
-  margin-top: 25px;
+  margin-top: 26px;
   line-height: 3.8rem;
   letter-spacing: normal;
 }
@@ -360,6 +360,7 @@ button {
 .explore-picture {
   height: 700px;
   width: 720px;
+  margin-top: 15px;
 }
 
 /* Video section */
@@ -478,11 +479,11 @@ button {
 }
 
 .margin-top50 {
-  margin-top: 50px;
+  margin-top: 51px;
 }
 
 .margin-top25 {
-  margin-top: 25px;
+  margin-top: 26px;
 }
 
 .margin-top15 {
@@ -563,6 +564,7 @@ button {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-right: 2px;
 }
 
 .counter__number {
@@ -592,7 +594,7 @@ button {
 }
 
 .counter__caption1 {
-  margin-right: 57px;
+  margin-right: 56px;
 }
 
 .counter__caption2 {
@@ -644,14 +646,14 @@ button {
 }
 
 .address-caption {
-  margin-bottom: 50px;
+  margin-bottom: 49px;
   font-weight: 500;
   font-size: 2.8rem;
   line-height: 3.3rem;
 }
 
 .address {
-  margin-bottom: 25px;
+  margin-bottom: 18px;
   font-weight: 300;
   font-size: 2.2rem;
   line-height: 3.3rem;
@@ -669,17 +671,19 @@ button {
 
 .footer-inner__logo-nav {
   align-self: flex-start;
-  padding-top: 86px;
+  padding-top: 83px;
   display: flex;
   flex-direction: row;
 }
 
 .footer-nav-container1 {
-  padding-left: 145px;
+  padding-left: 141px;
+  margin-top: 5px;
 }
 
 .footer-nav-container2 {
-  padding-left: 169px;
+  padding-left: 172px;
+  margin-top: 5px;
 }
 
 .footer-nav-list {
@@ -725,4 +729,8 @@ hr {
   font-size: 2.2rem;
   font-weight: 200;
   letter-spacing: 0.2rem;
+}
+
+.footer-custom-padding-1 {
+  padding-left: 51px;
 }
