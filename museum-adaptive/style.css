@@ -233,6 +233,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.4s ease-in-out;
 }
 
 .welcome-section-btn:hover {
@@ -317,6 +318,11 @@ button {
   left: 0px;
   height: 2px;
   background-color: var(--dark-red);
+  transition: 0.4s ease-in-out;
+}
+
+.visiting-card:hover .underline-card-title::after {
+  width: 100%;
 }
 
 .section-text-22-200 {
