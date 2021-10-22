@@ -17,7 +17,7 @@ function closeOptionsHandler() {
       newAppSettings.blocks.push(toggle.id.split("-")[1]);
     }
   });
-  pageData.appSettings = { ...newAppSettings };
+  pageData.appSettings = { ...pageData.appSettings, ...newAppSettings };
   overlay.classList.remove("options-overlay_active");
   optionsContainer.classList.remove("options-container_active");
   optionsContainer.tabindex = -1;
