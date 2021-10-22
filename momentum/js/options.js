@@ -20,6 +20,7 @@ function closeOptionsHandler() {
   pageData.appSettings = { ...newAppSettings };
   overlay.classList.remove("options-overlay_active");
   optionsContainer.classList.remove("options-container_active");
+  optionsContainer.tabindex = -1;
 }
 
 function openOptionsHandler() {
@@ -35,6 +36,7 @@ function openOptionsHandler() {
   });
   overlay.classList.add("options-overlay_active");
   optionsContainer.classList.add("options-container_active");
+  optionsContainer.tabindex = 0;
 }
 
 function toggleHandler(e) {
@@ -88,4 +90,12 @@ document.querySelector("#opt-weather-toggle").addEventListener("click", (e) => {
 });
 document.querySelector("#opt-audio-toggle").addEventListener("click", (e) => {
   toggleHandler(e);
+});
+
+document.querySelectorAll(".toggle-container").forEach((toggle) => {
+  toggle.addEventListener("keyup", (e) => {
+    if (e.code === "Space") {
+      toggleHandler(e);
+    }
+  });
 });

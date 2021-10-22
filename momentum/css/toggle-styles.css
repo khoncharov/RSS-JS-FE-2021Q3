@@ -1,22 +1,3 @@
-:root {
-  /* Color scheme */
-  --turquoise-light: gold;
-  --turquoise-deep: goldenrod;
-  --turquoise-dark: goldenrod;
-
-  --gray-light: #d9d9d9;
-  --gray-prime: #9f9f9f;
-  --gray-dark: #323232;
-
-  /* Color functional scheme */
-  --color-prime: var(--turquoise-deep);
-  --color-prime-light: var(--turquoise-light);
-  --color-prime-accent: var(--turquoise-dark);
-
-  --color-passive-prime: var(--gray-light);
-  --color-passive-accent: var(--gray-prime);
-}
-
 /* Toggle */
 
 .toggle-container {
@@ -35,7 +16,7 @@
   height: 2.4rem;
   position: relative;
   background-color: var(--color-passive-prime);
-  border: 0.25rem solid white;
+  border: 0.25rem solid var(--gray-soft);
   border-radius: 1.2rem;
   transition: 0.4s ease-out;
 }

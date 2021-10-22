@@ -1,0 +1,39 @@
+:root {
+  /* COLORS */
+  /* Color scheme */
+  --yellow-light: #ffd700;
+  --yellow-deep: #e7b023;
+  --yellow-dark: #be8b08;
+
+  --gray-soft: #eeeeee;
+  --gray-light: #d9d9d9;
+  --gray-prime: #9f9f9f;
+  --gray-dark: #323232;
+
+  /* Color functional scheme */
+  --color-prime: var(--yellow-deep);
+  --color-prime-light: var(--yellow-light);
+  --color-prime-accent: var(--yellow-dark);
+
+  --color-passive-prime: var(--gray-light);
+  --color-passive-accent: var(--gray-prime);
+
+  /* FONTS */
+  --basic-font-size: 16px;
+
+  --font-s: 1rem; /* 16 */
+  --font-m: 1.25rem; /* 20 */
+  --font-l: 1.5rem; /* 24 */
+  --font-xl: 2.5rem; /* 40 */
+  --font-xxl: 6.25rem; /* 100 */
+
+  /* GAPS */
+}
+
+@media (max-width: 768px) {
+  :root {
+    /* FONTS */
+    --font-xl: 2rem; /* 32 */
+    --font-xxl: 4.5rem; /* 72 */
+  }
+}
