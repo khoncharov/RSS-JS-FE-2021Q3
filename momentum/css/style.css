@@ -269,6 +269,10 @@ body {
   min-height: 20px;
 }
 
+.hidden-block {
+  visibility: hidden;
+}
+
 @media (max-width: 768px) {
   .time {
     min-height: 80px;

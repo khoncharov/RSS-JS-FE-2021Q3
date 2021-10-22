@@ -3,7 +3,7 @@ class PageData {
     this._username = localStorage.getItem("username") ?? null;
     this._usercity = localStorage.getItem("usercity") ?? null;
     this._appSettings = JSON.parse(localStorage.getItem("appSettings")) ?? {
-      language: "en",
+      language: "en", // en | ru
       photoSource: "github",
       photoTags: [],
       blocks: ["time", "date", "greeting", "quote", "weather", "audio"],

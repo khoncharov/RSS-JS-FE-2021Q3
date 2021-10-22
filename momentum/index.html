@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="player">
+      <div class="player hidden-block">
         <div class="player-controls">
           <button class="play-prev player-icon"></button>
           <button class="play player-icon"></button>
@@ -18,7 +18,7 @@
         </div>
         <ul class="play-list"></ul>
       </div>
-      <div class="weather">
+      <div class="weather hidden-block">
         <input type="text" class="city" placeholder="Location" tabindex="1" />
         <i class="weather-icon owf"></i>
         <div class="weather-error"></div>
@@ -35,16 +35,16 @@
         <button class="slide-prev slider-icon"></button>
         <button class="slide-next slider-icon"></button>
       </div>
-      <time class="time">XX:XX:XX</time>
-      <date class="date">Sun, Nov 26th, 2014</date>
-      <div class="greeting-container">
+      <time class="time hidden-block"></time>
+      <date class="date hidden-block"></date>
+      <div class="greeting-container hidden-block">
         <span class="greeting">Hallo,</span>
         <input type="text" class="name" placeholder="username" tabindex="0" />
       </div>
     </main>
     <footer class="footer">
-      <button class="change-quote"></button>
-      <div>
+      <button class="change-quote hidden-block"></button>
+      <div class="quote-container hidden-block">
         <div class="quote">It doesn't exist until it's on TV.</div>
         <div class="author">D. Trump</div>
       </div>

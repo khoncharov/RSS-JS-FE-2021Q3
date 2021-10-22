@@ -18,6 +18,7 @@ function closeOptionsHandler() {
     }
   });
   pageData.appSettings = { ...pageData.appSettings, ...newAppSettings };
+  showBlocks();
   overlay.classList.remove("options-overlay_active");
   optionsContainer.classList.remove("options-container_active");
   optionsContainer.tabindex = -1;
@@ -59,6 +60,47 @@ function changeToggleStateStyle(toggleElement) {
     toggleElement.classList.remove("label-active");
     toggleElement.firstElementChild.classList.remove("toggle-box-active");
     toggleElement.children[0].firstElementChild.classList.remove("toggle-switch-active");
+  }
+}
+
+function isVisible(block) {
+  return pageData.appSettings.blocks.includes(block);
+}
+
+showBlocks();
+function showBlocks() {
+  // const allBlock = ["time", "date", "greeting", "quote", "weather", "audio"];
+  if (isVisible("time")) {
+    document.querySelector(".time").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".time").classList.add("hidden-block");
+  }
+  if (isVisible("date")) {
+    document.querySelector(".date").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".date").classList.add("hidden-block");
+  }
+  if (isVisible("greeting")) {
+    document.querySelector(".greeting-container").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".greeting-container").classList.add("hidden-block");
+  }
+  if (isVisible("quote")) {
+    document.querySelector(".quote-container").classList.remove("hidden-block");
+    document.querySelector(".change-quote").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".quote-container").classList.add("hidden-block");
+    document.querySelector(".change-quote").classList.add("hidden-block");
+  }
+  if (isVisible("weather")) {
+    document.querySelector(".weather").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".weather").classList.add("hidden-block");
+  }
+  if (isVisible("audio")) {
+    document.querySelector(".player").classList.remove("hidden-block");
+  } else {
+    document.querySelector(".player").classList.add("hidden-block");
   }
 }
 
