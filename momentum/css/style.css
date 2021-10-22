@@ -239,6 +239,10 @@ body {
   outline: 0;
 }
 
+.name:focus {
+  color: var(--yellow-light);
+}
+
 .name::placeholder {
   color: #fff;
   opacity: 0.6;
@@ -273,7 +277,15 @@ body {
   visibility: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 800px) {
+  body {
+    overflow: hidden;
+  }
+
+  .main {
+    margin-bottom: 6px;
+  }
+
   .time {
     min-height: 80px;
   }

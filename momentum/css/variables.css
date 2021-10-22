@@ -30,7 +30,7 @@
   /* GAPS */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 800px) {
   :root {
     /* FONTS */
     --font-xl: 2rem; /* 32 */
