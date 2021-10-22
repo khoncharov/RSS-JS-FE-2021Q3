@@ -1,4 +1,4 @@
-export default class PageData {
+class PageData {
   constructor() {
     this._username = localStorage.getItem("username") ?? null;
     this._usercity = localStorage.getItem("usercity") ?? null;
@@ -6,7 +6,7 @@ export default class PageData {
       language: "en",
       photoSource: "github",
       photoTags: [],
-      blocks: ["time", "date", "greeting", "quote", "weather", "audio", "todolist"],
+      blocks: ["time", "date", "greeting", "quote", "weather", "audio"],
     };
   }
 
@@ -31,6 +31,8 @@ export default class PageData {
   }
   set appSettings(value) {
     this._appSettings = value;
-    localStorage.setItem("appSettings");
+    localStorage.setItem("appSettings", JSON.stringify(value));
   }
 }
+
+export const pageData = new PageData();
