@@ -53,7 +53,6 @@ async function getWeather() {
   );
   const res = await fetch(url);
   const data = await res.json();
-  console.log(new Date());
   updateWeatherWidget(data);
 }
 

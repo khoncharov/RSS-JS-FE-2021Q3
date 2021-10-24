@@ -5,6 +5,7 @@ import showGreeting from "./greeting.js";
 import { prevSlide, nextSlide, updateBackGround } from "./background-slider.js";
 import getWeather from "./weather.js";
 import { pageData } from "./page-data.js";
+import "./quotes.js";
 
 // Functions
 function updatePage() {

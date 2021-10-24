@@ -1,4 +1,5 @@
 import { pageData } from "./page-data.js";
+import getWeather from "./weather.js";
 
 // HTML Elements
 const optionsBtn = document.querySelector(".optrions-btn");
@@ -19,6 +20,9 @@ function closeOptionsHandler() {
   });
   pageData.appSettings = { ...pageData.appSettings, ...newAppSettings };
   showBlocks();
+  if (pageData.appSettings.blocks.includes("weather")) {
+    getWeather();
+  }
   overlay.classList.remove("options-overlay_active");
   optionsContainer.classList.remove("options-container_active");
   optionsContainer.tabindex = -1;
