@@ -1,5 +1,4 @@
 import { pageData } from "./page-data.js";
-import showGreeting from "./show-greeting.js";
 
 // HTML Elements
 const timeElement = document.querySelector(".time");
@@ -12,8 +11,7 @@ const dateOptions = {
 };
 
 // Functions
-(function showTimeDate() {
-  const date = new Date();
+function showTimeDate(date) {
   // Time
   timeElement.textContent = date.toLocaleTimeString([], { hour12: false });
   // Date
@@ -23,7 +21,6 @@ const dateOptions = {
     const dateStr = date.toLocaleDateString("ru-RU", dateOptions);
     dateElement.textContent = dateStr.slice(0, 1).toUpperCase() + dateStr.slice(1);
   }
-  // Greeting
-  showGreeting(date);
-  setTimeout(showTimeDate, 1000);
-})();
+}
+
+export default showTimeDate;
