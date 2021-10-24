@@ -1,7 +1,7 @@
 class PageData {
   constructor() {
     this._username = localStorage.getItem("username") ?? null;
-    this._usercity = localStorage.getItem("usercity") ?? null;
+    this._usercity = localStorage.getItem("usercity") ?? "Minsk";
     this._appSettings = JSON.parse(localStorage.getItem("appSettings")) ?? {
       language: "en", // en | ru
       photoSource: "github",

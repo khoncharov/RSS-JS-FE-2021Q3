@@ -162,6 +162,10 @@ body {
   background-color: transparent;
 }
 
+.city:focus {
+  color: var(--yellow-light);
+}
+
 .city::placeholder {
   font-size: var(--font-m);
   color: #fff;
