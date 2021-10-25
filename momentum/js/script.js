@@ -22,7 +22,7 @@ updatePage();
 function updateWeather() {
   if (pageData.appSettings.blocks.includes("weather")) {
     getWeather();
-    setTimeout(updateWeather, 1800000); // update period 30 min
+    setTimeout(updateWeather, 3600000); // update period 1 hour
   }
 }
 

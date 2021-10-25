@@ -22,6 +22,14 @@ async function getQuote() {
 getQuote();
 
 // Events
-quoteRefreshBtn.addEventListener("click", getQuote);
+quoteRefreshBtn.addEventListener("click", () => {
+  quoteText.style.opacity = 0;
+  quoteAuthor.style.opacity = 0;
+  setTimeout(() => {
+    getQuote();
+    quoteText.style.opacity = 1;
+    quoteAuthor.style.opacity = 1;
+  }, 900);
+});
 
 export default getQuote;

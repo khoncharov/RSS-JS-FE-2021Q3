@@ -35,6 +35,10 @@ body {
   padding: 20px;
 }
 
+.player {
+  transition: opacity 2s;
+}
+
 .player-controls {
   display: flex;
   align-items: center;
@@ -131,6 +135,7 @@ body {
   width: 180px;
   min-height: 180px;
   text-align: left;
+  transition: opacity 2s;
 }
 
 .weather-error {
@@ -207,12 +212,14 @@ body {
   font-family: "Arial-MT";
   font-size: var(--font-xxl);
   letter-spacing: -4px;
+  transition: opacity 2s;
 }
 
 .date {
   min-height: 28px;
   font-size: var(--font-l);
   margin-bottom: 20px;
+  transition: opacity 2s;
 }
 
 .greeting-container {
@@ -223,6 +230,7 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: var(--font-xl);
+  transition: opacity 2s;
 }
 
 .greeting {
@@ -266,19 +274,28 @@ body {
 .change-quote {
   margin-bottom: 30px;
   background-image: url("../assets/svg/reload.svg");
+  transition: opacity 2s;
+}
+
+.quote-container {
+  transition: opacity 2s;
 }
 
 .quote {
   min-height: 32px;
   font-size: var(--font-s);
+  transition: opacity 1s;
 }
 
 .author {
   min-height: 20px;
+  transition: opacity 1s;
 }
 
 .hidden-block {
+  opacity: 0;
   visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease 2s;
 }
 
 @media (max-width: 768px), (max-height: 800px) {
