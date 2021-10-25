@@ -7,8 +7,19 @@ const optionsCloseBtn = document.querySelector(".options-close-btn");
 const overlay = document.querySelector(".options-overlay");
 const optionsContainer = document.querySelector(".options-container");
 
+const engLangSelector = document.querySelector("#otpions-lang-en");
+const rusLangSelector = document.querySelector("#otpions-lang-ru");
+
 // Functions
 function closeOptionsHandler() {
+  // Lang option
+  if (engLangSelector.checked) {
+    pageData.appSettings.language = "en";
+  } else if (rusLangSelector.checked) {
+    pageData.appSettings.language = "ru";
+  }
+
+  // Show/hide blocks section
   const newAppSettings = {
     blocks: [],
   };
@@ -29,6 +40,14 @@ function closeOptionsHandler() {
 }
 
 function openOptionsHandler() {
+  // Lang option
+  if (pageData.appSettings.language === "en") {
+    engLangSelector.checked = true;
+  } else if (pageData.appSettings.language === "ru") {
+    rusLangSelector.checked = true;
+  }
+
+  // Show/hide blocks section
   const blocksShowen = pageData.appSettings.blocks;
   const toggleCollection = document.querySelectorAll(".toggle-container");
   toggleCollection.forEach((toggle) => {

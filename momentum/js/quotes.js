@@ -23,3 +23,5 @@ getQuote();
 
 // Events
 quoteRefreshBtn.addEventListener("click", getQuote);
+
+export { getQuote };

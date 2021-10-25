@@ -55,11 +55,39 @@
         <h2 class="options-header">Settings</h2>
         <button class="options-close-btn">&#10005;</button>
         <div class="options__inner">
-          <!-- <p class="option-caption" id="opt-lang">Language</p>
+          <p class="option-caption" id="opt-lang">Language</p>
           <div class="option-selector" id="opt-lang-selector">
-            <div class="option__switch">Рус</div>
-            <div class="option__switch">Eng</div>
+            <input
+              class="radio-element"
+              type="radio"
+              id="otpions-lang-en"
+              name="app-lang"
+              checked
+            />
+            <input
+              class="radio-element"
+              type="radio"
+              id="otpions-lang-ru"
+              name="app-lang"
+            />
+            <label
+              class="radio-box"
+              id="radio-box-en"
+              for="otpions-lang-en"
+              title="English"
+            >
+              En
+            </label>
+            <label
+              class="radio-box"
+              id="radio-box-ru"
+              for="otpions-lang-ru"
+              title="Русский"
+            >
+              Рус
+            </label>
           </div>
+          <!-- 
           <p class="option-caption" id="opt-source">Photos source</p>
           <div class="option-selector" id="opt-source-selector">
             <div class="option__switch">GitHub</div>

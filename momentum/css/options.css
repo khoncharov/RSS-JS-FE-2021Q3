@@ -110,11 +110,11 @@
 /* Selector */
 
 .option-selector {
-  background-color: #5a5a5a;
+  background-color: var(--gray-soft);
   margin: 0.3rem;
   padding: 0.4rem;
   min-width: 3rem;
-  border-radius: 0.4rem;
+  border-radius: 2rem;
   justify-self: start;
   cursor: pointer;
   display: flex;
@@ -130,25 +130,42 @@
   border-radius: 0.2rem;
 }
 
-/* Checkbox */
-
-.option-checkbox {
-  background-color: #5a5a5a;
-  margin: 0.3rem;
-  padding: 0.4rem;
-  width: 6rem;
-  border-radius: 0.4rem;
-  justify-self: start;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
+.radio-element {
+  /* appearance: none; */
+  display: none;
 }
 
-.checkbox-marker {
-  width: 55%;
-  height: 1.7rem;
-  background-color: black;
-  border-radius: 0.2rem;
+.radio-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 2.4rem;
+  background-color: var(--color-passive-prime);
+  border: 0.25rem solid var(--gray-light);
+  border-radius: 1.2rem;
+
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 200%;
+
+  transition: 0.4s ease-out;
+  cursor: pointer;
+}
+
+.radio-box:hover {
+  border: 0.25rem solid var(--yellow-dark);
+}
+
+#otpions-lang-en:checked ~ #radio-box-en,
+#otpions-lang-ru:checked ~ #radio-box-ru {
+  background-color: var(--yellow-light);
+  border: 0.25rem solid var(--yellow-deep);
+}
+
+#otpions-lang-en:checked ~ #radio-box-en:hover,
+#otpions-lang-ru:checked ~ #radio-box-ru:hover {
+  border: 0.25rem solid var(--yellow-dark);
 }
 
 /* --- items positions */
