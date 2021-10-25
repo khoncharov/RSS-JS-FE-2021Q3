@@ -52,6 +52,7 @@ function clearWeatherWidget(warning = "") {
 function updateWeatherWidget(weatherData) {
   inputCity.value = pageData.usercity;
   if (weatherData.cod === 200) {
+    inputCity.value = weatherData.name;
     weatherIcon.className = "weather-icon owf";
     weatherIcon.classList.add(`owf-${weatherData.weather[0].id}`);
     temperature.textContent = `${Math.round(weatherData.main.temp)}°C`;
@@ -76,6 +77,7 @@ async function getWeather() {
   const url = weatherAPILink(pageData.usercity.toLowerCase(), lang(), APIID, units);
   const res = await fetch(url);
   const data = await res.json();
+  console.log(data);
   updateWeatherWidget(data);
 }
 
