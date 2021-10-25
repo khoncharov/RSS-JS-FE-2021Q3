@@ -6,6 +6,7 @@ import { prevSlide, nextSlide, updateBackGround } from "./background-slider.js";
 import getWeather from "./weather.js";
 import { pageData } from "./page-data.js";
 import "./quotes.js";
+import "./lang.js";
 
 // Functions
 function updatePage() {

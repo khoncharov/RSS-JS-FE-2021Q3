@@ -15,7 +15,7 @@
 }
 
 /* Options btn for footer */
-.optrions-btn {
+.options-btn {
   align-self: end;
   width: 6rem;
   height: 2.5rem;
@@ -27,12 +27,12 @@
   transition: background-color 0.2s ease-out;
 }
 
-.optrions-btn:hover {
+.options-btn:hover {
   background-color: rgba(100, 100, 100, 0.3);
   color: inherit;
 }
 
-.optrions-btn:active {
+.options-btn:active {
   background-color: goldenrod;
 }
 

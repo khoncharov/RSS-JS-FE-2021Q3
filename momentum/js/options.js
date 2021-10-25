@@ -1,8 +1,10 @@
 import { pageData } from "./page-data.js";
 import getWeather from "./weather.js";
+import { changeCaptionsLang, changeOptionsLang } from "./lang.js";
+import getQuote from "./quotes.js";
 
 // HTML Elements
-const optionsBtn = document.querySelector(".optrions-btn");
+const optionsBtn = document.querySelector(".options-btn");
 const optionsCloseBtn = document.querySelector(".options-close-btn");
 const overlay = document.querySelector(".options-overlay");
 const optionsContainer = document.querySelector(".options-container");
@@ -13,11 +15,8 @@ const rusLangSelector = document.querySelector("#otpions-lang-ru");
 // Functions
 function closeOptionsHandler() {
   // Lang option
-  if (engLangSelector.checked) {
-    pageData.appSettings.language = "en";
-  } else if (rusLangSelector.checked) {
-    pageData.appSettings.language = "ru";
-  }
+  changeCaptionsLang();
+  getQuote();
 
   // Show/hide blocks section
   const newAppSettings = {
@@ -163,4 +162,14 @@ document.querySelectorAll(".toggle-container").forEach((toggle) => {
       toggleHandler(e);
     }
   });
+});
+
+engLangSelector.addEventListener("change", () => {
+  pageData.appSettings.language = "en";
+  changeOptionsLang();
+});
+
+rusLangSelector.addEventListener("change", () => {
+  pageData.appSettings.language = "ru";
+  changeOptionsLang();
 });

@@ -3,6 +3,30 @@ import { pageData } from "./page-data.js";
 const APIID = "d31c9bba17d55cf6a0483dc2f4f74c6b";
 const units = "metric";
 
+const lang = () => pageData.appSettings.language;
+const err1 = {
+  en: "Enter you location",
+  ru: "Введит ваш город",
+};
+const err2 = {
+  en: "Incorrect city spelling",
+  ru: "Неверное название города",
+};
+
+const param1 = {
+  en: "Wind",
+  ru: "Ветер",
+};
+const param2 = {
+  en: "Humidity",
+  ru: "Влажность",
+};
+
+const unit1 = {
+  en: "m/s",
+  ru: "м/с",
+};
+
 const weatherAPILink = (place, lang, apiKey, units) => {
   return `https://api.openweathermap.org/data/2.5/weather?q=${place}&lang=${lang}&appid=${apiKey}&units=${units}`;
 };
@@ -32,25 +56,24 @@ function updateWeatherWidget(weatherData) {
     weatherIcon.classList.add(`owf-${weatherData.weather[0].id}`);
     temperature.textContent = `${Math.round(weatherData.main.temp)}°C`;
     weatherDescription.textContent = weatherData.weather[0].description;
-    wind.textContent = `Wind: ${Math.round(weatherData.wind.speed)} m/s `;
-    humidity.textContent = `Humidity: ${Math.round(weatherData.main.humidity)} %`;
+    wind.textContent = `${param1[`${lang()}`]}: ${Math.round(weatherData.wind.speed)} ${
+      unit1[`${lang()}`]
+    }`;
+    humidity.textContent = `${param2[`${lang()}`]}: ${Math.round(
+      weatherData.main.humidity
+    )} %`;
     weatherError.textContent = "";
   } else {
-    clearWeatherWidget("Incorrect city spelling");
+    clearWeatherWidget(err2[`${lang()}`]);
   }
 }
 
 async function getWeather() {
   if (pageData.usercity === "") {
-    clearWeatherWidget("Enter you location");
+    clearWeatherWidget(err1[`${lang()}`]);
     return;
   }
-  const url = weatherAPILink(
-    pageData.usercity.toLowerCase(),
-    pageData.appSettings.language,
-    APIID,
-    units
-  );
+  const url = weatherAPILink(pageData.usercity.toLowerCase(), lang(), APIID, units);
   const res = await fetch(url);
   const data = await res.json();
   updateWeatherWidget(data);
