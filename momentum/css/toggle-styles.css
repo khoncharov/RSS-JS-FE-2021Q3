@@ -1,0 +1,52 @@
+/* Toggle */
+
+.toggle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  color: var(--gray-light);
+  cursor: pointer;
+}
+
+/* Toggle switch */
+
+.toggle-box {
+  width: 4.5rem;
+  height: 2.4rem;
+  position: relative;
+  background-color: var(--color-passive-prime);
+  border: 0.25rem solid var(--gray-soft);
+  border-radius: 1.2rem;
+  transition: 0.4s ease-out;
+}
+
+.toggle-container:hover .toggle-switch {
+  border: 0.25rem solid var(--color-prime-accent);
+}
+
+.toggle-container:hover .label-container {
+  color: var(--color-prime-accent);
+}
+
+.toggle-switch {
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  top: -0.25rem;
+  left: -0.25rem;
+  background-color: white;
+  border: 0.25rem solid var(--color-passive-accent);
+  border-radius: 50%;
+  transition: 0.2s ease-out;
+}
+
+.toggle-box-active {
+  background-color: var(--color-prime-light);
+}
+
+.toggle-switch-active {
+  left: 2rem;
+  border: 0.25rem solid var(--color-prime);
+}

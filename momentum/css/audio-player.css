@@ -1,0 +1,24 @@
+/* Player list */
+
+.audio-playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+}
+
+.song-item {
+  line-height: 170%;
+  color: var(--gray-prime);
+  white-space: nowrap;
+}
+
+.current-song {
+  color: var(--gray-soft);
+  font-weight: 600;
+}
+
+.playing {
+  color: var(--yellow-light);
+  font-weight: 600;
+}
