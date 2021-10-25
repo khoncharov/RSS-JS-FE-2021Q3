@@ -7,6 +7,7 @@ import getWeather from "./weather.js";
 import { pageData } from "./page-data.js";
 import "./quotes.js";
 import "./lang.js";
+import "./audio-player.js";
 
 // Functions
 function updatePage() {
