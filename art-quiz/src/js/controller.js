@@ -37,7 +37,7 @@ export class AppController {
     const list = [];
     for (let i = 0; i < 24; i++) {
       const img = new Image();
-      img.src = `/assets/pic/img/${i * 10 + 4}.webp`;
+      img.src = `./assets/pic/img/${i * 10 + 4}.webp`;
       list.push(img);
     }
   }
@@ -96,7 +96,7 @@ export class AppController {
           this.getQuizArtists(group(e.currentTarget));
         });
         // -- Add cards background
-        card.style.backgroundImage = `url(/assets/pic/img/${group(card) * 10 + 4}.webp)`;
+        card.style.backgroundImage = `url(./assets/pic/img/${group(card) * 10 + 4}.webp)`;
         // -- Add results on card
         const displacement = 0; // Shift for resulting array
         addGroupResult(card, displacement);
@@ -105,7 +105,7 @@ export class AppController {
           this.getQuizPaintings(group(e.currentTarget));
         });
         // Add cards background
-        card.style.backgroundImage = `url(/assets/pic/img/${
+        card.style.backgroundImage = `url(./assets/pic/img/${
           group(card) * 10 + 124
         }.webp)`;
         // Add results on card
@@ -174,7 +174,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex, quizResult); // ------------------------- shift
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url(/assets/svg/trophy-badge-10.svg)`;
+          const goldenTrophy = `url(./assets/svg/trophy-badge-10.svg)`;
           document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
         }
         // Show Quiz results
@@ -321,7 +321,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex + 12, quizResult);
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url(/assets/svg/trophy-badge-10.svg)`;
+          const goldenTrophy = `url(./assets/svg/trophy-badge-10.svg)`;
           document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
         }
         // Show Quiz results

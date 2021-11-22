@@ -20,12 +20,12 @@ export class View {
       <footer class="home-footer">
         <div class="footer-container">
           <a class="link" href="https://github.com/khoncharov/" title="Мой github">
-            <img class="github-logo" src="/assets/svg/github.svg" alt="github logo" />
+            <img class="github-logo" src="./assets/svg/github.svg" alt="github logo" />
           </a>          
           <a class="link" href="https://rs.school/js/" title="RSSchool курс JS">
             <img
               class="rss-logo"
-              src="/assets/svg/rs_school_js.svg"
+              src="./assets/svg/rs_school_js.svg"
               alt="rsschool logo"
             />
           </a>
@@ -96,10 +96,10 @@ export class View {
         </div>
       </main>
       <audio preload="auto">
-        <source src="/assets/sounds/button-30.mp3" type="audio/mpeg">
+        <source src="./assets/sounds/button-30.mp3" type="audio/mpeg">
       </audio>
       <audio preload="auto">
-        <source src="/assets/sounds/button-16.mp3" type="audio/mpeg">
+        <source src="./assets/sounds/button-16.mp3" type="audio/mpeg">
       </audio>`;
     return content;
   }
@@ -186,13 +186,13 @@ export class View {
         </div>
         
         <audio preload="auto">
-          <source src="/assets/sounds/deafen.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/deafen.mp3" type="audio/mpeg">
         </audio>
         <audio preload="auto">
-          <source src="/assets/sounds/joined.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/joined.mp3" type="audio/mpeg">
         </audio>
         <audio preload="auto">
-          <source src="/assets/sounds/t-notification.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/t-notification.mp3" type="audio/mpeg">
         </audio>
       </main>`;
     return content;
@@ -245,13 +245,13 @@ export class View {
         </div>
 
         <audio preload="auto">
-          <source src="/assets/sounds/deafen.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/deafen.mp3" type="audio/mpeg">
         </audio>
         <audio preload="auto">
-          <source src="/assets/sounds/joined.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/joined.mp3" type="audio/mpeg">
         </audio>
         <audio preload="auto">
-          <source src="/assets/sounds/t-notification.mp3" type="audio/mpeg">
+          <source src="./assets/sounds/t-notification.mp3" type="audio/mpeg">
         </audio>
       </main>`;
     return content;
