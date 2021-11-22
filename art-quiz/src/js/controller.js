@@ -321,7 +321,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex + 12, quizResult);
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url(../assets/svg/trophy-badge-10.svg)`;
+          const goldenTrophy = `url("./assets/svg/trophy-badge-10.svg")`;
           document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
         }
         // Show Quiz results
