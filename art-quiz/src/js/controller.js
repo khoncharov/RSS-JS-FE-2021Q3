@@ -174,8 +174,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex, quizResult); // ------------------------- shift
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url(../assets/svg/trophy-badge-10.svg)`;
-          document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
+          document.querySelector(".quizResultBadge").classList.add("goldenBadge");
         }
         // Show Quiz results
         document.querySelector(".overlay").classList.remove("hidden");
@@ -321,8 +320,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex + 12, quizResult);
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url("./assets/svg/trophy-badge-10.svg")`;
-          document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
+          document.querySelector(".quizResultBadge").classList.add("goldenBadge");
         }
         // Show Quiz results
         document.querySelector(".overlay").classList.remove("hidden");

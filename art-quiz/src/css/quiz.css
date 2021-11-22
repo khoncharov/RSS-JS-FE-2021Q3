@@ -497,6 +497,10 @@ button {
   transition: 2s ease-in-out;
 }
 
+.goldenBadge {
+  background-image: url("../assets/svg/trophy-badge-10.svg");
+}
+
 .quizScore {
   font-size: 7rem;
   font-weight: 600;
