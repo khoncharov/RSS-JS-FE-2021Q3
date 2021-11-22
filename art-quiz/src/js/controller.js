@@ -174,7 +174,7 @@ export class AppController {
         this.results.setGroupResult(groupIndex, quizResult); // ------------------------- shift
         // - Show golden trophy
         if (quizResult === 10) {
-          const goldenTrophy = `url(./assets/svg/trophy-badge-10.svg)`;
+          const goldenTrophy = `url(../assets/svg/trophy-badge-10.svg)`;
           document.querySelector(".quizResultBadge").style.backgroundImage = goldenTrophy;
         }
         // Show Quiz results
@@ -247,7 +247,7 @@ export class AppController {
       const [id, url] = i.split("::");
       const container = `#option-img-${n}`;
       node.querySelector(container).innerHTML = `
-        <img class="taskImg" id="${id}" src=".${url}" alt="Painting">`;
+        <img class="taskImg" id="${id}" src="${url}" alt="Painting">`;
     });
     // Result popup
     const paintingImgURL = this.quiz.tasks.task[this.quiz.currentTask].getImgNum();

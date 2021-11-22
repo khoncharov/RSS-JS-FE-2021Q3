@@ -488,7 +488,7 @@ button {
 .quizResultBadge {
   margin: 20px auto;
   height: 150px;
-  background-image: url("/assets/svg/trophy-badge-0.svg");
+  background-image: url("../assets/svg/trophy-badge-0.svg");
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;

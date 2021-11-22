@@ -171,16 +171,16 @@ export class View {
         <div class="overlay hidden"></div>
         <div class="result-container hidden" id="quiz-task-result">
           <div class="resultBadge failBadge"></div>
-          <img class="resultImg" src="../assets/pic/full/12full.webp" alt="Painting" />
-          <div class="paintingCaption">Девочка на шаре</div>
-          <div class="paintingAthor">Пабло Пикассо, 1905</div>
+          <img class="resultImg" src="" alt="Painting" />
+          <div class="paintingCaption"></div>
+          <div class="paintingAthor"></div>
           <button class="uiBtn" id="next-task">Продолжить</button>
         </div>
         <div class="result-container hidden" id="quiz-result">
           <div class="taskQuestion">Поздравляем!</div>
           <div class="taskQuestion">Ваш результат</div>
           <div class="quizResultBadge">
-            <div class="quizScore">0</div>
+            <div class="quizScore"></div>
           </div>
           <button class="uiBtn" id="finish-quiz">Продолжить</button>
         </div>
@@ -218,7 +218,7 @@ export class View {
             <h3 class="taskQuestion">Кто автор этой картины?</h3>
           </div>
           <div class="taskImg-container">
-            <img class="taskImg" src="../assets/pic/img/2.webp" alt="Painting" />
+            <img class="taskImg" src="" alt="Painting" />
           </div>
           <div class="taskBtn-container">
             <button class="taskBtn" id="option-btn-0"></button>
@@ -230,16 +230,16 @@ export class View {
         <div class="overlay hidden"></div>
         <div class="result-container hidden" id="quiz-task-result">
           <div class="resultBadge failBadge"></div>
-          <img class="resultImg" src="../assets/pic/full/12full.webp" alt="Painting" />
-          <div class="paintingCaption">Девочка на шаре</div>
-          <div class="paintingAthor">Пабло Пикассо, 1905</div>
+          <img class="resultImg" src="" alt="Painting" />
+          <div class="paintingCaption"></div>
+          <div class="paintingAthor"></div>
           <button class="uiBtn" id="next-task">Продолжить</button>
         </div>
         <div class="result-container hidden" id="quiz-result">
           <div class="taskQuestion">Поздравляем!</div>
           <div class="taskQuestion">Ваш результат</div>
           <div class="quizResultBadge">
-            <div class="quizScore">0</div>
+            <div class="quizScore"></div>
           </div>
           <button class="uiBtn" id="finish-quiz">Продолжить</button>
         </div>
