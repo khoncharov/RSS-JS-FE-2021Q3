@@ -1,0 +1,512 @@
+/* Application container */
+
+#app {
+  margin: 0 auto;
+  overflow: auto;
+  background-color: #ffffff;
+  height: 100%;
+  padding: 5px;
+}
+
+/* Hiden element */
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Default button reset */
+
+button {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 1rem 3rem;
+  cursor: pointer;
+}
+
+/* UI Buttons */
+
+.uiBtn {
+  width: 100%;
+  border-radius: 5rem;
+  border: 3px solid #fff9a8;
+  transition: 0.2s ease-in-out;
+}
+
+.uiBtn:hover {
+  border-color: #ffee00;
+  background-color: #fff9a8;
+}
+
+.uiBtn:active {
+  background-color: #ffee00;
+}
+
+.settingCtrlBtn {
+  width: 100%;
+  border-radius: 5rem;
+  border: 3px solid #bcffc7;
+  transition: 0.2s ease-in-out;
+  background-color: #bcffc7;
+}
+
+.settingCtrlBtn:hover {
+  border-color: #2dd84a;
+  background-color: #2dd84a;
+}
+
+.settingCtrlBtn:active {
+  border-color: #00c521;
+  background-color: #00c521;
+}
+
+/* UI header navigation */
+
+.navBar {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr 0.6fr;
+  justify-items: center;
+  align-items: center;
+}
+
+/* UI Page caption */
+
+.pageCaption {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 4.6rem;
+}
+
+/* Home page */
+
+#home-page {
+  display: grid;
+  grid-template-rows: max-content max-content 1fr;
+}
+
+.home-header {
+  height: 20vh;
+}
+
+.home-main {
+  height: 30vh;
+}
+
+.home-footer {
+  height: 48vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 20vh;
+  color: crimson;
+  text-align: center;
+}
+
+.controls {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 60%;
+  height: 100%;
+}
+
+.footer-container {
+  margin: 0 auto;
+  padding-bottom: 70px;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.link {
+  filter: opacity(0.5);
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s ease-in-out;
+}
+
+.link:hover {
+  filter: opacity(1);
+}
+
+.github-logo {
+  height: 35px;
+}
+
+.rss-logo {
+  height: 30px;
+}
+
+.creation-year {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: gray;
+}
+
+/* Settings page */
+
+.settings-container {
+  margin: 50px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.setting-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  height: 40px;
+}
+
+.settingCaption {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.settingDescription {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+[type="range"] {
+  margin: 0;
+}
+
+.stepBtn {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #0075ff;
+  color: white;
+}
+
+.timeLimitInput {
+  margin-left: 10px;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+
+.settingsControls-container {
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Quiz groups page */
+
+/* Quiz group card */
+
+.groupCard {
+  margin: 10px 0;
+  height: 100px;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  cursor: pointer;
+}
+
+.bwCard {
+  filter: saturate(0);
+}
+
+.cardCaption {
+  width: max-content;
+  height: max-content;
+  margin: 0;
+  padding: 5px 20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 3rem;
+  color: #303030;
+  border-radius: 2rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.groupScore {
+  font-weight: 400;
+}
+
+/* Quiz page */
+
+/* Quiz header */
+
+.timer {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.taskCounter {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 4.6rem;
+  border-radius: 5rem;
+  background-color: rgb(190, 255, 190);
+}
+
+/* Task progress bar */
+
+.progressBar {
+  margin-top: 20px;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: max-content;
+  background-color: white;
+}
+
+.bullet {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid grey;
+}
+
+.rightAnswer {
+  background-color: #a2ffa2;
+  border: 2px solid #22c522;
+}
+
+.wrongAnswer {
+  background-color: #ff9090;
+  border: 2px solid #ff3737;
+}
+
+/* Task card */
+
+.taskCard {
+  background-color: rgb(221, 221, 221);
+}
+
+/* Task Question */
+
+.taskQuestion-container {
+  display: flex;
+  min-height: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.taskQuestion {
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+  color: black;
+  text-align: center;
+}
+
+/* Task image */
+
+.taskImg-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c5c5c5;
+}
+
+.taskImg {
+  max-height: 40vh;
+  object-fit: scale-down;
+}
+
+/* Task buttons */
+
+.taskBtn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.taskBtn {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 3rem;
+  border: none;
+  color: black;
+  padding: 10px;
+}
+
+.taskBtn:hover {
+  background-color: #fff9a8;
+}
+
+.taskBtn:active {
+  background-color: #ffee00;
+}
+
+.taskOptionImg-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+}
+
+.taskOptionImg-container div {
+  display: flex;
+  cursor: pointer;
+}
+
+/* Overlay */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ------------ */
+/* Task results */
+
+.result-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: max-content;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Result badge */
+
+.resultBadge {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: orangered;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  /* filter: opacity(0.8); */
+  line-height: 3.5rem;
+  border: 2px solid white;
+}
+
+.successBadge {
+  font-size: 3.5rem;
+  line-height: 3.2rem;
+  background-color: turquoise;
+}
+
+.successBadge::before {
+  content: "\2605";
+}
+
+.failBadge {
+  background-color: orangered;
+}
+
+.failBadge::before {
+  content: "\00D7";
+}
+
+/* Result page image */
+
+.resultImg {
+  max-height: 60vh;
+  display: block;
+  margin: 0 auto;
+  object-fit: scale-down;
+}
+
+/* Painting info */
+
+.paintingCaption {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.paintingCaption::before {
+  content: "\00AB";
+  margin-right: 5px;
+}
+.paintingCaption::after {
+  content: "\00BB";
+  margin-left: 5px;
+}
+
+.paintingAthor {
+  margin: 10px 0 20px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2rem;
+  text-align: center;
+}
+
+/* ----------- */
+/* Quiz result */
+
+.quizResultBadge {
+  margin: 20px auto;
+  height: 150px;
+  background-image: url("/assets/svg/trophy-badge-0.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  transition: 2s ease-in-out;
+}
+
+.quizScore {
+  font-size: 7rem;
+  font-weight: 600;
+  color: crimson;
+}
+
+/* ------------- */
+/* Media queries */
+@media screen and (min-width: 500px) {
+  #app {
+    width: 500px;
+  }
+}
