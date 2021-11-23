@@ -441,6 +441,7 @@ export class AppController {
     const btnDefault = pageNode.querySelector("#default-settings-btn");
     btnDefault.addEventListener("click", () => {
       document.querySelector("#sounds-enabled").checked = false;
+      this.mutePage(document, true);
       document.querySelector("#volume-level").value = 1;
       document.querySelector("#time-limit").value = 30;
       document.querySelector("#time-limit-enabled").checked = false;

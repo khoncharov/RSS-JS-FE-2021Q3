@@ -72,7 +72,15 @@ class Quiz {
       const num = Math.floor(Math.random() * 241);
       const isNewValue = (i) => !options.includes(i);
       const isNewAuthor = (i) => {
-        return this.data.image[taskId].author !== this.data.image[i].author;
+        const newName = this.data.image[i].author.toLowerCase();
+        let res = options.every((taskId) => {
+          const name = this.data.image[taskId].author.toLowerCase();
+          if (newName !== name) {
+            return true;
+          }
+          return false;
+        });
+        return res;
       };
       if (isNewValue(num) && isNewAuthor(num)) {
         options.push(num);
