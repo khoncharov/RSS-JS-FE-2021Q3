@@ -1,3 +1,5 @@
+import { QUIZS_IN_GROUP } from "./const";
+
 export class View {
   createHomePage() {
     const content = document.createElement("div");
@@ -104,7 +106,7 @@ export class View {
 
   createGroupsPage(type) {
     let groupList = "";
-    for (let i = 0; i < 12; i += 1) {
+    for (let i = 0; i < QUIZS_IN_GROUP; i += 1) {
       const groupNum = i + 1;
       groupList += `
         <li>

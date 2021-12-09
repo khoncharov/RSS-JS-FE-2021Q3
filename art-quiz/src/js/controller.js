@@ -1,3 +1,4 @@
+import { OPTIONS_IN_TASK, TASKS_IN_QUIZ, QUIZS_IN_GROUP, QUIZ_CAT_COUNT } from "./const";
 import { QuizFactory } from "./model.js";
 import { AppSettings } from "./model.js";
 import { QuizResults } from "./model.js";
@@ -33,9 +34,9 @@ export class AppController {
 
   preloadGroupCovers() {
     const list = [];
-    for (let i = 0; i < 24; i += 1) {
+    for (let i = 0; i < QUIZS_IN_GROUP * QUIZ_CAT_COUNT; i += 1) {
       const img = new Image();
-      img.src = `./assets/pic/img/${i * 10 + 4}.webp`;
+      img.src = `./assets/pic/img/${i * TASKS_IN_QUIZ + 4}.webp`;
       list.push(img);
     }
   }
@@ -91,7 +92,9 @@ export class AppController {
           this.getQuizArtists(group(e.currentTarget));
         });
         // -- Add cards background
-        card.style.backgroundImage = `url(./assets/pic/img/${group(card) * 10 + 4}.webp)`;
+        card.style.backgroundImage = `url(./assets/pic/img/${
+          group(card) * TASKS_IN_QUIZ + 4
+        }.webp)`;
         // -- Add results on card
         const displacement = 0; // Shift for resulting array
         addGroupResult(card, displacement);
@@ -101,7 +104,7 @@ export class AppController {
         });
         // Add cards background
         card.style.backgroundImage = `url(./assets/pic/img/${
-          group(card) * 10 + 124
+          group(card) * TASKS_IN_QUIZ + 124
         }.webp)`;
         // Add results on card
         const displacement = 12; // Shift for resulting array
@@ -134,7 +137,7 @@ export class AppController {
     });
     //
     // - Task option img click event
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < OPTIONS_IN_TASK; i += 1) {
       const container = `#option-img-${i}`;
       pageNode.querySelector(container).addEventListener("click", (e) => {
         // Remove task timeout timer
@@ -279,7 +282,7 @@ export class AppController {
     });
     //
     // - Task option img click event
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < OPTIONS_IN_TASK; i += 1) {
       const container = `#option-btn-${i}`;
       pageNode.querySelector(container).addEventListener("click", (e) => {
         // Remove task timeout timer

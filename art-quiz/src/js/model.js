@@ -1,3 +1,13 @@
+import {
+  OPTIONS_IN_TASK,
+  TASKS_IN_QUIZ,
+  QUIZS_IN_GROUP,
+  ALL_TASKS_COUNT,
+  ARTIST_QUIZ_CAT,
+  PAINT_QUIZ_CAT,
+  QUIZ_CAT_COUNT,
+} from "./const";
+
 export class QuizFactory {
   constructor(data) {
     this.data = data;
@@ -48,7 +58,7 @@ class Quiz {
 
   getNewQuiz(group, category) {
     const tasks = [];
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < TASKS_IN_QUIZ; i += 1) {
       const index = this.getTaskRecordIndex(i, group, category);
       const taskRec = this.data.image[index];
       const taskOptions = this.generateTaskOptions(taskRec);
@@ -63,8 +73,8 @@ class Quiz {
   generateTaskOptions(taskRec) {
     const taskId = taskRec.imageNum;
     const options = [taskId];
-    while (options.length < 4) {
-      const num = Math.floor(Math.random() * 241);
+    while (options.length < OPTIONS_IN_TASK) {
+      const num = Math.floor(Math.random() * ALL_TASKS_COUNT);
       const isNewAuthor = (i) => {
         const newName = this.data.image[i].author.toLowerCase();
         let res = options.every((taskId) => {
@@ -84,7 +94,7 @@ class Quiz {
 
   resetProgress() {
     this.currentTask = 0;
-    this.quizProgress = new Array(10).fill(-1);
+    this.quizProgress = new Array(TASKS_IN_QUIZ).fill(-1);
   }
 
   checkUserGuess(taskIndex, userGuess) {
@@ -106,13 +116,11 @@ class Quiz {
     }
   }
 
-  getTaskRecordIndex = (taskIndex, groupIndex, categoryIndex) => {
-    const tasksPerGroup = 10;
-    const groupsPerCategory = 12;
+  getTaskRecordIndex = (taskIndex, quizIndex, categoryIndex) => {
     return (
       taskIndex +
-      groupIndex * tasksPerGroup +
-      categoryIndex * groupsPerCategory * tasksPerGroup
+      quizIndex * TASKS_IN_QUIZ +
+      categoryIndex * QUIZS_IN_GROUP * TASKS_IN_QUIZ
     );
   };
 }
@@ -123,7 +131,7 @@ class ArtistsQuiz extends Quiz {
   }
 
   generateNewQuiz(group) {
-    this.getNewQuiz(group, 0);
+    this.getNewQuiz(group, ARTIST_QUIZ_CAT);
   }
 
   getTaskQuestion(index) {
@@ -145,7 +153,7 @@ class PaintingsQuiz extends Quiz {
   }
 
   generateNewQuiz(group) {
-    this.getNewQuiz(group, 1);
+    this.getNewQuiz(group, PAINT_QUIZ_CAT);
   }
 
   getTaskQuestion() {
@@ -169,7 +177,8 @@ class PaintingsQuiz extends Quiz {
 export class QuizResults {
   constructor() {
     this._groups =
-      JSON.parse(localStorage.getItem("resultInGroup")) ?? new Array(24).fill(-1);
+      JSON.parse(localStorage.getItem("resultInGroup")) ??
+      new Array(QUIZS_IN_GROUP * QUIZ_CAT_COUNT).fill(-1);
   }
 
   get groups() {
