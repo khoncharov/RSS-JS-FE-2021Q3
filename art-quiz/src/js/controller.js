@@ -3,8 +3,6 @@ import { AppSettings } from "./model.js";
 import { QuizResults } from "./model.js";
 import { View } from "./view.js";
 
-/* Controler */
-
 export class AppController {
   constructor() {
     this.view = new View();
@@ -42,8 +40,6 @@ export class AppController {
     }
   }
 
-  // User actions handlers
-  //
   getHomePage = () => {
     // Create page basic layout
     const pageNode = this.view.createHomePage();
@@ -62,7 +58,6 @@ export class AppController {
     this.render(pageNode);
   };
 
-  // Quiz Groups page controller
   getGroupsPage = (type) => {
     const group = (element) => +element.id.split("-")[2];
     const addGroupResult = (groupCard, displacement) => {
@@ -117,7 +112,6 @@ export class AppController {
     this.render(pageNode);
   };
 
-  // Artists quiz page controller
   getQuizArtists = (groupIndex) => {
     // Create new quiz model
     this.quiz.generateNewQuiz(groupIndex);
@@ -263,7 +257,6 @@ export class AppController {
     this.addTaskTimer();
   }
 
-  // Paintings quiz page controller
   getQuizPaintings = (groupIndex) => {
     // Create new quiz model
     this.quiz.generateNewQuiz(groupIndex);
@@ -450,10 +443,7 @@ export class AppController {
     this.render(pageNode);
   };
 
-  // Sounds
   playSound(i) {
-    // "click" "deafen"  -> 0
-    // "snap"  "joined"  -> 1
     const sounds = document.getElementsByTagName("audio");
     sounds[i].currentTime = 0;
     sounds[i].play();
@@ -471,12 +461,9 @@ export class AppController {
     }
   }
 
-  // Timer
   addTaskTimer = () => {
     if (this.settings.options.timeLimitEnabled) {
-      // Initial time
       const timeStamp = Date.now();
-      // Timer id
       this.taskTimer = setTimeout(this.taskTimeoutHandler, 100, timeStamp);
     }
   };

@@ -1,7 +1,3 @@
-/* Model */
-
-// --- Quiz classes
-
 export class QuizFactory {
   constructor(data) {
     this.data = data;
@@ -65,7 +61,6 @@ class Quiz {
   }
 
   generateTaskOptions(taskRec) {
-    // taskRec -> task record index in db
     const taskId = +taskRec.imageNum;
     const options = [taskId];
     while (options.length < 4) {
@@ -174,8 +169,6 @@ class PaintingsQuiz extends Quiz {
   }
 }
 
-// --- Quiz results class
-
 export class QuizResults {
   constructor() {
     this._groups =
@@ -201,15 +194,13 @@ export class QuizResults {
   }
 }
 
-// --- Application settings class
-
 export class AppSettings {
   constructor() {
     this._options = JSON.parse(localStorage.getItem("options")) ?? {
       soundsEnabled: false,
-      volume: "1", // 0 - 1
+      volume: "1",
       timeLimitEnabled: false,
-      timeLimit: "30", // [5 - 30] step 5 seconds
+      timeLimit: "30",
     };
   }
 
@@ -221,8 +212,6 @@ export class AppSettings {
     localStorage.setItem("options", JSON.stringify(value));
   }
 }
-
-// Functions
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {

@@ -1,5 +1,3 @@
-/* View */
-
 export class View {
   createHomePage() {
     const content = document.createElement("div");
@@ -105,7 +103,6 @@ export class View {
   }
 
   createGroupsPage(type) {
-    // Cards list
     let groupList = "";
     for (let i = 0; i < 12; i += 1) {
       const groupNum = i + 1;
@@ -117,7 +114,7 @@ export class View {
           </div>
         </li>`;
     }
-    // Group caption
+
     let groupCaption;
     if (type === "artists") {
       groupCaption = "Художники";
