@@ -61,7 +61,7 @@ class Quiz {
   }
 
   generateTaskOptions(taskRec) {
-    const taskId = +taskRec.imageNum;
+    const taskId = taskRec.imageNum;
     const options = [taskId];
     while (options.length < 4) {
       const num = Math.floor(Math.random() * 241);
