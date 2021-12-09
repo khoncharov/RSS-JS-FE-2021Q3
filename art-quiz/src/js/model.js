@@ -65,7 +65,6 @@ class Quiz {
     const options = [taskId];
     while (options.length < 4) {
       const num = Math.floor(Math.random() * 241);
-      const isNewValue = (i) => !options.includes(i);
       const isNewAuthor = (i) => {
         const newName = this.data.image[i].author.toLowerCase();
         let res = options.every((taskId) => {
@@ -77,7 +76,7 @@ class Quiz {
         });
         return res;
       };
-      if (isNewValue(num) && isNewAuthor(num)) {
+      if (isNewAuthor(num)) {
         options.push(num);
       }
     }
