@@ -35,7 +35,7 @@ export class AppController {
 
   preloadGroupCovers() {
     const list = [];
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 24; i += 1) {
       const img = new Image();
       img.src = `./assets/pic/img/${i * 10 + 4}.webp`;
       list.push(img);
@@ -140,7 +140,7 @@ export class AppController {
     });
     //
     // - Task option img click event
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i += 1) {
       const container = `#option-img-${i}`;
       pageNode.querySelector(container).addEventListener("click", (e) => {
         // Remove task timeout timer
@@ -286,7 +286,7 @@ export class AppController {
     });
     //
     // - Task option img click event
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i += 1) {
       const container = `#option-btn-${i}`;
       pageNode.querySelector(container).addEventListener("click", (e) => {
         // Remove task timeout timer

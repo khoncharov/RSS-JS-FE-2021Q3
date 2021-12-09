@@ -52,7 +52,7 @@ class Quiz {
 
   getNewQuiz(group, category) {
     const tasks = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i += 1) {
       const index = this.getTaskRecordIndex(i, group, category);
       const taskRec = this.data.image[index];
       const taskOptions = this.generateTaskOptions(taskRec);

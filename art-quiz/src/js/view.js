@@ -107,7 +107,7 @@ export class View {
   createGroupsPage(type) {
     // Cards list
     let groupList = "";
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 12; i += 1) {
       const groupNum = i + 1;
       groupList += `
         <li>
