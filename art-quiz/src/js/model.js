@@ -69,10 +69,8 @@ class Quiz {
         const newName = this.data.image[i].author.toLowerCase();
         let res = options.every((taskId) => {
           const name = this.data.image[taskId].author.toLowerCase();
-          if (newName !== name) {
-            return true;
-          }
-          return false;
+
+          return newName !== name;
         });
         return res;
       };
