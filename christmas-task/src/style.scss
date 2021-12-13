@@ -1,6 +1,15 @@
 $font-color: brown;
 
-.app {
+html {
+  background-color: goldenrod;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
   font-size: 72px;
   font-family: sans-serif;
   color: brown;
