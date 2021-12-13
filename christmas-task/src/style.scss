@@ -1,0 +1,17 @@
+$font-color: brown;
+
+.app {
+  font-size: 72px;
+  font-family: sans-serif;
+  color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url(./assets/svg/github.svg);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
