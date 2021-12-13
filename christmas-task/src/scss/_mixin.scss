@@ -1,0 +1,17 @@
+@mixin font(
+  $font-name,
+  $font-size: $font-m,
+  $font-lh: 1.2,
+  $font-clr: $font-prime-color,
+  $font-weight: 400
+) {
+  font-family: $font-name;
+  font-size: $font-size;
+  line-height: $font-lh;
+  color: $font-clr;
+  font-weight: $font-weight;
+}
+
+// @mixin control-style {
+
+// }

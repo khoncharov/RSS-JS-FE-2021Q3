@@ -1,1 +1,30 @@
-$font-color: brown;
+/* Fonts stack */
+
+$font-1: "Open Sans", sans-serif;
+$font-2: "Neucha", cursive;
+
+/* Font size */
+
+$font-s: 1.4rem;
+$font-m: 1.8rem;
+$font-l: 2.2rem;
+$font-xl: 2.8rem;
+$font-xxl: 4.2rem;
+$font-xxxl: 5.3rem;
+
+/* Colors */
+
+$dark-green: #192f2d;
+$white: #ffffff;
+$gold: gold;
+
+/* Elements */
+
+$background-color: $dark-green;
+$font-prime-color: $white;
+$font-hover-color: $gold;
+
+/* App sizes */
+
+$mediaMaxWidth: 1920px;
+$mediaMinWidth: 768px;

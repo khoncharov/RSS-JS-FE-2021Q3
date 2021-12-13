@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
   entry: path.resolve(__dirname, './src/index.ts'),
@@ -27,10 +28,10 @@ const baseConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpg|jpeg)$/i,
+        test: /\.(png|svg|jpg|jpeg|webp)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/[hash][ext]',
+          filename: './assets/[hash][ext]',
         },
       },
     ],
@@ -47,6 +48,12 @@ const baseConfig = {
       template: path.resolve(__dirname, './src/index.html'),
       favicon: path.resolve(__dirname, './src/assets/favicon.ico'),
       filename: 'index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/assets/audio', to: './assets/audio' },
+        { from: './src/assets/svg', to: './assets/svg' },
+      ],
     }),
     new CleanWebpackPlugin(),
   ],
