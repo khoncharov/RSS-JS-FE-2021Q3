@@ -39,13 +39,49 @@
 
 .decor-card {
   @include blured-bg;
+  @include font($font-1, $font-s);
+  position: relative;
+  padding: 18px;
+  letter-spacing: 1px;
   min-width: 220px;
   height: 340px;
   border-radius: 10px;
   border: 1px solid #ffffff90;
-  transition: transform 0.4s ease-out;
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+
+  &__caption {
+    @include font($font-2, $font-l);
+    letter-spacing: 2px;
+    text-align: center;
+    height: 58px;
+  }
+
+  &__img {
+    margin: 4px 0 16px;
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  &__prop {
+    margin: 8px 0;
+  }
+}
+
+.favorite-decor::before {
+  content: "";
+  position: absolute;
+  top: 125px;
+  left: 18px;
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/svg/fav.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .decor-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }

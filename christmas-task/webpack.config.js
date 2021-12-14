@@ -53,6 +53,7 @@ const baseConfig = {
       patterns: [
         { from: './src/assets/audio', to: './assets/audio' },
         { from: './src/assets/svg', to: './assets/svg' },
+        { from: './src/assets/toys', to: './assets/toys' },
       ],
     }),
     new CleanWebpackPlugin(),
