@@ -14,7 +14,9 @@
   </head>
   <body>
     <!-- Start page -->
-    <div id="app" style="display: none">
+    <!-- <div id="app"> -->
+    <div style="display: none">
+      <header class="header"></header>
       <main class="main">
         <div class="game-title__container">
           <div class="decoration-ball-1"></div>
@@ -37,11 +39,29 @@
     </div>
     <!-- Decorations page -->
     <div id="app">
+      <!-- <div style="display: none"> -->
+      <header class="header">
+        <nav class="game-nav">
+          <ul class="game-nav__container">
+            <li>
+              <button class="game-nav__menu-btn game-nav__menu-btn_selected" type="button">
+                Игрушки
+              </button>
+            </li>
+            <li><button class="game-nav__menu-btn" type="button">Ёлки</button></li>
+          </ul>
+        </nav>
+      </header>
       <main class="main">
         <div class="main-container">
-          <section class="decor-filters"></section>
+          <section class="decor-filters">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate neque, cum debitis
+            quod accusamus sed modi corporis ad, illum nemo consequuntur aspernatur culpa porro aut
+            dolore ut exercitationem magni error. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Voluptate neque, cum debitis quod accusamus sed modi corporis ad, illum nemo
+            consequuntur aspernatur culpa porro aut dolore ut exercitationem magni error.
+          </section>
           <section class="decorations-cards">
-            <h2 class="decorations-cards__caption">Игурушки</h2>
             <ul class="decorations-cards__container">
               <li class="decor-card"></li>
               <li class="decor-card favorite-decor"></li>
@@ -51,6 +71,16 @@
               <li class="decor-card"></li>
               <li class="decor-card"></li>
               <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <!-- <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li>
+              <li class="decor-card"></li> -->
             </ul>
           </section>
         </div>

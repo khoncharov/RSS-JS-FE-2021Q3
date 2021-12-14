@@ -1,42 +1,62 @@
 .main-container {
   height: 100%;
+  overflow: hidden;
+  border: 1px solid tomato;
+
   display: grid;
   grid-template-columns: 400px 1fr;
-  gap: 24px;
+  gap: 1.5vw;
 }
 
 .decor-filters {
+  height: auto;
+  overflow-y: scroll;
+  @include font($font-1, $font-xxl);
+
   padding: 10px;
   background-color: rgba($background-color, 0.9);
-  border-radius: 10px 10px 0px 0px;
+
+  border: 2px solid orange;
 }
 
-.decorations-cards {
-  height: 90%;
-  background-color: rgba($background-color, 0.9);
-  border-radius: 10px 10px 0px 0px;
+// .decor-filters::-webkit-scrollbar {
+//   display: none;
+// }
 
-  &__caption {
-    @include font($font-2, $font-xxl);
-    margin: 10px 30px;
-  }
+.decorations-cards {
+  height: auto;
+
+  // &__caption {
+  //   @include font($font-2, $font-xxl);
+  //   margin: 10px 30px;
+  //   background-color: rgba($background-color, 0.9);
+  // }
 
   &__container {
+    height: auto;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 24px;
     overflow: scroll;
+    border: 1px solid magenta;
   }
 
-  &__container::-webkit-scrollbar {
-    display: none;
-  }
+  // &__container::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 .decor-card {
+  @include blured-bg;
   width: 220px;
   height: 340px;
   border-radius: 10px;
-  background-color: mediumpurple;
+  border: 1px solid #ffffff90;
+  transition: transform 0.4s ease-out;
+}
+
+.decor-card:hover {
+  transform: scale(1.05);
 }

@@ -13,6 +13,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 a {
@@ -47,15 +48,21 @@ ul {
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 75px;
+  grid-template-rows: 75px 1fr 75px;
+}
+
+.header {
+  padding: 0 1.5vw;
+  background-color: $background-color;
+  z-index: 1;
 }
 
 .main {
-  padding: 24px 24px 0 24px;
-  background-color: $background-color;
+  padding: 12px 1.5vw;
   background: no-repeat center url(./assets/bg-1920.webp);
   background-size: cover;
   overflow: hidden;
+  border: 1px solid springgreen;
 }
 
 .footer {
@@ -89,6 +96,39 @@ ul {
   &__year {
     @include font($font-1);
     filter: opacity(0.6);
+  }
+}
+
+.game-nav {
+  height: 100%;
+
+  &__container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 200px 200px;
+  }
+
+  &__menu-btn {
+    @include font($font-2, $font-xxl);
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+
+    &_selected {
+      background-color: $ctrl-clr;
+    }
+  }
+
+  &__menu-btn:hover {
+    background-color: $ctrl-clr-hover;
+  }
+
+  &__menu-btn:active {
+    color: $font-hover-color;
+    background-color: $ctrl-clr-active;
   }
 }
 
