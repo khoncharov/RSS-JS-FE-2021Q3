@@ -38,6 +38,7 @@ button {
   background-color: $background-color;
   background: no-repeat center url(./assets/bg-1920.webp);
   background-size: cover;
+  overflow: hidden;
 }
 
 .footer {
@@ -47,6 +48,7 @@ button {
   justify-content: space-between;
   align-items: center;
   background-color: $background-color;
+  z-index: 1;
 
   &__link {
     @include font($font-1);
@@ -77,19 +79,11 @@ button {
   #app {
     width: $mediaMinWidth;
   }
-
-  .footer {
-    background-color: gold;
-  }
 }
 
 @media screen and (min-width: $mediaMaxWidth) {
   #app {
     margin: 0 auto;
     width: $mediaMaxWidth;
-  }
-
-  .footer {
-    background-color: mediumvioletred;
   }
 }
