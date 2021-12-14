@@ -12,6 +12,14 @@
   font-weight: $font-weight;
 }
 
-// @mixin control-style {
+@mixin blured-bg {
+  background-color: #ffffff30;
+  backdrop-filter: blur(10px);
+}
 
-// }
+@mixin ui-control($width, $height, $border-width: 1px) {
+  width: $width;
+  height: $height;
+  border-radius: calc($height / 2);
+  border: $border-width solid #ffffff90;
+}
