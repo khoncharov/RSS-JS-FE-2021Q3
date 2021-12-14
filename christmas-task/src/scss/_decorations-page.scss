@@ -1,56 +1,45 @@
 .main-container {
   height: 100%;
   overflow: hidden;
-  border: 1px solid tomato;
-
   display: grid;
   grid-template-columns: 400px 1fr;
   gap: 1.5vw;
 }
 
 .decor-filters {
-  height: auto;
-  overflow-y: scroll;
   @include font($font-1, $font-xxl);
+  height: 100%;
+  overflow-y: scroll;
 
   padding: 10px;
   background-color: rgba($background-color, 0.9);
-
-  border: 2px solid orange;
 }
 
-// .decor-filters::-webkit-scrollbar {
-//   display: none;
-// }
+.decor-filters::-webkit-scrollbar {
+  display: none;
+}
 
 .decorations-cards {
-  height: auto;
-
-  // &__caption {
-  //   @include font($font-2, $font-xxl);
-  //   margin: 10px 30px;
-  //   background-color: rgba($background-color, 0.9);
-  // }
+  height: 100%;
+  overflow-y: scroll;
 
   &__container {
     height: auto;
     padding: 10px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
-    overflow: scroll;
-    border: 1px solid magenta;
   }
+}
 
-  // &__container::-webkit-scrollbar {
-  //   display: none;
-  // }
+.decorations-cards::-webkit-scrollbar {
+  display: none;
 }
 
 .decor-card {
   @include blured-bg;
-  width: 220px;
+  min-width: 220px;
   height: 340px;
   border-radius: 10px;
   border: 1px solid #ffffff90;
