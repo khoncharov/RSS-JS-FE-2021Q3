@@ -54,14 +54,66 @@
       </header>
       <main class="main">
         <div class="main-container">
-          <section class="decor-filters">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa ab possimus aliquid nulla
-            quibusdam minima distinctio doloribus debitis at natus, aspernatur atque fuga nobis
-            accusamus voluptate id, maxime ducimus cum!
+          <section class="decor-filter">
+            <div class="decor-filter__search-container">
+              <h2 class="decor-filter__caption">Поиск по названию</h2>
+              <input class="decor-filter__search-input" type="text" />
+            </div>
+            <div class="decor-filter__sort-container">
+              <h2 class="decor-filter__caption">Сортировать</h2>
+              <select
+                class="decor-filter__search-input"
+                name="decor-sort-type"
+                id="decor-sort-type"
+              >
+                <option value="0">По названию от А до Я</option>
+                <option value="1">По названию от Я до А</option>
+                <option value="2">По год покупки, по возрастанию</option>
+                <option value="3">По год покупки, по убыванию</option>
+              </select>
+            </div>
+            <div class="decor-filter__cat-title-container">
+              <h2 class="decor-filter__caption">Фильтры</h2>
+            </div>
+            <div class="decor-filter__container-1">
+              <h3 class="decor-filter__sub-cat-name">Форма</h3>
+              <div class="filter-item ico-decor-ball" title="Шар"></div>
+              <div class="filter-item ico-decor-bell" title="Колокольчик"></div>
+              <div class="filter-item ico-decor-cone" title="Шишка"></div>
+              <div class="filter-item ico-decor-flake" title="Снежинка"></div>
+              <div class="filter-item ico-decor-figure" title="Фигурка"></div>
+            </div>
+            <div class="decor-filter__container-1">
+              <h3 class="decor-filter__sub-cat-name">Цвет</h3>
+              <div class="filter-item" title="Белый"></div>
+              <div class="filter-item" title="Желтый"></div>
+              <div class="filter-item" title="Красный"></div>
+              <div class="filter-item" title="Синий"></div>
+              <div class="filter-item" title="Зеленый"></div>
+            </div>
+            <div class="decor-filter__container-1">
+              <h3 class="decor-filter__sub-cat-name">Размер</h3>
+              <div class="filter-item" title="Большой"></div>
+              <div class="filter-item" title="Средний"></div>
+              <div class="filter-item" title="Малый"></div>
+            </div>
+            <div class="decor-filter__container-3">
+              <h3 class="decor-filter__sub-cat-name">Только любимые</h3>
+            </div>
+            <div class="decor-filter__container-2">
+              <h3 class="decor-filter__sub-cat-name">Количество</h3>
+            </div>
+            <div class="decor-filter__container-2">
+              <h3 class="decor-filter__sub-cat-name">Год покупки</h3>
+            </div>
+            <div class="decor-filter__container-3">
+              <button type="button">Сброс фильтров</button>
+            </div>
           </section>
           <section class="decorations-cards">
             <ul class="decorations-cards__container">
-              <li class="decor-card favorite-decor" id="card-id">
+              <li class="decor-card__not-found">Извините, совпадений не обнаружено ¯\_(ツ)_/¯</li>
+              <li class="decor-card ico-favorite-decor" id="card-id">
                 <h3 class="decor-card__caption">Большой шар с рисунком Цветок</h3>
                 <img
                   class="decor-card__img"
@@ -86,6 +138,7 @@
               <li class="decor-card"></li>
               <li class="decor-card"></li>
               <li class="decor-card"></li>
+              <!--                 
               <li class="decor-card"></li>
               <li class="decor-card"></li>
               <li class="decor-card"></li>
@@ -97,7 +150,6 @@
               <li class="decor-card"></li>
               <li class="decor-card"></li>
               <li class="decor-card"></li>
-              <!-- 
               <li class="decor-card"></li>
               <li class="decor-card"></li>
               <li class="decor-card"></li> -->
