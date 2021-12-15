@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Shapes */
 
 .ico-decor {
@@ -53,8 +55,8 @@
 
 .circle {
   display: block;
-  width: $icon-box-size/2;
-  height: $icon-box-size/2;
+  width: math.div($icon-box-size, 2);
+  height: math.div($icon-box-size, 2);
   border-radius: 50%;
 
   &-white {
