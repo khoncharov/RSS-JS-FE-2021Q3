@@ -1,6 +1,6 @@
 /* Main */
 
-.main-container {
+.main-tree-container {
   height: 100%;
   overflow: hidden;
   display: grid;
@@ -27,7 +27,7 @@
 }
 
 @media screen and (max-width: $mediaMidWidth) {
-  .main-container {
+  .main-tree-container {
     grid-template-columns: 332px 1fr;
     gap: 1vw;
   }

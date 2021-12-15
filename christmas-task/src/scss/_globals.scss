@@ -103,6 +103,29 @@ ul {
   }
 }
 
+/* Header */
+
+.fav-counter {
+  @include font($font-1, $font-m);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+  width: 75px;
+  height: 100%;
+}
+
+.fav-counter::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/svg/fav.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
 .game-nav {
   height: 100%;
 
