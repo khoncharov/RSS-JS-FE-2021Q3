@@ -51,6 +51,7 @@
             <li><button class="game-nav__menu-btn" type="button">Ёлки</button></li>
           </ul>
         </nav>
+        <div class="fav-counter">19</div>
       </header>
       <main class="main">
         <div class="main-container">
@@ -77,37 +78,56 @@
             </div>
             <div class="decor-filter__container-1">
               <h3 class="decor-filter__sub-cat-name">Форма</h3>
-              <div class="filter-item ico-decor-ball" title="Шар"></div>
+              <div class="filter-item ico-decor-ball filter-item-chosen" title="Шар"></div>
               <div class="filter-item ico-decor-bell" title="Колокольчик"></div>
               <div class="filter-item ico-decor-cone" title="Шишка"></div>
               <div class="filter-item ico-decor-flake" title="Снежинка"></div>
-              <div class="filter-item ico-decor-figure" title="Фигурка"></div>
+              <div class="filter-item ico-decor-figure filter-item-chosen" title="Фигурка"></div>
             </div>
             <div class="decor-filter__container-1">
               <h3 class="decor-filter__sub-cat-name">Цвет</h3>
-              <div class="filter-item" title="Белый"></div>
-              <div class="filter-item" title="Желтый"></div>
-              <div class="filter-item" title="Красный"></div>
-              <div class="filter-item" title="Синий"></div>
-              <div class="filter-item" title="Зеленый"></div>
+              <div class="filter-item" title="Белый">
+                <span class="circle circle-white"></span>
+              </div>
+              <div class="filter-item filter-item-chosen" title="Желтый">
+                <span class="circle circle-yellow"></span>
+              </div>
+              <div class="filter-item filter-item-chosen" title="Красный">
+                <span class="circle circle-red"></span>
+              </div>
+              <div class="filter-item" title="Синий">
+                <span class="circle circle-blue"></span>
+              </div>
+              <div class="filter-item" title="Зеленый">
+                <span class="circle circle-green"></span>
+              </div>
             </div>
             <div class="decor-filter__container-1">
               <h3 class="decor-filter__sub-cat-name">Размер</h3>
-              <div class="filter-item" title="Большой"></div>
-              <div class="filter-item" title="Средний"></div>
-              <div class="filter-item" title="Малый"></div>
+              <div class="filter-item" title="Большой">L</div>
+              <div class="filter-item filter-item-chosen" title="Средний">M</div>
+              <div class="filter-item" title="Малый">S</div>
             </div>
-            <div class="decor-filter__container-3">
+            <div class="decor-filter__container-2">
               <h3 class="decor-filter__sub-cat-name">Только любимые</h3>
-            </div>
-            <div class="decor-filter__container-2">
-              <h3 class="decor-filter__sub-cat-name">Количество</h3>
-            </div>
-            <div class="decor-filter__container-2">
-              <h3 class="decor-filter__sub-cat-name">Год покупки</h3>
+              <div class="filter-item">
+                <input type="checkbox" name="" id="" />
+              </div>
             </div>
             <div class="decor-filter__container-3">
-              <button type="button">Сброс фильтров</button>
+              <h3 class="decor-filter__sub-cat-name">Количество</h3>
+              <input class="filter-value-min" type="text" name="" id="" value="0" />
+              <input class="filter-range" type="range" name="" id="" />
+              <input class="filter-value-max" type="text" name="" id="" value="20" />
+            </div>
+            <div class="decor-filter__container-3">
+              <h3 class="decor-filter__sub-cat-name">Год покупки</h3>
+              <input class="filter-value-min" type="text" name="" id="" value="1960" />
+              <input class="filter-range" type="range" name="" id="" />
+              <input class="filter-value-max" type="text" name="" id="" value="2021" />
+            </div>
+            <div class="decor-filter__reset-btn-container">
+              <button class="decor-filter__reset-btn" type="button">Сброс фильтров</button>
             </div>
           </section>
           <section class="decorations-cards">

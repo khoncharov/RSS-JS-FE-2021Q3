@@ -13,13 +13,6 @@
     filter: brightness(0) saturate(100%) invert(84%) sepia(36%) saturate(4989%) hue-rotate(5deg)
       brightness(113%) contrast(102%);
   }
-  &-ball:active,
-  &-bell:active,
-  &-cone:active,
-  &-flake:active,
-  &-figure:active {
-    transform: scale(0.9);
-  }
 
   &-bell::before {
     @include filter-icon;
@@ -42,19 +35,6 @@
   }
 }
 
-/* Sizes */
-
-.ico-decor-ball {
-  &-l {
-  }
-
-  &-m {
-  }
-
-  &-s {
-  }
-}
-
 /* Favorite */
 
 .ico-favorite-decor::before {
@@ -62,9 +42,34 @@
   position: absolute;
   top: 125px;
   left: 18px;
-  width: 30px;
-  height: 30px;
+  width: $icon-box-size;
+  height: $icon-box-size;
   background-image: url("./assets/svg/fav.svg");
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+/* Colors filter shape */
+
+.circle {
+  display: block;
+  width: $icon-box-size/2;
+  height: $icon-box-size/2;
+  border-radius: 50%;
+
+  &-white {
+    background-color: white;
+  }
+  &-yellow {
+    background-color: yellow;
+  }
+  &-red {
+    background-color: #ff3939;
+  }
+  &-blue {
+    background-color: #0084ff;
+  }
+  &-green {
+    background-color: #00b300;
+  }
 }

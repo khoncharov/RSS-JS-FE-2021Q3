@@ -27,10 +27,11 @@
 @mixin filter-icon {
   content: "";
   position: absolute;
-  top: -20px;
+  top: 0px;
   left: 0px;
-  width: 36px;
-  height: 36px;
+  width: $icon-box-size - 3px;
+  height: $icon-box-size - 3px;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-position: center;
+  background-size: 80%;
 }
