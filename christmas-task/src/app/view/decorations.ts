@@ -6,14 +6,16 @@ export class DecorationsPage {
     menuDecorBtn.classList.add('game-nav__menu-btn_selected');
 
     const mainContainer = <HTMLElement>document.querySelector('.main');
-    mainContainer.innerHTML = `
-      <div class="main-decor-container">
-        <section class="decor-filter">
-        </section>
-        <section class="decorations-cards">
-        </section>
-      </div>`;
+    mainContainer.innerHTML = '';
+
+    const decorContainer: HTMLDivElement = document.createElement('div');
+    decorContainer.classList.add('main-decor-container');
+    const filterSection: HTMLElement = document.createElement('section');
+    filterSection.classList.add('decor-filter');
+    const cardsSection: HTMLElement = document.createElement('section');
+    cardsSection.classList.add('decorations-cards');
+
+    decorContainer.append(filterSection, cardsSection);
+    mainContainer.append(decorContainer);
   }
 }
-
-//
