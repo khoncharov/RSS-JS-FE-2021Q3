@@ -32,7 +32,9 @@ export interface IRawDecorItem {
   size: string;
 }
 
-export type TRawDecorData = IRawDecorItem[];
+export type TRawDecorData = {
+  items: IRawDecorItem[];
+};
 
 /* Settings types */
 

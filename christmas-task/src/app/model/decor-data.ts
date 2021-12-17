@@ -1,8 +1,8 @@
-import { TDecorData } from './types';
-import { TRawDecorData } from './types';
+import { TDecorData } from '../types';
+import { TRawDecorData } from '../types';
 
 export class DecorData {
-  private items: TDecorData;
+  public items: TDecorData;
 
   constructor(rawData: TRawDecorData) {
     this.items = this.convertRawData(rawData);
@@ -10,7 +10,7 @@ export class DecorData {
 
   convertRawData(rawData: TRawDecorData): TDecorData {
     const result: TDecorData = [];
-    rawData.forEach((item) => {
+    rawData.items.forEach((item) => {
       result.push({
         id: +item.id,
         name: item.name,

@@ -1,5 +1,7 @@
+import { TDecorData } from '../types';
+
 export class DecorationsPage {
-  draw(): void {
+  draw(decorItems: TDecorData): void {
     const menuXmasTreeBtn = <HTMLElement>document.querySelector('#game-nav-2');
     menuXmasTreeBtn.classList.remove('game-nav__menu-btn_selected');
     const menuDecorBtn = <HTMLElement>document.querySelector('#game-nav-1');
@@ -17,5 +19,7 @@ export class DecorationsPage {
 
     decorContainer.append(filterSection, cardsSection);
     mainContainer.append(decorContainer);
+
+    console.log(decorItems);
   }
 }

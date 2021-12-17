@@ -1,6 +1,7 @@
 import { StartPage } from './start';
 import { DecorationsPage } from './decorations';
 import { XmasTreePage } from './xmastree';
+import { TDecorData } from '../types';
 
 export class AppView {
   private startPage = new StartPage();
@@ -11,8 +12,8 @@ export class AppView {
     this.startPage.draw();
   }
 
-  drawDecorationsPage(): void {
-    this.decorationsPage.draw();
+  drawDecorationsPage(decorItems: TDecorData): void {
+    this.decorationsPage.draw(decorItems);
   }
 
   drawXmasTreePage(): void {

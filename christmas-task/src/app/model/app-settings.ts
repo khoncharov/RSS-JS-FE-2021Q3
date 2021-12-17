@@ -1,6 +1,6 @@
-import { IOption } from './types';
-import { TDecorId } from './types';
-import { TFavoriteDecor } from './types';
+import { IOption } from '../types';
+import { TDecorId } from '../types';
+import { TFavoriteDecor } from '../types';
 
 enum SortState {
   byNameAscending = '0',

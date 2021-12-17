@@ -1,8 +1,11 @@
 import { AppSettings } from './model/app-settings';
+import { DecorData } from './model/decor-data';
+import { TRawDecorData } from './types';
 import { AppView } from './view/app-view';
 
 export class Application {
   private view = new AppView();
+  private decorData: DecorData | null = null;
   private settings = new AppSettings();
   private pageNode: HTMLElement | null = null;
 
@@ -36,8 +39,15 @@ export class Application {
     });
   }
 
-  getDecorationsPage(): void {
-    this.view.drawDecorationsPage();
+  async getDecorationsPage(): Promise<void> {
+    try {
+      const response = await fetch('./data/data.json');
+      const rawData: TRawDecorData = await response.json();
+      this.decorData = new DecorData(rawData);
+      this.view.drawDecorationsPage(this.decorData.items);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   getXmasTreePage(): void {
