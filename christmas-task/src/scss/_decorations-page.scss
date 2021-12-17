@@ -91,10 +91,11 @@
   }
 
   &__reset-btn-container {
-    margin: 48px 0 0 24px;
+    margin-left: 24px;
   }
 
   &__reset-btn {
+    margin-top: 20px;
     @include font($font-1, $font-s);
     @include ui-control(100%, 36px);
     background-color: $ctrl-clr;
@@ -124,13 +125,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
   cursor: pointer;
-  transition: filter 0.2s;
+  transition: 0.2s;
 }
 
 .filter-item-chosen {
-  border: 1px solid white;
-  border-radius: 5px;
+  border-color: $white;
+}
+
+.filter-item:hover {
+  border-color: $gold;
 }
 
 .filter-value-min,

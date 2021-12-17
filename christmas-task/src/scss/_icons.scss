@@ -7,14 +7,6 @@
     @include filter-icon;
     background-image: url("./assets/svg/ball.svg");
   }
-  &-ball:hover,
-  &-bell:hover,
-  &-cone:hover,
-  &-flake:hover,
-  &-figure:hover {
-    filter: brightness(0) saturate(100%) invert(84%) sepia(36%) saturate(4989%) hue-rotate(5deg)
-      brightness(113%) contrast(102%);
-  }
 
   &-bell::before {
     @include filter-icon;
