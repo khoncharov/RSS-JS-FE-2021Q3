@@ -19,7 +19,7 @@ export class DecorationsPage {
     const cardsSection: HTMLElement = document.createElement('section');
     cardsSection.classList.add('decorations-cards');
     // TODO: async list load?
-    if (decorItems.length !== 0) {
+    if (decorItems.length === 0) {
       cardsSection.appendChild(this.getEmptyCard());
     } else {
       cardsSection.appendChild(this.getCardsList(decorItems));
