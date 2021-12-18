@@ -1,6 +1,6 @@
 import { StartPage } from './start';
 import { DecorationsPage } from './decorations';
-import { XmasTreePage } from './xmastree';
+import { XmasTreePage } from './xmas-tree';
 import { TDecorData } from '../types';
 
 export class AppView {

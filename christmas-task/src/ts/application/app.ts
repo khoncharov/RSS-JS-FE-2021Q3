@@ -1,7 +1,7 @@
-import { AppSettings } from './model/app-settings';
-import { DecorData } from './model/decor-data';
-import { TRawDecorData } from './types';
-import { AppView } from './view/app-view';
+import { AppSettings } from '../model/app-settings';
+import { DecorData } from '../model/decor-data';
+import { TRawDecorData } from '../types';
+import { AppView } from '../view/app-view';
 
 export class Application {
   private view = new AppView();
