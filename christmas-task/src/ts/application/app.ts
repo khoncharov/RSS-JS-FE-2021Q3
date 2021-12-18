@@ -1,16 +1,13 @@
-import { AppSettings } from '../model/app-settings';
+import * as rawDecorData from '../../data/data.json';
 import { DecorData } from '../model/decor-data';
-import { TRawDecorData } from '../types';
 import { AppView } from '../view/app-view';
 
 export class Application {
   private view = new AppView();
-  private decorData: DecorData | null = null;
-  private settings = new AppSettings();
-  private pageNode: HTMLElement | null = null;
+  private decorData = new DecorData(rawDecorData);
+  // private settings = new AppSettings();
 
   init(): void {
-    this.pageNode = <HTMLElement>document.querySelector('#app');
     this.view.drawSartPage();
 
     const startBtn = <HTMLElement>document.querySelector('.start-btn');
@@ -39,15 +36,8 @@ export class Application {
     });
   }
 
-  async getDecorationsPage(): Promise<void> {
-    try {
-      const response = await fetch('./data/data.json');
-      const rawData: TRawDecorData = await response.json();
-      this.decorData = new DecorData(rawData);
-      this.view.drawDecorationsPage(this.decorData.items);
-    } catch (err) {
-      console.error(err);
-    }
+  getDecorationsPage(): void {
+    this.view.drawDecorationsPage(this.decorData.items);
   }
 
   getXmasTreePage(): void {
@@ -58,8 +48,4 @@ export class Application {
   // updatePage() {}
   // desptoyPage() {}
   // createStartPage()
-
-  // class StartPageController
-  // class DecorationsPageController
-  // class XmasTreePageController
 }
