@@ -1,7 +1,7 @@
 import { TDecorData } from '../types';
 
 export class DecorationsPage {
-  draw(decorItems: TDecorData): void {
+  drawPage(): void {
     const menuXmasTreeBtn = <HTMLElement>document.querySelector('#game-nav-2');
     menuXmasTreeBtn.classList.remove('game-nav__menu-btn_selected');
     const menuDecorBtn = <HTMLElement>document.querySelector('#game-nav-1');
@@ -18,22 +18,19 @@ export class DecorationsPage {
 
     const cardsSection: HTMLElement = document.createElement('section');
     cardsSection.classList.add('decorations-cards');
-    // TODO: async list load?
-    if (decorItems.length === 0) {
-      cardsSection.appendChild(this.getEmptyCard());
-    } else {
-      cardsSection.appendChild(this.getCardsList(decorItems));
-    }
 
+    const listContainer: HTMLUListElement = document.createElement('ul');
+    listContainer.classList.add('decorations-cards__container');
+
+    cardsSection.append(listContainer);
     decorContainer.append(filterSection, cardsSection);
     mainContainer.append(decorContainer);
   }
 
-  getCardsList(data: TDecorData): HTMLElement {
-    const listContainer: HTMLUListElement = document.createElement('ul');
-    listContainer.classList.add('decorations-cards__container');
+  drawCardsList(decorData: TDecorData): void {
+    const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
 
-    data.forEach((item) => {
+    decorData.forEach((item) => {
       const card: HTMLLIElement = document.createElement('li');
       const caption: HTMLHeadingElement = document.createElement('h3');
       const image: HTMLImageElement = document.createElement('img');
@@ -65,18 +62,15 @@ export class DecorationsPage {
       card.append(caption, image, count, year, shape, color, size);
       listContainer.appendChild(card);
     });
-    return listContainer;
   }
 
-  getEmptyCard(): HTMLElement {
+  drawEmptyCard(): void {
     const listContainer: HTMLUListElement = document.createElement('ul');
-    listContainer.classList.add('decorations-cards__container');
 
     const card: HTMLLIElement = document.createElement('li');
     card.classList.add('decor-card__not-found');
     card.textContent = 'Извините, совпадений не обнаружено ¯\\_(ツ)_/¯';
 
     listContainer.appendChild(card);
-    return listContainer;
   }
 }

@@ -12,8 +12,20 @@ export class AppView {
     this.startPage.draw();
   }
 
-  drawDecorationsPage(decorItems: TDecorData): void {
-    this.decorationsPage.draw(decorItems);
+  drawDecorationsPage(): void {
+    this.decorationsPage.drawPage();
+  }
+
+  updateCardList(decorItems: TDecorData | []): void {
+    if (decorItems.length === 0) {
+      this.decorationsPage.drawEmptyCard();
+    } else {
+      this.decorationsPage.drawCardsList(decorItems);
+    }
+  }
+
+  updateFavoriteBadge(cardNode: HTMLLIElement): void {
+    cardNode.classList.add('ico-favorite-decor');
   }
 
   drawXmasTreePage(): void {

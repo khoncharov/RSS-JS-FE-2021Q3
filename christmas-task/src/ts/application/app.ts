@@ -37,7 +37,20 @@ export class Application {
   }
 
   getDecorationsPage(): void {
-    this.view.drawDecorationsPage(this.decorData.items);
+    this.view.drawDecorationsPage();
+    this.view.updateCardList(this.decorData.items);
+
+    const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
+    listContainer.addEventListener('click', (e) => {
+      const element: HTMLElement = e.target as HTMLElement;
+      if (element.nodeName === 'LI') {
+        this.view.updateFavoriteBadge(element as HTMLLIElement);
+
+        // TODO: add ico and update badge
+      } else if ((element.parentNode as HTMLElement).nodeName === 'LI') {
+        this.view.updateFavoriteBadge(element.parentNode as HTMLLIElement);
+      }
+    });
   }
 
   getXmasTreePage(): void {
