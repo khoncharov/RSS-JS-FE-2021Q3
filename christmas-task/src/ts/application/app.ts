@@ -64,7 +64,6 @@ export class Application extends AppController {
       document.querySelector('#reset-localstorage-btn')
     );
     resetLocalStorageBtn.addEventListener('click', () => {
-      console.log('reset');
       this.settings.resetLocalStorage();
       this.getDecorationsPage();
     });

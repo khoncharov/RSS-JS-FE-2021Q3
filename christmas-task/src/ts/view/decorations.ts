@@ -155,4 +155,9 @@ export class DecorationsPage {
         <button class="decor-filter__reset-btn" id="reset-localstorage-btn" type="button">Сброс настроек</button>
       </div>`;
   }
+
+  setDefaultFocus(): void {
+    const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
+    searchInput.focus();
+  }
 }

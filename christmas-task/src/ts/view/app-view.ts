@@ -47,5 +47,6 @@ export class AppView {
 
   addFilters(): void {
     this.decorationsPage.drawFilters();
+    this.decorationsPage.setDefaultFocus();
   }
 }
