@@ -93,10 +93,11 @@ export class DecorationsPage {
           name="decor-sort-type"
           id="decor-sort-type"
         >
-          <option value="0">По названию от А до Я</option>
-          <option value="1">По названию от Я до А</option>
-          <option value="2">По год покупки, по возрастанию</option>
-          <option value="3">По год покупки, по убыванию</option>
+          <option value="0">Без сортировки</option>
+          <option value="1">По названию от А до Я</option>
+          <option value="2">По названию от Я до А</option>
+          <option value="3">По год покупки, по возрастанию</option>
+          <option value="4">По год покупки, по убыванию</option>
         </select>
       </div>
       <div class="decor-filter__cat-title-container">

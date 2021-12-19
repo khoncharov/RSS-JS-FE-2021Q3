@@ -39,7 +39,10 @@ export class Application extends AppController {
   getDecorationsPage(): void {
     this.view.drawDecorationsPage();
     this.view.addFilters(this.settings);
-    this.view.updateCardList(this.decorData.items, this.settings.favoriteDecor);
+    this.view.updateCardList(
+      this.filterDecorData(this.decorData.items),
+      this.settings.favoriteDecor
+    );
     this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
 
     const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
@@ -63,8 +66,6 @@ export class Application extends AppController {
     const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
     searchInput.addEventListener('change', () => {
       this.settings.searchQuery = searchInput.value;
-      console.log(searchInput.value); // --------------------------------------------------------------
-
       this.view.updateCardList(
         this.filterDecorData(this.decorData.items),
         this.settings.favoriteDecor
@@ -75,9 +76,7 @@ export class Application extends AppController {
       document.querySelector('.decor-filter__select-option')
     );
     sortTypeSelect.addEventListener('change', () => {
-      this.settings.sortState = sortTypeSelect.selectedIndex;
-      console.log(sortTypeSelect.selectedIndex); // --------------------------------------------------------------
-
+      this.settings.sortType = sortTypeSelect.selectedIndex;
       this.view.updateCardList(
         this.filterDecorData(this.decorData.items),
         this.settings.favoriteDecor

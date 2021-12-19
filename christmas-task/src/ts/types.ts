@@ -48,6 +48,7 @@ export type TFavoriteDecor = Set<TDecorId>;
 /* Filter types */
 
 export enum SortType {
+  noSort,
   byNameAscending,
   byNameDescending,
   byYearAscending,

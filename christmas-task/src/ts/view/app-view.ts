@@ -49,6 +49,6 @@ export class AppView {
   addFilters(settings: AppSettings): void {
     this.decorationsPage.drawFilters();
     this.decorationsPage.setDefaultFocus();
-    this.decorationsPage.setSortFilter(settings.sortState);
+    this.decorationsPage.setSortFilter(settings.sortType);
   }
 }

@@ -14,7 +14,7 @@ export class AppSettings {
   private _favorite: TFavoriteDecor;
 
   public searchQuery: string;
-  private _sortState: SortType;
+  private _sortType: SortType;
 
   private _shapeFilter: Set<Shape>;
   private _colorFilter: Set<Color>;
@@ -30,8 +30,7 @@ export class AppSettings {
     };
     this._favorite = new Set(JSON.parse(<string>localStorage.getItem('favorite'))) ?? new Set();
     this.searchQuery = '';
-    this._sortState =
-      JSON.parse(<string>localStorage.getItem('sort-state')) ?? SortType.byNameAscending.toString();
+    this._sortType = +JSON.parse(<string>localStorage.getItem('sort-type')) ?? SortType.noSort;
 
     this._shapeFilter =
       new Set(JSON.parse(<string>localStorage.getItem('shape-filter'))) ?? new Set();
@@ -80,13 +79,13 @@ export class AppSettings {
     localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
   }
 
-  get sortState(): SortType {
-    return this._sortState;
+  get sortType(): SortType {
+    return this._sortType;
   }
 
-  set sortState(value: SortType) {
-    this._sortState = value;
-    localStorage.setItem('sort-state', JSON.stringify(this._sortState));
+  set sortType(value: SortType) {
+    this._sortType = value;
+    localStorage.setItem('sort-type', JSON.stringify(this._sortType));
   }
 
   resetLocalStorage() {
@@ -97,7 +96,7 @@ export class AppSettings {
       mute: true,
     };
     this._favorite = new Set();
-    this._sortState = SortType.byNameAscending;
+    this._sortType = SortType.noSort;
 
     this._shapeFilter = new Set();
     this._colorFilter = new Set();

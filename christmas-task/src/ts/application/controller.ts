@@ -1,6 +1,6 @@
 import { FAVORITE_DECOR_MAX_COUNT } from '../const';
 import { AppSettings } from '../model/app-settings';
-import { TDecorData } from '../types';
+import { SortType, TDecorData } from '../types';
 
 export class AppController {
   protected settings = new AppSettings();
@@ -23,9 +23,56 @@ export class AppController {
   }
 
   filterDecorData(data: TDecorData): TDecorData | [] {
+    let result: TDecorData | [] = [...data];
     /* Search */
+    if (this.settings.searchQuery) {
+      result = result.filter((item) => {
+        const query = this.settings.searchQuery.toLowerCase();
+        const decorName = item.name.toLowerCase();
+        return decorName.includes(query);
+      });
+    }
     /* Filter */
     /* Sort */
-    return data;
+    switch (this.settings.sortType) {
+      case SortType.byNameAscending:
+        result.sort((a, b) => {
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      case SortType.byNameDescending:
+        result.sort((a, b) => {
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA > nameB) {
+            return -1;
+          }
+          if (nameA < nameB) {
+            return 1;
+          }
+          return 0;
+        });
+
+        break;
+      case SortType.byYearAscending:
+        result.sort((a, b) => {
+          return a.year - b.year;
+        });
+        break;
+      case SortType.byYearDescending:
+        result.sort((a, b) => {
+          return b.year - a.year;
+        });
+        break;
+    }
+    return result;
   }
 }
