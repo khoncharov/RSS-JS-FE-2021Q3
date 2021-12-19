@@ -1,12 +1,14 @@
+import { DEFAUL_VOLUME } from '../const';
 import { IOption } from '../types';
 import { TDecorId } from '../types';
 import { TFavoriteDecor } from '../types';
+import { AppView } from '../view/app-view';
 
 enum SortState {
-  byNameAscending = '0',
-  byNameDescending = '1',
-  byYearAscending = '3',
-  byYearDescending = '4',
+  byNameAscending,
+  byNameDescending,
+  byYearAscending,
+  byYearDescending,
 }
 
 interface IFiltersState {
@@ -19,6 +21,7 @@ interface IFiltersState {
 }
 
 export class AppSettings {
+  private view = new AppView();
   private _options: IOption;
   private _favorite: TFavoriteDecor;
   private _sortState: SortState;
@@ -26,7 +29,7 @@ export class AppSettings {
 
   constructor() {
     this._options = JSON.parse(<string>localStorage.getItem('options')) ?? {
-      volume: '0',
+      volume: DEFAUL_VOLUME,
       mute: true,
     };
     this._favorite = new Set(JSON.parse(<string>localStorage.getItem('favorite'))) ?? new Set();
@@ -60,11 +63,13 @@ export class AppSettings {
 
   set addToFavorite(value: TDecorId) {
     this._favorite.add(value);
+    this.view.addFavorite(value);
     localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
   }
 
   set removeFromFavorite(value: TDecorId) {
     this._favorite.delete(value);
+    this.view.removeFavorite(value);
     localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
   }
 

@@ -1,4 +1,4 @@
-import { TDecorData } from '../types';
+import { TDecorData, TFavoriteDecor } from '../types';
 
 export class DecorationsPage {
   drawPage(): void {
@@ -27,7 +27,7 @@ export class DecorationsPage {
     mainContainer.append(decorContainer);
   }
 
-  drawCardsList(decorData: TDecorData): void {
+  drawCardsList(decorData: TDecorData, favotiveDecor: TFavoriteDecor): void {
     const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
 
     decorData.forEach((item) => {
@@ -41,6 +41,9 @@ export class DecorationsPage {
       const size: HTMLParagraphElement = document.createElement('p');
 
       card.classList.add('decor-card');
+      if (favotiveDecor.has(item.id)) {
+        card.classList.add('ico-favorite-decor');
+      }
       caption.classList.add('decor-card__caption');
       image.classList.add('decor-card__img');
       count.classList.add('decor-card__prop');
@@ -49,7 +52,7 @@ export class DecorationsPage {
       color.classList.add('decor-card__prop');
       size.classList.add('decor-card__prop');
 
-      card.id = item.id.toString();
+      card.id = `decor-card-id-${item.id}`;
       caption.textContent = item.name;
       image.src = `./assets/toys/${item.id}.png`;
       image.alt = item.name;
@@ -65,7 +68,7 @@ export class DecorationsPage {
   }
 
   drawEmptyCard(): void {
-    const listContainer: HTMLUListElement = document.createElement('ul');
+    const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
 
     const card: HTMLLIElement = document.createElement('li');
     card.classList.add('decor-card__not-found');

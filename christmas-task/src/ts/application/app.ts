@@ -1,11 +1,11 @@
 import * as rawDecorData from '../../data/data.json';
 import { DecorData } from '../model/decor-data';
 import { AppView } from '../view/app-view';
+import { AppController } from './controller';
 
-export class Application {
+export class Application extends AppController {
   private view = new AppView();
   private decorData = new DecorData(rawDecorData);
-  // private settings = new AppSettings();
 
   init(): void {
     this.view.drawSartPage();
@@ -38,17 +38,24 @@ export class Application {
 
   getDecorationsPage(): void {
     this.view.drawDecorationsPage();
-    this.view.updateCardList(this.decorData.items);
+    this.view.updateCardList(this.decorData.items, this.settings.favoriteDecor);
+    this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
 
     const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
     listContainer.addEventListener('click', (e) => {
       const element: HTMLElement = e.target as HTMLElement;
-      if (element.nodeName === 'LI') {
-        this.view.updateFavoriteBadge(element as HTMLLIElement);
-
-        // TODO: add ico and update badge
-      } else if ((element.parentNode as HTMLElement).nodeName === 'LI') {
-        this.view.updateFavoriteBadge(element.parentNode as HTMLLIElement);
+      let card: HTMLLIElement;
+      if (element.nodeName === 'LI' && !element.classList.contains('decor-card__not-found')) {
+        card = element as HTMLLIElement;
+        this.updateFavoriteDecor(this.getDecorId(card.id));
+        this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
+      } else if (
+        (element.parentNode as HTMLElement).nodeName === 'LI' &&
+        !(element.parentNode as HTMLElement).classList.contains('decor-card__not-found')
+      ) {
+        card = element.parentNode as HTMLLIElement;
+        this.updateFavoriteDecor(this.getDecorId(card.id));
+        this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
       }
     });
   }
@@ -56,9 +63,4 @@ export class Application {
   getXmasTreePage(): void {
     this.view.drawXmasTreePage();
   }
-
-  // createPage() {}
-  // updatePage() {}
-  // desptoyPage() {}
-  // createStartPage()
 }
