@@ -1,4 +1,10 @@
-import { DEFAUL_VOLUME } from '../const';
+import {
+  COUNT_FILTER_MAX,
+  COUNT_FILTER_MIN,
+  DEFAUL_VOLUME,
+  YEAR_FILTER_MAX,
+  YEAR_FILTER_MIN,
+} from '../const';
 import { IOption } from '../types';
 import { TDecorId } from '../types';
 import { TFavoriteDecor } from '../types';
@@ -11,13 +17,35 @@ enum SortType {
   byYearDescending,
 }
 
+enum Shape {
+  ball = 'ball',
+  bell = 'bell',
+  cone = 'cone',
+  flake = 'flake',
+  figure = 'figure',
+}
+
+enum Color {
+  white = 'white',
+  yellow = 'yellow',
+  red = 'red',
+  blue = 'blue',
+  green = 'green',
+}
+
+enum Size {
+  large = 'large',
+  medium = 'medium',
+  small = 'small',
+}
+
 interface IFiltersState {
-  shapeFilter: []; // set ?? 'ball' | 'bell' | 'cone' | 'flake' | 'figure'
-  colorFilter: []; // set ?? 'white' | 'yellow' | 'red' | 'blue' | 'green'
-  sizeFilter: []; // set ?? 'large' | 'medium' | 'small'
-  favoriteOnly: boolean; // true | false
-  countFilter: []; // tuple ?? [number, number]
-  yearFilter: []; // [number, number]
+  shapeFilter: Set<Shape>;
+  colorFilter: Set<Color>;
+  sizeFilter: Set<Size>;
+  favoriteOnly: boolean;
+  countFilter: [number, number];
+  yearFilter: [number, number];
 }
 
 export class AppSettings {
@@ -33,14 +61,15 @@ export class AppSettings {
       mute: true,
     };
     this._favorite = new Set(JSON.parse(<string>localStorage.getItem('favorite'))) ?? new Set();
-    this._sortState = JSON.parse(<string>localStorage.getItem('sort-state')) ?? '0';
+    this._sortState =
+      JSON.parse(<string>localStorage.getItem('sort-state')) ?? SortType.byNameAscending.toString();
     this._filtersState = JSON.parse(<string>localStorage.getItem('filters-state')) ?? {
       shapeFilter: new Set(),
       colorFilter: new Set(),
       sizeFilter: new Set(),
       favoriteOnly: false,
-      countFilter: [0, 15],
-      yearFilter: [1940, 2020],
+      countFilter: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
+      yearFilter: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
     };
   }
 
@@ -91,13 +120,13 @@ export class AppSettings {
     };
     this._favorite = new Set();
     this._sortState = SortType.byNameAscending;
-    // this._filtersState = {
-    //   shapeFilter: new Set(),
-    //   colorFilter: new Set(),
-    //   sizeFilter: new Set(),
-    //   favoriteOnly: false,
-    //   countFilter: [0, 15],
-    //   yearFilter: [1940, 2020],
-    // };
+    this._filtersState = {
+      shapeFilter: new Set(),
+      colorFilter: new Set(),
+      sizeFilter: new Set(),
+      favoriteOnly: false,
+      countFilter: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
+      yearFilter: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
+    };
   }
 }

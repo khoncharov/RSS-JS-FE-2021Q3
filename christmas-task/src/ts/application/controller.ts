@@ -20,4 +20,8 @@ export class AppController {
   getDecorId(cardId: string): number {
     return +cardId.split('-')[3];
   }
+
+  filterHandler(): void {
+    throw new Error('Method not implemented.');
+  }
 }

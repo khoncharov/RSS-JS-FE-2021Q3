@@ -81,8 +81,8 @@ export class DecorationsPage {
     const filterSection = <HTMLElement>document.querySelector('.decor-filter');
     filterSection.innerHTML = `    
       <div class="decor-filter__search-container">
-        <h2 class="decor-filter__caption">Поиск по названию</h2>
-        <input class="decor-filter__search-input" type="text" />
+        <h2 class="decor-filter__caption">Поиск</h2>
+        <input class="decor-filter__search-input" type="text" autocomplete="off" placeholder="Название игрушки"/>
       </div>
       <div class="decor-filter__sort-container">
         <h2 class="decor-filter__caption">Сортировать</h2>
@@ -100,7 +100,7 @@ export class DecorationsPage {
       <div class="decor-filter__cat-title-container">
         <h2 class="decor-filter__caption">Фильтры</h2>
       </div>
-      <div class="decor-filter__container-1">
+      <div class="decor-filter__container-1" id="shape-filter-id">
         <h3 class="decor-filter__sub-cat-name">Форма</h3>
         <div class="filter-item ico-decor-ball" title="Шар"></div>
         <div class="filter-item ico-decor-bell" title="Колокольчик"></div>
@@ -108,25 +108,15 @@ export class DecorationsPage {
         <div class="filter-item ico-decor-flake" title="Снежинка"></div>
         <div class="filter-item ico-decor-figure" title="Фигурка"></div>
       </div>
-      <div class="decor-filter__container-1">
+      <div class="decor-filter__container-1" id="color-filter-id">
         <h3 class="decor-filter__sub-cat-name">Цвет</h3>
-        <div class="filter-item" title="Белый">
-          <span class="circle circle-white"></span>
-        </div>
-        <div class="filter-item" title="Желтый">
-          <span class="circle circle-yellow"></span>
-        </div>
-        <div class="filter-item" title="Красный">
-          <span class="circle circle-red"></span>
-        </div>
-        <div class="filter-item" title="Синий">
-          <span class="circle circle-blue"></span>
-        </div>
-        <div class="filter-item" title="Зеленый">
-          <span class="circle circle-green"></span>
-        </div>
+        <div class="filter-item circle-white" title="Белый"></div>
+        <div class="filter-item circle-yellow" title="Желтый"></div>
+        <div class="filter-item circle-red" title="Красный"></div>
+        <div class="filter-item circle-blue" title="Синий"></div>
+        <div class="filter-item circle-green" title="Зеленый"></div>
       </div>
-      <div class="decor-filter__container-1">
+      <div class="decor-filter__container-1" id="size-filter-id">
         <h3 class="decor-filter__sub-cat-name">Размер</h3>
         <div class="filter-item" title="Большой">L</div>
         <div class="filter-item" title="Средний">M</div>

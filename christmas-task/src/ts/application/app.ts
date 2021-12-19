@@ -60,6 +60,44 @@ export class Application extends AppController {
       }
     });
 
+    const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
+    searchInput.addEventListener('change', () => {
+      console.log(searchInput.value);
+      throw new Error('Method not implemented.');
+    });
+
+    const sortTypeSelect = <HTMLSelectElement>(
+      document.querySelector('.decor-filter__select-option')
+    );
+    sortTypeSelect.addEventListener('change', () => {
+      console.log(sortTypeSelect.selectedIndex);
+      throw new Error('Method not implemented.');
+    });
+
+    const shapeFilter = <HTMLDivElement>document.querySelector('#shape-filter-id');
+    shapeFilter.addEventListener('click', (e) => {
+      const element = e.target as HTMLElement;
+      if (element.classList.contains('filter-item')) {
+        throw new Error('Method not implemented.');
+      }
+    });
+
+    const colorFilter = <HTMLDivElement>document.querySelector('#color-filter-id');
+    colorFilter.addEventListener('click', (e) => {
+      const element = e.target as HTMLElement;
+      if (element.classList.contains('filter-item')) {
+        throw new Error('Method not implemented.');
+      }
+    });
+
+    const sizeFilter = <HTMLDivElement>document.querySelector('#size-filter-id');
+    sizeFilter.addEventListener('click', (e) => {
+      const element = e.target as HTMLElement;
+      if (element.classList.contains('filter-item')) {
+        throw new Error('Method not implemented.');
+      }
+    });
+
     const resetLocalStorageBtn = <HTMLButtonElement>(
       document.querySelector('#reset-localstorage-btn')
     );
