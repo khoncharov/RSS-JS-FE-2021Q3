@@ -76,4 +76,83 @@ export class DecorationsPage {
 
     listContainer.appendChild(card);
   }
+
+  drawFilters(): void {
+    const filterSection = <HTMLElement>document.querySelector('.decor-filter');
+    filterSection.innerHTML = `    
+      <div class="decor-filter__search-container">
+        <h2 class="decor-filter__caption">Поиск по названию</h2>
+        <input class="decor-filter__search-input" type="text" />
+      </div>
+      <div class="decor-filter__sort-container">
+        <h2 class="decor-filter__caption">Сортировать</h2>
+        <select
+          class="decor-filter__select-option"
+          name="decor-sort-type"
+          id="decor-sort-type"
+        >
+          <option value="0">По названию от А до Я</option>
+          <option value="1">По названию от Я до А</option>
+          <option value="2">По год покупки, по возрастанию</option>
+          <option value="3">По год покупки, по убыванию</option>
+        </select>
+      </div>
+      <div class="decor-filter__cat-title-container">
+        <h2 class="decor-filter__caption">Фильтры</h2>
+      </div>
+      <div class="decor-filter__container-1">
+        <h3 class="decor-filter__sub-cat-name">Форма</h3>
+        <div class="filter-item ico-decor-ball" title="Шар"></div>
+        <div class="filter-item ico-decor-bell" title="Колокольчик"></div>
+        <div class="filter-item ico-decor-cone" title="Шишка"></div>
+        <div class="filter-item ico-decor-flake" title="Снежинка"></div>
+        <div class="filter-item ico-decor-figure" title="Фигурка"></div>
+      </div>
+      <div class="decor-filter__container-1">
+        <h3 class="decor-filter__sub-cat-name">Цвет</h3>
+        <div class="filter-item" title="Белый">
+          <span class="circle circle-white"></span>
+        </div>
+        <div class="filter-item" title="Желтый">
+          <span class="circle circle-yellow"></span>
+        </div>
+        <div class="filter-item" title="Красный">
+          <span class="circle circle-red"></span>
+        </div>
+        <div class="filter-item" title="Синий">
+          <span class="circle circle-blue"></span>
+        </div>
+        <div class="filter-item" title="Зеленый">
+          <span class="circle circle-green"></span>
+        </div>
+      </div>
+      <div class="decor-filter__container-1">
+        <h3 class="decor-filter__sub-cat-name">Размер</h3>
+        <div class="filter-item" title="Большой">L</div>
+        <div class="filter-item" title="Средний">M</div>
+        <div class="filter-item" title="Малый">S</div>
+      </div>
+      <div class="decor-filter__container-2">
+        <h3 class="decor-filter__sub-cat-name">Только любимые</h3>
+        <div class="filter-item">
+          <input type="checkbox" name="" id="" />
+        </div>
+      </div>
+      <div class="decor-filter__container-3">
+        <h3 class="decor-filter__sub-cat-name">Количество</h3>
+        <input class="filter-value-min" type="text" name="" id="" value="0" />
+        <input class="filter-range" type="range" name="" id="" />
+        <input class="filter-value-max" type="text" name="" id="" value="20" />
+      </div>
+      <div class="decor-filter__container-3">
+        <h3 class="decor-filter__sub-cat-name">Год покупки</h3>
+        <input class="filter-value-min" type="text" name="" id="" value="1960" />
+        <input class="filter-range" type="range" name="" id="" />
+        <input class="filter-value-max" type="text" name="" id="" value="2021" />
+      </div>
+      <div class="decor-filter__reset-btn-container">
+        <button class="decor-filter__reset-btn" id="reset-decor-filters-btn" type="button">Сброс фильтров</button>
+        <button class="decor-filter__reset-btn" id="reset-localstorage-btn" type="button">Сброс настроек</button>
+      </div>`;
+  }
 }

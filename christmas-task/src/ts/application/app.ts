@@ -38,6 +38,7 @@ export class Application extends AppController {
 
   getDecorationsPage(): void {
     this.view.drawDecorationsPage();
+    this.view.addFilters(); // add settings
     this.view.updateCardList(this.decorData.items, this.settings.favoriteDecor);
     this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
 
@@ -57,6 +58,15 @@ export class Application extends AppController {
         this.updateFavoriteDecor(this.getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
       }
+    });
+
+    const resetLocalStorageBtn = <HTMLButtonElement>(
+      document.querySelector('#reset-localstorage-btn')
+    );
+    resetLocalStorageBtn.addEventListener('click', () => {
+      console.log('reset');
+      this.settings.resetLocalStorage();
+      this.getDecorationsPage();
     });
   }
 

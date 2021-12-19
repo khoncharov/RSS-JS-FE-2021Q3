@@ -44,4 +44,8 @@ export class AppView {
   drawXmasTreePage(): void {
     this.xmastreePage.draw();
   }
+
+  addFilters(): void {
+    this.decorationsPage.drawFilters();
+  }
 }
