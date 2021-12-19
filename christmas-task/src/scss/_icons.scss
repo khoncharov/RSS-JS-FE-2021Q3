@@ -46,25 +46,24 @@
 /* Colors filter shape */
 
 .circle {
-  display: block;
-  width: math.div($icon-box-size, 2);
-  height: math.div($icon-box-size, 2);
-  border-radius: 50%;
+  &-white::before {
+    @include color-filter-icon(white);
+  }
 
-  &-white {
-    background-color: white;
+  &-yellow::before {
+    @include color-filter-icon(yellow);
   }
-  &-yellow {
-    background-color: yellow;
+
+  &-red::before {
+    @include color-filter-icon($red);
   }
-  &-red {
-    background-color: #ff3939;
+
+  &-blue::before {
+    @include color-filter-icon($blue);
   }
-  &-blue {
-    background-color: #0084ff;
-  }
-  &-green {
-    background-color: #00b300;
+
+  &-green::before {
+    @include color-filter-icon($green);
   }
 }
 
