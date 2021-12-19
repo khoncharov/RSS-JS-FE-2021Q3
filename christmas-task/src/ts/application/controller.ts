@@ -1,18 +1,19 @@
 import { FAVORITE_DECOR_MAX_COUNT } from '../const';
 import { AppSettings } from '../model/app-settings';
+import { TDecorData } from '../types';
 
 export class AppController {
   protected settings = new AppSettings();
 
   updateFavoriteDecor(decorId: number): void {
     if (this.settings.isFavorite(decorId)) {
-      this.settings.removeFromFavorite = decorId;
+      this.settings.removeFromFavorite(decorId);
     } else {
       const favoriteDecorCount = this.settings.favoriteDecor.size;
       if (favoriteDecorCount >= FAVORITE_DECOR_MAX_COUNT) {
         alert('Извините, все слоты заполнены');
       } else {
-        this.settings.addToFavorite = decorId;
+        this.settings.addToFavorite(decorId);
       }
     }
   }
@@ -21,7 +22,10 @@ export class AppController {
     return +cardId.split('-')[3];
   }
 
-  filterHandler(): void {
-    throw new Error('Method not implemented.');
+  filterDecorData(data: TDecorData): TDecorData | [] {
+    /* Search */
+    /* Filter */
+    /* Sort */
+    return data;
   }
 }

@@ -23,3 +23,14 @@
 //   bell: false,
 //   cone: true,
 // }
+
+import { TDecorData } from '../types';
+
+export class DataFilter {
+  constructor(protected data: TDecorData) {}
+
+  searchInList(query: string): DataFilter {
+    console.log(query);
+    return this;
+  }
+}

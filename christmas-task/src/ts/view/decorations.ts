@@ -1,4 +1,4 @@
-import { TDecorData, TFavoriteDecor } from '../types';
+import { SortType, TDecorData, TFavoriteDecor } from '../types';
 
 export class DecorationsPage {
   drawPage(): void {
@@ -29,6 +29,7 @@ export class DecorationsPage {
 
   drawCardsList(decorData: TDecorData, favotiveDecor: TFavoriteDecor): void {
     const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
+    listContainer.innerHTML = '';
 
     decorData.forEach((item) => {
       const card: HTMLLIElement = document.createElement('li');
@@ -69,6 +70,7 @@ export class DecorationsPage {
 
   drawEmptyCard(): void {
     const listContainer = <HTMLUListElement>document.querySelector('.decorations-cards__container');
+    listContainer.innerHTML = '';
 
     const card: HTMLLIElement = document.createElement('li');
     card.classList.add('decor-card__not-found');
@@ -80,7 +82,7 @@ export class DecorationsPage {
   drawFilters(): void {
     const filterSection = <HTMLElement>document.querySelector('.decor-filter');
     filterSection.innerHTML = `    
-      <div class="decor-filter__search-container">
+      <div class="decor-filter__search-container ico-enter">
         <h2 class="decor-filter__caption">Поиск</h2>
         <input class="decor-filter__search-input" type="text" autocomplete="off" placeholder="Название игрушки"/>
       </div>
@@ -102,25 +104,25 @@ export class DecorationsPage {
       </div>
       <div class="decor-filter__container-1" id="shape-filter-id">
         <h3 class="decor-filter__sub-cat-name">Форма</h3>
-        <div class="filter-item ico-decor-ball" title="Шар"></div>
-        <div class="filter-item ico-decor-bell" title="Колокольчик"></div>
-        <div class="filter-item ico-decor-cone" title="Шишка"></div>
-        <div class="filter-item ico-decor-flake" title="Снежинка"></div>
-        <div class="filter-item ico-decor-figure" title="Фигурка"></div>
+        <div class="filter-item ico-decor-ball" id="decor-shape-ball" title="Шар"></div>
+        <div class="filter-item ico-decor-bell" id="decor-shape-bell" title="Колокольчик"></div>
+        <div class="filter-item ico-decor-cone" id="decor-shape-cone" title="Шишка"></div>
+        <div class="filter-item ico-decor-flake" id="decor-shape-flake" title="Снежинка"></div>
+        <div class="filter-item ico-decor-figure" id="decor-shape-figure" title="Фигурка"></div>
       </div>
       <div class="decor-filter__container-1" id="color-filter-id">
         <h3 class="decor-filter__sub-cat-name">Цвет</h3>
-        <div class="filter-item circle-white" title="Белый"></div>
-        <div class="filter-item circle-yellow" title="Желтый"></div>
-        <div class="filter-item circle-red" title="Красный"></div>
-        <div class="filter-item circle-blue" title="Синий"></div>
-        <div class="filter-item circle-green" title="Зеленый"></div>
+        <div class="filter-item circle-white" id="decor-color-white" title="Белый"></div>
+        <div class="filter-item circle-yellow" id="decor-color-yellow" title="Желтый"></div>
+        <div class="filter-item circle-red" id="decor-color-red" title="Красный"></div>
+        <div class="filter-item circle-blue" id="decor-color-blue" title="Синий"></div>
+        <div class="filter-item circle-green" id="decor-color-green" title="Зеленый"></div>
       </div>
       <div class="decor-filter__container-1" id="size-filter-id">
         <h3 class="decor-filter__sub-cat-name">Размер</h3>
-        <div class="filter-item" title="Большой">L</div>
-        <div class="filter-item" title="Средний">M</div>
-        <div class="filter-item" title="Малый">S</div>
+        <div class="filter-item" id="decor-size-large" title="Большой">L</div>
+        <div class="filter-item" id="decor-size-medium" title="Средний">M</div>
+        <div class="filter-item" id="decor-size-small" title="Малый">S</div>
       </div>
       <div class="decor-filter__container-2">
         <h3 class="decor-filter__sub-cat-name">Только любимые</h3>
@@ -144,6 +146,11 @@ export class DecorationsPage {
         <button class="decor-filter__reset-btn" id="reset-decor-filters-btn" type="button">Сброс фильтров</button>
         <button class="decor-filter__reset-btn" id="reset-localstorage-btn" type="button">Сброс настроек</button>
       </div>`;
+  }
+
+  setSortFilter(index: SortType): void {
+    const sortType = <HTMLSelectElement>document.querySelector('#decor-sort-type');
+    sortType.selectedIndex = index;
   }
 
   setDefaultFocus(): void {

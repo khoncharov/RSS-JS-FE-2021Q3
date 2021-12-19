@@ -2,6 +2,7 @@ import { StartPage } from './start';
 import { DecorationsPage } from './decorations';
 import { XmasTreePage } from './xmas-tree';
 import { TDecorData, TFavoriteDecor } from '../types';
+import { AppSettings } from '../model/app-settings';
 
 export class AppView {
   private startPage = new StartPage();
@@ -45,8 +46,9 @@ export class AppView {
     this.xmastreePage.draw();
   }
 
-  addFilters(): void {
+  addFilters(settings: AppSettings): void {
     this.decorationsPage.drawFilters();
     this.decorationsPage.setDefaultFocus();
+    this.decorationsPage.setSortFilter(settings.sortState);
   }
 }

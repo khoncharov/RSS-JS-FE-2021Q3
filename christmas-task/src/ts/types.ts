@@ -44,3 +44,34 @@ export interface IOption {
 }
 
 export type TFavoriteDecor = Set<TDecorId>;
+
+/* Filter types */
+
+export enum SortType {
+  byNameAscending,
+  byNameDescending,
+  byYearAscending,
+  byYearDescending,
+}
+
+export enum Shape {
+  ball = 'ball',
+  bell = 'bell',
+  cone = 'cone',
+  flake = 'flake',
+  figure = 'figure',
+}
+
+export enum Color {
+  white = 'white',
+  yellow = 'yellow',
+  red = 'red',
+  blue = 'blue',
+  green = 'green',
+}
+
+export enum Size {
+  large = 'large',
+  medium = 'medium',
+  small = 'small',
+}

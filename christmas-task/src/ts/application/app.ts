@@ -38,7 +38,7 @@ export class Application extends AppController {
 
   getDecorationsPage(): void {
     this.view.drawDecorationsPage();
-    this.view.addFilters(); // add settings
+    this.view.addFilters(this.settings);
     this.view.updateCardList(this.decorData.items, this.settings.favoriteDecor);
     this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
 
@@ -62,39 +62,64 @@ export class Application extends AppController {
 
     const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
     searchInput.addEventListener('change', () => {
-      console.log(searchInput.value);
-      throw new Error('Method not implemented.');
+      this.settings.searchQuery = searchInput.value;
+      console.log(searchInput.value); // --------------------------------------------------------------
+
+      this.view.updateCardList(
+        this.filterDecorData(this.decorData.items),
+        this.settings.favoriteDecor
+      );
     });
 
     const sortTypeSelect = <HTMLSelectElement>(
       document.querySelector('.decor-filter__select-option')
     );
     sortTypeSelect.addEventListener('change', () => {
-      console.log(sortTypeSelect.selectedIndex);
-      throw new Error('Method not implemented.');
+      this.settings.sortState = sortTypeSelect.selectedIndex;
+      console.log(sortTypeSelect.selectedIndex); // --------------------------------------------------------------
+
+      this.view.updateCardList(
+        this.filterDecorData(this.decorData.items),
+        this.settings.favoriteDecor
+      );
     });
 
     const shapeFilter = <HTMLDivElement>document.querySelector('#shape-filter-id');
     shapeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
+
       if (element.classList.contains('filter-item')) {
-        throw new Error('Method not implemented.');
+        console.log(element.id); // --------------------------------------------------------------
+        this.view.updateCardList(
+          this.filterDecorData(this.decorData.items),
+          this.settings.favoriteDecor
+        );
       }
     });
 
     const colorFilter = <HTMLDivElement>document.querySelector('#color-filter-id');
     colorFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
+
       if (element.classList.contains('filter-item')) {
-        throw new Error('Method not implemented.');
+        console.log(element.id); // --------------------------------------------------------------
+        this.view.updateCardList(
+          this.filterDecorData(this.decorData.items),
+          this.settings.favoriteDecor
+        );
       }
     });
 
     const sizeFilter = <HTMLDivElement>document.querySelector('#size-filter-id');
     sizeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
+
       if (element.classList.contains('filter-item')) {
-        throw new Error('Method not implemented.');
+        console.log(element.id); // --------------------------------------------------------------
+        this.view.updateCardList(
+          this.filterDecorData(this.decorData.items),
+          this.settings.favoriteDecor
+        );
       }
     });
 

@@ -5,55 +5,23 @@ import {
   YEAR_FILTER_MAX,
   YEAR_FILTER_MIN,
 } from '../const';
-import { IOption } from '../types';
-import { TDecorId } from '../types';
-import { TFavoriteDecor } from '../types';
+import { Color, IOption, Shape, Size, SortType, TDecorId, TFavoriteDecor } from '../types';
 import { AppView } from '../view/app-view';
-
-enum SortType {
-  byNameAscending,
-  byNameDescending,
-  byYearAscending,
-  byYearDescending,
-}
-
-enum Shape {
-  ball = 'ball',
-  bell = 'bell',
-  cone = 'cone',
-  flake = 'flake',
-  figure = 'figure',
-}
-
-enum Color {
-  white = 'white',
-  yellow = 'yellow',
-  red = 'red',
-  blue = 'blue',
-  green = 'green',
-}
-
-enum Size {
-  large = 'large',
-  medium = 'medium',
-  small = 'small',
-}
-
-interface IFiltersState {
-  shapeFilter: Set<Shape>;
-  colorFilter: Set<Color>;
-  sizeFilter: Set<Size>;
-  favoriteOnly: boolean;
-  countFilter: [number, number];
-  yearFilter: [number, number];
-}
 
 export class AppSettings {
   private view = new AppView();
   private _options: IOption;
   private _favorite: TFavoriteDecor;
+
+  public searchQuery: string;
   private _sortState: SortType;
-  private _filtersState: IFiltersState;
+
+  private _shapeFilter: Set<Shape>;
+  private _colorFilter: Set<Color>;
+  private _sizeFilter: Set<Size>;
+  private _favoriteOnlyFilter: boolean;
+  private _countFilter: [number, number];
+  private _yearFilter: [number, number];
 
   constructor() {
     this._options = JSON.parse(<string>localStorage.getItem('options')) ?? {
@@ -61,16 +29,26 @@ export class AppSettings {
       mute: true,
     };
     this._favorite = new Set(JSON.parse(<string>localStorage.getItem('favorite'))) ?? new Set();
+    this.searchQuery = '';
     this._sortState =
       JSON.parse(<string>localStorage.getItem('sort-state')) ?? SortType.byNameAscending.toString();
-    this._filtersState = JSON.parse(<string>localStorage.getItem('filters-state')) ?? {
-      shapeFilter: new Set(),
-      colorFilter: new Set(),
-      sizeFilter: new Set(),
-      favoriteOnly: false,
-      countFilter: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
-      yearFilter: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
-    };
+
+    this._shapeFilter =
+      new Set(JSON.parse(<string>localStorage.getItem('shape-filter'))) ?? new Set();
+    this._colorFilter =
+      new Set(JSON.parse(<string>localStorage.getItem('color-filter'))) ?? new Set();
+    this._sizeFilter =
+      new Set(JSON.parse(<string>localStorage.getItem('size-filter'))) ?? new Set();
+    this._favoriteOnlyFilter =
+      JSON.parse(<string>localStorage.getItem('favorite-only-filter')) ?? false;
+    this._countFilter = JSON.parse(<string>localStorage.getItem('count-filter')) ?? [
+      COUNT_FILTER_MIN,
+      COUNT_FILTER_MAX,
+    ];
+    this._yearFilter = JSON.parse(<string>localStorage.getItem('year-filter')) ?? [
+      YEAR_FILTER_MIN,
+      YEAR_FILTER_MAX,
+    ];
   }
 
   get options(): IOption {
@@ -90,13 +68,13 @@ export class AppSettings {
     return this._favorite.has(value);
   }
 
-  set addToFavorite(value: TDecorId) {
+  addToFavorite(value: TDecorId): void {
     this._favorite.add(value);
     this.view.addFavorite(value);
     localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
   }
 
-  set removeFromFavorite(value: TDecorId) {
+  removeFromFavorite(value: TDecorId): void {
     this._favorite.delete(value);
     this.view.removeFavorite(value);
     localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
@@ -120,13 +98,20 @@ export class AppSettings {
     };
     this._favorite = new Set();
     this._sortState = SortType.byNameAscending;
-    this._filtersState = {
-      shapeFilter: new Set(),
-      colorFilter: new Set(),
-      sizeFilter: new Set(),
-      favoriteOnly: false,
-      countFilter: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
-      yearFilter: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
-    };
+
+    this._shapeFilter = new Set();
+    this._colorFilter = new Set();
+    this._sizeFilter = new Set();
+    this._favoriteOnlyFilter = false;
+    this._countFilter = [COUNT_FILTER_MIN, COUNT_FILTER_MAX];
+    this._yearFilter = [YEAR_FILTER_MIN, YEAR_FILTER_MAX];
   }
+
+  // private _shapeFilter: Set<Shape>;
+
+  // private _colorFilter: Set<Color>;
+  // private _sizeFilter: Set<Size>;
+  // private _favoriteOnlyFilter: boolean;
+  // private _countFilter: [number, number];
+  // private _yearFilter: [number, number];
 }

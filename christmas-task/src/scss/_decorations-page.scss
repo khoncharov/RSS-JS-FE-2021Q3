@@ -25,6 +25,10 @@
     row-gap: 16px;
   }
 
+  &__search-container {
+    position: relative;
+  }
+
   &__caption {
     @include font($font-1, $font-l);
     grid-area: 1/1/2/-1;
