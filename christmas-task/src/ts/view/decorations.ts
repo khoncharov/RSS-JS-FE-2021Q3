@@ -60,7 +60,7 @@ export class DecorationsPage {
       year.textContent = `Год покупки: ${item.year}`;
       shape.textContent = `Форма: ${item.shape}`;
       color.textContent = `Цвет: ${item.color}`;
-      size.textContent = `Размер: ${item.shape}`;
+      size.textContent = `Размер: ${item.size}`;
 
       card.append(caption, image, count, year, shape, color, size);
       listContainer.appendChild(card);
