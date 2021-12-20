@@ -54,6 +54,10 @@ export class Application extends AppController {
         card = element as HTMLLIElement;
         this.updateFavoriteDecor(this.getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
+        this.view.updateCardList(
+          this.filterDecorData(this.decorData.items),
+          this.settings.favoriteDecor
+        );
       } else if (
         (element.parentNode as HTMLElement).nodeName === 'LI' &&
         !(element.parentNode as HTMLElement).classList.contains('decor-card__not-found')
@@ -61,6 +65,10 @@ export class Application extends AppController {
         card = element.parentNode as HTMLLIElement;
         this.updateFavoriteDecor(this.getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
+        this.view.updateCardList(
+          this.filterDecorData(this.decorData.items),
+          this.settings.favoriteDecor
+        );
       }
     });
 

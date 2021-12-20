@@ -1,4 +1,8 @@
 import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
+import { YEAR_FILTER_MIN, YEAR_FILTER_MAX, COUNT_FILTER_MIN, COUNT_FILTER_MAX } from '../const';
+import noUiSlider, { target } from 'nouislider';
+import 'nouislider/dist/nouislider.css';
+import wNumb from 'wnumb';
 
 export class DecorationsPage {
   drawPage(): void {
@@ -131,15 +135,15 @@ export class DecorationsPage {
       </div>
       <div class="decor-filter__container-3">
         <h3 class="decor-filter__sub-cat-name">Количество</h3>
-        <input class="filter-value-min" type="text" name="" id="" value="0" />
-        <input class="filter-range" type="range" name="" id="" />
-        <input class="filter-value-max" type="text" name="" id="" value="20" />
+        <div class="filter-value-min" id="range-count-min"></div>
+        <div id="range-count"></div>
+        <div class="filter-value-max" id="range-count-max"></div>
       </div>
       <div class="decor-filter__container-3">
         <h3 class="decor-filter__sub-cat-name">Год покупки</h3>
-        <input class="filter-value-min" type="text" name="" id="" value="1960" />
-        <input class="filter-range" type="range" name="" id="" />
-        <input class="filter-value-max" type="text" name="" id="" value="2021" />
+        <div class="filter-value-min" id="range-year-min"></div>
+        <div id="range-year"></div>
+        <div class="filter-value-max" id="range-year-max"></div>
       </div>
       <div class="decor-filter__reset-btn-container">
         <button class="decor-filter__reset-btn" id="reset-decor-filters-btn" type="button">Сброс фильтров</button>
@@ -202,5 +206,63 @@ export class DecorationsPage {
     } else {
       favoriteOnlyItem.classList.remove('ico-check');
     }
+  }
+
+  createCountSlider(): void {
+    const range = document.getElementById('range-count') as target;
+
+    noUiSlider.create(range, {
+      range: {
+        min: COUNT_FILTER_MIN,
+        max: COUNT_FILTER_MAX,
+      },
+
+      step: 1,
+      start: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
+      connect: true,
+      direction: 'ltr',
+      orientation: 'horizontal',
+
+      behaviour: 'tap-drag',
+      format: wNumb({
+        decimals: 0,
+      }),
+    });
+
+    range.noUiSlider?.on('update', function (values) {
+      const min = <HTMLDivElement>document.getElementById('range-count-min');
+      const max = <HTMLDivElement>document.getElementById('range-count-max');
+      min.textContent = values[0].toString();
+      max.textContent = values[1].toString();
+    });
+  }
+
+  createYearSlider(): void {
+    const range = document.getElementById('range-year') as target;
+
+    noUiSlider.create(range, {
+      range: {
+        min: YEAR_FILTER_MIN,
+        max: YEAR_FILTER_MAX,
+      },
+
+      step: 5,
+      start: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
+      connect: true,
+      direction: 'ltr',
+      orientation: 'horizontal',
+
+      behaviour: 'tap-drag',
+      format: wNumb({
+        decimals: 0,
+      }),
+    });
+
+    range.noUiSlider?.on('update', function (values) {
+      const min = <HTMLDivElement>document.getElementById('range-year-min');
+      const max = <HTMLDivElement>document.getElementById('range-year-max');
+      min.textContent = values[0].toString();
+      max.textContent = values[1].toString();
+    });
   }
 }

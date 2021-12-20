@@ -152,7 +152,7 @@
 
 .filter-value-min,
 .filter-value-max {
-  @include font($font-1, $font-s);
+  @include font($font-1, $font-m, 1.9);
   @include ui-control(100%, 36px);
   background-color: $ctrl-clr;
   text-align: center;
@@ -166,8 +166,29 @@
   grid-area: 2/3/3/4;
 }
 
-.filter-range {
+#range-count,
+#range-year {
   grid-area: 2/2/3/3;
+  margin: 0px auto;
+  height: 16px;
+  width: 100%;
+  height: 10px;
+}
+
+#range-count .noUi-handle,
+#range-year .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+}
+
+#range-count .noUi-handle::before,
+#range-count .noUi-handle::after,
+#range-year .noUi-handle::before,
+#range-year .noUi-handle::after {
+  background-color: transparent;
 }
 
 /* Cards section */
