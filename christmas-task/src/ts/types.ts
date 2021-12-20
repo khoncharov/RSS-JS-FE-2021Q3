@@ -61,7 +61,6 @@ export enum Shape {
   cone = 'cone',
   flake = 'flake',
   figure = 'figure',
-  unknown = 'unknown',
 }
 
 export enum Color {
