@@ -143,7 +143,7 @@ export class DecorationsPage {
       </div>
       <div class="decor-filter__reset-btn-container">
         <button class="decor-filter__reset-btn" id="reset-decor-filters-btn" type="button">Сброс фильтров</button>
-        <button class="decor-filter__reset-btn" id="reset-localstorage-btn" type="button">Сброс настроек</button>
+        <button class="decor-filter__reset-btn" id="reset-settings-btn" type="button">Сброс настроек</button>
       </div>`;
   }
 

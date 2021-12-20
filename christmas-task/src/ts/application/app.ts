@@ -132,11 +132,9 @@ export class Application extends AppController {
       );
     });
 
-    const resetLocalStorageBtn = <HTMLButtonElement>(
-      document.querySelector('#reset-localstorage-btn')
-    );
-    resetLocalStorageBtn.addEventListener('click', () => {
-      this.settings.resetLocalStorage();
+    const resetSettingsBtn = <HTMLButtonElement>document.querySelector('#reset-settings-btn');
+    resetSettingsBtn.addEventListener('click', () => {
+      this.settings.resetSettings();
       this.getDecorationsPage();
     });
   }

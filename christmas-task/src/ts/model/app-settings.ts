@@ -88,9 +88,10 @@ export class AppSettings {
     localStorage.setItem('sort-type', JSON.stringify(this._sortType));
   }
 
-  resetLocalStorage() {
+  resetSettings() {
     localStorage.clear();
 
+    this.searchQuery = '';
     this._options = {
       volume: DEFAUL_VOLUME,
       mute: true,
