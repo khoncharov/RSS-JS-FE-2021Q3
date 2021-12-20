@@ -1,3 +1,4 @@
+import { target } from 'nouislider';
 import * as rawDecorData from '../../data/data.json';
 import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
@@ -134,6 +135,24 @@ export class Application extends AppController {
     const favoriteOnlyFilter = <HTMLDivElement>document.querySelector('#decor-only-favorite');
     favoriteOnlyFilter.addEventListener('click', () => {
       this.settings.updateFavoriteOnly();
+      this.view.updateCardList(
+        this.filterDecorData(this.decorData.items),
+        this.settings.favoriteDecor
+      );
+    });
+
+    const rangeCountFilter = document.getElementById('range-count') as target;
+    rangeCountFilter.noUiSlider?.on('update', (values) => {
+      this.settings.updateCountFilter([+values[0], +values[1]]);
+      this.view.updateCardList(
+        this.filterDecorData(this.decorData.items),
+        this.settings.favoriteDecor
+      );
+    });
+
+    const rangeYearFilter = document.getElementById('range-year') as target;
+    rangeYearFilter.noUiSlider?.on('update', (values) => {
+      this.settings.updateYearFilter([+values[0], +values[1]]);
       this.view.updateCardList(
         this.filterDecorData(this.decorData.items),
         this.settings.favoriteDecor

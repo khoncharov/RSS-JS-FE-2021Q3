@@ -208,7 +208,7 @@ export class DecorationsPage {
     }
   }
 
-  createCountSlider(): void {
+  createCountSlider(countFilter: [number, number]): void {
     const range = document.getElementById('range-count') as target;
 
     noUiSlider.create(range, {
@@ -218,7 +218,7 @@ export class DecorationsPage {
       },
 
       step: 1,
-      start: [COUNT_FILTER_MIN, COUNT_FILTER_MAX],
+      start: countFilter,
       connect: true,
       direction: 'ltr',
       orientation: 'horizontal',
@@ -237,7 +237,7 @@ export class DecorationsPage {
     });
   }
 
-  createYearSlider(): void {
+  createYearSlider(yearFilter: [number, number]): void {
     const range = document.getElementById('range-year') as target;
 
     noUiSlider.create(range, {
@@ -247,7 +247,7 @@ export class DecorationsPage {
       },
 
       step: 5,
-      start: [YEAR_FILTER_MIN, YEAR_FILTER_MAX],
+      start: yearFilter,
       connect: true,
       direction: 'ltr',
       orientation: 'horizontal',

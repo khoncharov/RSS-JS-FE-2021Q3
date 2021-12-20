@@ -91,7 +91,8 @@
       grid-template-columns: 80px 1fr 80px;
       grid-auto-rows: 36px;
       align-items: center;
-      gap: 10px;
+      column-gap: 16px;
+      row-gap: 10px;
     }
   }
 

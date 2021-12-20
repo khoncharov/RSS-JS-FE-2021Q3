@@ -63,6 +63,18 @@ export class AppController {
         }
       });
     }
+    /* Count */
+    result = result.filter((item) => {
+      const minCount = this.settings.countFilter[0];
+      const maxCount = this.settings.countFilter[1];
+      return item.count >= minCount && item.count <= maxCount;
+    });
+    /* Year */
+    result = result.filter((item) => {
+      const minYear = this.settings.yearFilter[0];
+      const maxYear = this.settings.yearFilter[1];
+      return item.year >= minYear && item.year <= maxYear;
+    });
     /* Sort */
     switch (this.settings.sortType) {
       case SortType.byNameAscending:

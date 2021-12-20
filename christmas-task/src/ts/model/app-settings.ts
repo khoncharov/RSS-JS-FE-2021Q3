@@ -163,8 +163,23 @@ export class AppSettings {
     localStorage.setItem('is-favorite-only', JSON.stringify(this._isFavoriteOnly));
   }
 
-  // private _countFilter: [number, number];
-  // private _yearFilter: [number, number];
+  get countFilter(): [number, number] {
+    return this._countFilter;
+  }
+
+  updateCountFilter(countFilter: [number, number]): void {
+    this._countFilter = countFilter;
+    localStorage.setItem('count-filter', JSON.stringify(this._countFilter));
+  }
+
+  get yearFilter(): [number, number] {
+    return this._yearFilter;
+  }
+
+  updateYearFilter(yearFilter: [number, number]): void {
+    this._yearFilter = yearFilter;
+    localStorage.setItem('year-filter', JSON.stringify(this._yearFilter));
+  }
 
   resetFilters() {
     this._shapeFilter = new Set();

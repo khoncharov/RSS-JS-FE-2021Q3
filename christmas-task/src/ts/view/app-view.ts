@@ -55,8 +55,8 @@ export class AppView {
     this.decorationsPage.setColorFilter(settings.colorFilter);
     this.decorationsPage.setSizeFilter(settings.sizeFilter);
     this.decorationsPage.setFavoriteOnlyFilter(settings.isFavoriteOnly);
-    this.decorationsPage.createCountSlider();
-    this.decorationsPage.createYearSlider();
+    this.decorationsPage.createCountSlider(settings.countFilter);
+    this.decorationsPage.createYearSlider(settings.yearFilter);
   }
 
   updateShapeFilter(shapeFilter: Set<Shape>) {
