@@ -149,13 +149,18 @@ export class DecorationsPage {
       </div>`;
   }
 
-  setSortFilter(index: SortType): void {
-    const sortType = <HTMLSelectElement>document.querySelector('#decor-sort-type');
-    sortType.selectedIndex = index;
-  }
-
   setDefaultFocus(): void {
     const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
     searchInput.focus();
+  }
+
+  setSearchQuery(query: string): void {
+    const searchInput = <HTMLInputElement>document.querySelector('.decor-filter__search-input');
+    searchInput.value = query;
+  }
+
+  setSortFilter(index: SortType): void {
+    const sortType = <HTMLSelectElement>document.querySelector('#decor-sort-type');
+    sortType.selectedIndex = index;
   }
 }
