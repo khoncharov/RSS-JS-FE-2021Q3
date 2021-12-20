@@ -123,6 +123,15 @@ export class Application extends AppController {
       }
     });
 
+    const favoriteOnlyFilter = <HTMLDivElement>document.querySelector('#decor-only-favorite');
+    favoriteOnlyFilter.addEventListener('click', () => {
+      this.settings.updateFavoriteOnly();
+      this.view.updateCardList(
+        this.filterDecorData(this.decorData.items),
+        this.settings.favoriteDecor
+      );
+    });
+
     const resetLocalStorageBtn = <HTMLButtonElement>(
       document.querySelector('#reset-localstorage-btn')
     );

@@ -55,6 +55,14 @@ export class AppController {
         return sizeFilter.has(this.translateFilterType(item.size) as Size);
       });
     }
+    if (this.settings.isFavoriteOnly) {
+      result = result.filter((item) => {
+        const favoriteItems = this.settings.favoriteDecor;
+        if (favoriteItems.has(item.id)) {
+          return item;
+        }
+      });
+    }
     /* Sort */
     switch (this.settings.sortType) {
       case SortType.byNameAscending:

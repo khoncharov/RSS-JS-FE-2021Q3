@@ -54,7 +54,7 @@ export class AppView {
     this.decorationsPage.setShapeFilter(settings.shapeFilter);
     this.decorationsPage.setColorFilter(settings.colorFilter);
     this.decorationsPage.setSizeFilter(settings.sizeFilter);
-    // this.decorationsPage.setFavoriteOnlyFilter();
+    this.decorationsPage.setFavoriteOnlyFilter(settings.isFavoriteOnly);
   }
 
   updateShapeFilter(shapeFilter: Set<Shape>) {
@@ -67,5 +67,9 @@ export class AppView {
 
   updateSizeFilter(sizeFilter: Set<Size>) {
     this.decorationsPage.setSizeFilter(sizeFilter);
+  }
+
+  updateFavoriteOnlyFilter(isFavoriteOnly: boolean) {
+    this.decorationsPage.setFavoriteOnlyFilter(isFavoriteOnly);
   }
 }

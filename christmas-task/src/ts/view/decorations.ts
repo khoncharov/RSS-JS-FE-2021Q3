@@ -127,9 +127,7 @@ export class DecorationsPage {
       </div>
       <div class="decor-filter__container-2">
         <h3 class="decor-filter__sub-cat-name">Только любимые</h3>
-        <div class="filter-item">
-          <input type="checkbox" name="" id="" />
-        </div>
+        <div class="filter-item ico-box" id="decor-only-favorite"></div>
       </div>
       <div class="decor-filter__container-3">
         <h3 class="decor-filter__sub-cat-name">Количество</h3>
@@ -197,7 +195,12 @@ export class DecorationsPage {
     });
   }
 
-  setFavoriteOnlyFilter(): void {
-    throw new Error('Method not implemented');
+  setFavoriteOnlyFilter(isFavoriteOnly: boolean): void {
+    const favoriteOnlyItem = <HTMLDivElement>document.querySelector('#decor-only-favorite');
+    if (isFavoriteOnly) {
+      favoriteOnlyItem.classList.add('ico-check');
+    } else {
+      favoriteOnlyItem.classList.remove('ico-check');
+    }
   }
 }

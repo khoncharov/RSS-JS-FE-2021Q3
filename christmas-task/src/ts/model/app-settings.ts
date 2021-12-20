@@ -11,7 +11,7 @@ import { AppView } from '../view/app-view';
 export class AppSettings {
   private view = new AppView();
   private _options: IOption;
-  private _favorite: TFavoriteDecor;
+  private _favoriteItems: TFavoriteDecor;
 
   public searchQuery: string;
   private _sortType: SortType;
@@ -19,7 +19,7 @@ export class AppSettings {
   private _shapeFilter: Set<Shape>;
   private _colorFilter: Set<Color>;
   private _sizeFilter: Set<Size>;
-  private _favoriteOnlyFilter: boolean;
+  private _isFavoriteOnly: boolean;
   private _countFilter: [number, number];
   private _yearFilter: [number, number];
 
@@ -28,7 +28,8 @@ export class AppSettings {
       volume: DEFAUL_VOLUME,
       mute: true,
     };
-    this._favorite = new Set(JSON.parse(<string>localStorage.getItem('favorite'))) ?? new Set();
+    this._favoriteItems =
+      new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
     this.searchQuery = '';
     this._sortType = +JSON.parse(<string>localStorage.getItem('sort-type')) ?? SortType.noSort;
 
@@ -38,8 +39,7 @@ export class AppSettings {
       new Set(JSON.parse(<string>localStorage.getItem('color-filter'))) ?? new Set();
     this._sizeFilter =
       new Set(JSON.parse(<string>localStorage.getItem('size-filter'))) ?? new Set();
-    this._favoriteOnlyFilter =
-      JSON.parse(<string>localStorage.getItem('favorite-only-filter')) ?? false;
+    this._isFavoriteOnly = JSON.parse(<string>localStorage.getItem('is-favorite-only')) ?? false;
     this._countFilter = JSON.parse(<string>localStorage.getItem('count-filter')) ?? [
       COUNT_FILTER_MIN,
       COUNT_FILTER_MAX,
@@ -60,23 +60,23 @@ export class AppSettings {
   }
 
   get favoriteDecor(): TFavoriteDecor {
-    return this._favorite;
+    return this._favoriteItems;
   }
 
   isFavorite(value: TDecorId): boolean {
-    return this._favorite.has(value);
+    return this._favoriteItems.has(value);
   }
 
   addToFavorite(value: TDecorId): void {
-    this._favorite.add(value);
+    this._favoriteItems.add(value);
     this.view.addFavorite(value);
-    localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
+    localStorage.setItem('favorite-items', JSON.stringify(Array.from(this._favoriteItems)));
   }
 
   removeFromFavorite(value: TDecorId): void {
-    this._favorite.delete(value);
+    this._favoriteItems.delete(value);
     this.view.removeFavorite(value);
-    localStorage.setItem('favorite', JSON.stringify(Array.from(this._favorite)));
+    localStorage.setItem('favorite-items', JSON.stringify(Array.from(this._favoriteItems)));
   }
 
   get sortType(): SortType {
@@ -95,13 +95,13 @@ export class AppSettings {
       volume: DEFAUL_VOLUME,
       mute: true,
     };
-    this._favorite = new Set();
+    this._favoriteItems = new Set();
     this._sortType = SortType.noSort;
 
     this._shapeFilter = new Set();
     this._colorFilter = new Set();
     this._sizeFilter = new Set();
-    this._favoriteOnlyFilter = false;
+    this._isFavoriteOnly = false;
     this._countFilter = [COUNT_FILTER_MIN, COUNT_FILTER_MAX];
     this._yearFilter = [YEAR_FILTER_MIN, YEAR_FILTER_MAX];
   }
@@ -147,7 +147,21 @@ export class AppSettings {
     this.view.updateSizeFilter(this.sizeFilter);
     localStorage.setItem('size-filter', JSON.stringify(Array.from(this._sizeFilter)));
   }
-  // private _favoriteOnlyFilter: boolean;
+
+  get isFavoriteOnly(): boolean {
+    return this._isFavoriteOnly;
+  }
+
+  updateFavoriteOnly(): void {
+    if (this._isFavoriteOnly) {
+      this._isFavoriteOnly = false;
+    } else {
+      this._isFavoriteOnly = true;
+    }
+    this.view.updateFavoriteOnlyFilter(this.isFavoriteOnly);
+    localStorage.setItem('is-favorite-only', JSON.stringify(this._isFavoriteOnly));
+  }
+
   // private _countFilter: [number, number];
   // private _yearFilter: [number, number];
 }

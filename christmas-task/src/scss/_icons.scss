@@ -43,6 +43,26 @@
   background-size: 100%;
 }
 
+.ico-box::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: $ctrl-clr;
+  border-radius: 4px;
+}
+
+.ico-check::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: $icon-box-size;
+  height: $icon-box-size;
+  background-image: url("./assets/svg/check-mark.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
+
 /* Colors filter shape */
 
 .circle {
