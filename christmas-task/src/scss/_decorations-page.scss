@@ -198,7 +198,7 @@
   height: 340px;
   border-radius: 10px;
   border: 1px solid #ffffff90;
-  transition: transform 0.2s ease-out;
+  transition: 0.4s ease-out;
   cursor: pointer;
 
   &__caption {
@@ -235,5 +235,5 @@
 }
 
 .decor-card:hover {
-  transform: scale(1.03);
+  border-color: $gold;
 }

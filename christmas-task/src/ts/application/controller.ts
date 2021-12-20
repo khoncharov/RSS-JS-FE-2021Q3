@@ -37,6 +37,12 @@ export class AppController {
       });
     }
     /* Filter */
+    if (this.settings.shapeFilter.size !== 0) {
+      result = result.filter((item) => {
+        const shapeFilter = this.settings.shapeFilter;
+        return shapeFilter.has(this.translateShape(item.shape));
+      });
+    }
     /* Sort */
     switch (this.settings.sortType) {
       case SortType.byNameAscending:
@@ -75,6 +81,31 @@ export class AppController {
         result.sort((a, b) => {
           return b.year - a.year;
         });
+        break;
+    }
+    return result;
+  }
+
+  translateShape(shape: string): Shape {
+    let result: Shape;
+    switch (shape) {
+      case 'шар':
+        result = Shape.ball;
+        break;
+      case 'колокольчик':
+        result = Shape.bell;
+        break;
+      case 'шишка':
+        result = Shape.cone;
+        break;
+      case 'снежинка':
+        result = Shape.flake;
+        break;
+      case 'фигурка':
+        result = Shape.figure;
+        break;
+      default:
+        result = Shape.unknown;
         break;
     }
     return result;
