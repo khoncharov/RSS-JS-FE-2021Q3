@@ -1,4 +1,4 @@
-import { SortType, TDecorData, TFavoriteDecor } from '../types';
+import { Shape, SortType, TDecorData, TFavoriteDecor } from '../types';
 
 export class DecorationsPage {
   drawPage(): void {
@@ -162,5 +162,28 @@ export class DecorationsPage {
   setSortType(index: SortType): void {
     const sortType = <HTMLSelectElement>document.querySelector('#decor-sort-type');
     sortType.selectedIndex = index;
+  }
+
+  setShapeFilter(shapeFilter: Set<Shape>): void {
+    const shapeItems = document.querySelectorAll('div[id^=decor-shape-]');
+    shapeItems.forEach((element) => {
+      element.classList.remove('filter-item-chosen');
+    });
+    shapeFilter.forEach((shape) => {
+      const item = <HTMLDivElement>document.querySelector(`#decor-shape-${shape}`);
+      item.classList.add('filter-item-chosen');
+    });
+  }
+
+  setColorFilter(): void {
+    throw new Error('Method not implemented');
+  }
+
+  setSizeFilter(): void {
+    throw new Error('Method not implemented');
+  }
+
+  setFavoriteOnlyFilter(): void {
+    throw new Error('Method not implemented');
   }
 }

@@ -107,7 +107,19 @@ export class AppSettings {
   }
 
   // private _shapeFilter: Set<Shape>;
+  get shapeFilter(): Set<Shape> {
+    return this._shapeFilter;
+  }
 
+  updateShapeFilter(shape: Shape): void {
+    if (this._shapeFilter.has(shape)) {
+      this._shapeFilter.delete(shape);
+    } else {
+      this._shapeFilter.add(shape);
+    }
+    this.view.updateShapeFilter(this.shapeFilter);
+    localStorage.setItem('shape-filter', JSON.stringify(Array.from(this._shapeFilter)));
+  }
   // private _colorFilter: Set<Color>;
   // private _sizeFilter: Set<Size>;
   // private _favoriteOnlyFilter: boolean;

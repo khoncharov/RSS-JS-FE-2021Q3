@@ -1,6 +1,6 @@
 import { FAVORITE_DECOR_MAX_COUNT } from '../const';
 import { AppSettings } from '../model/app-settings';
-import { SortType, TDecorData } from '../types';
+import { Shape, SortType, TDecorData } from '../types';
 
 export class AppController {
   protected settings = new AppSettings();
@@ -20,6 +20,10 @@ export class AppController {
 
   getDecorId(cardId: string): number {
     return +cardId.split('-')[3];
+  }
+
+  getShape(id: string): Shape {
+    return id.split('-')[2] as Shape;
   }
 
   filterDecorData(data: TDecorData): TDecorData | [] {

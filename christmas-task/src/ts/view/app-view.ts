@@ -1,7 +1,7 @@
 import { StartPage } from './start';
 import { DecorationsPage } from './decorations';
 import { XmasTreePage } from './xmas-tree';
-import { TDecorData, TFavoriteDecor } from '../types';
+import { Shape, TDecorData, TFavoriteDecor } from '../types';
 import { AppSettings } from '../model/app-settings';
 
 export class AppView {
@@ -51,5 +51,13 @@ export class AppView {
     this.decorationsPage.setDefaultFocus();
     this.decorationsPage.setSearchQuery(settings.searchQuery);
     this.decorationsPage.setSortType(settings.sortType);
+    this.decorationsPage.setShapeFilter(settings.shapeFilter);
+    // this.decorationsPage.setColorFilter();
+    // this.decorationsPage.setSizeFilter();
+    // this.decorationsPage.setFavoriteOnlyFilter();
+  }
+
+  updateShapeFilter(shapeFilter: Set<Shape>) {
+    this.decorationsPage.setShapeFilter(shapeFilter);
   }
 }

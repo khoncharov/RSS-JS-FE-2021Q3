@@ -86,9 +86,9 @@ export class Application extends AppController {
     const shapeFilter = <HTMLDivElement>document.querySelector('#shape-filter-id');
     shapeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
-
       if (element.classList.contains('filter-item')) {
-        console.log(element.id); // --------------------------------------------------------------
+        const shape = this.getShape(element.id);
+        this.settings.updateShapeFilter(shape);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items),
           this.settings.favoriteDecor
