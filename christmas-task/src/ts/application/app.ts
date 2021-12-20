@@ -1,5 +1,6 @@
 import * as rawDecorData from '../../data/data.json';
 import { DecorData } from '../model/decor-data';
+import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';
 import { AppController } from './controller';
 
@@ -87,7 +88,7 @@ export class Application extends AppController {
     shapeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
       if (element.classList.contains('filter-item')) {
-        const shape = this.getShape(element.id);
+        const shape = this.getFilterType(element.id) as Shape;
         this.settings.updateShapeFilter(shape);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items),
@@ -99,9 +100,9 @@ export class Application extends AppController {
     const colorFilter = <HTMLDivElement>document.querySelector('#color-filter-id');
     colorFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
-
       if (element.classList.contains('filter-item')) {
-        console.log(element.id); // --------------------------------------------------------------
+        const color = this.getFilterType(element.id) as Color;
+        this.settings.updateColorFilter(color);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items),
           this.settings.favoriteDecor
@@ -112,9 +113,9 @@ export class Application extends AppController {
     const sizeFilter = <HTMLDivElement>document.querySelector('#size-filter-id');
     sizeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
-
       if (element.classList.contains('filter-item')) {
-        console.log(element.id); // --------------------------------------------------------------
+        const size = this.getFilterType(element.id) as Size;
+        this.settings.updateSizeFilter(size);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items),
           this.settings.favoriteDecor

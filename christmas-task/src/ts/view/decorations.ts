@@ -1,4 +1,4 @@
-import { Shape, SortType, TDecorData, TFavoriteDecor } from '../types';
+import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
 
 export class DecorationsPage {
   drawPage(): void {
@@ -175,12 +175,26 @@ export class DecorationsPage {
     });
   }
 
-  setColorFilter(): void {
-    throw new Error('Method not implemented');
+  setColorFilter(colorFilter: Set<Color>): void {
+    const colorItems = document.querySelectorAll('div[id^=decor-color-]');
+    colorItems.forEach((element) => {
+      element.classList.remove('filter-item-chosen');
+    });
+    colorFilter.forEach((color) => {
+      const item = <HTMLDivElement>document.querySelector(`#decor-color-${color}`);
+      item.classList.add('filter-item-chosen');
+    });
   }
 
-  setSizeFilter(): void {
-    throw new Error('Method not implemented');
+  setSizeFilter(sizeFilter: Set<Size>): void {
+    const sizeItems = document.querySelectorAll('div[id^=decor-size-]');
+    sizeItems.forEach((element) => {
+      element.classList.remove('filter-item-chosen');
+    });
+    sizeFilter.forEach((size) => {
+      const item = <HTMLDivElement>document.querySelector(`#decor-size-${size}`);
+      item.classList.add('filter-item-chosen');
+    });
   }
 
   setFavoriteOnlyFilter(): void {

@@ -1,6 +1,6 @@
 import { FAVORITE_DECOR_MAX_COUNT } from '../const';
 import { AppSettings } from '../model/app-settings';
-import { Shape, SortType, TDecorData } from '../types';
+import { Color, Shape, Size, SortType, TDecorData } from '../types';
 
 export class AppController {
   protected settings = new AppSettings();
@@ -22,8 +22,8 @@ export class AppController {
     return +cardId.split('-')[3];
   }
 
-  getShape(id: string): Shape {
-    return id.split('-')[2] as Shape;
+  getFilterType(id: string): string {
+    return id.split('-')[2];
   }
 
   filterDecorData(data: TDecorData): TDecorData | [] {
@@ -40,7 +40,19 @@ export class AppController {
     if (this.settings.shapeFilter.size !== 0) {
       result = result.filter((item) => {
         const shapeFilter = this.settings.shapeFilter;
-        return shapeFilter.has(this.translateShape(item.shape));
+        return shapeFilter.has(this.translateFilterType(item.shape) as Shape);
+      });
+    }
+    if (this.settings.colorFilter.size !== 0) {
+      result = result.filter((item) => {
+        const colorFilter = this.settings.colorFilter;
+        return colorFilter.has(this.translateFilterType(item.color) as Color);
+      });
+    }
+    if (this.settings.sizeFilter.size !== 0) {
+      result = result.filter((item) => {
+        const sizeFilter = this.settings.sizeFilter;
+        return sizeFilter.has(this.translateFilterType(item.size) as Size);
       });
     }
     /* Sort */
@@ -86,28 +98,37 @@ export class AppController {
     return result;
   }
 
-  translateShape(shape: string): Shape {
-    let result: Shape;
-    switch (shape) {
+  translateFilterType(str: string): Shape | Color | Size | Error {
+    switch (str.toLowerCase().trim()) {
       case 'шар':
-        result = Shape.ball;
-        break;
+        return Shape.ball;
       case 'колокольчик':
-        result = Shape.bell;
-        break;
+        return Shape.bell;
       case 'шишка':
-        result = Shape.cone;
-        break;
+        return Shape.cone;
       case 'снежинка':
-        result = Shape.flake;
-        break;
+        return Shape.flake;
       case 'фигурка':
-        result = Shape.figure;
-        break;
-      default:
-        result = Shape.unknown;
-        break;
+        return Shape.figure;
+      case 'белый':
+        return Color.white;
+      case 'желтый':
+      case 'жёлтый':
+        return Color.yellow;
+      case 'красный':
+        return Color.red;
+      case 'синий':
+        return Color.blue;
+      case 'зеленый':
+      case 'зелёный':
+        return Color.green;
+      case 'большой':
+        return Size.large;
+      case 'средний':
+        return Size.medium;
+      case 'малый':
+        return Size.small;
     }
-    return result;
+    throw new Error(`Unknonw filter type ${str}`);
   }
 }

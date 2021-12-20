@@ -106,7 +106,6 @@ export class AppSettings {
     this._yearFilter = [YEAR_FILTER_MIN, YEAR_FILTER_MAX];
   }
 
-  // private _shapeFilter: Set<Shape>;
   get shapeFilter(): Set<Shape> {
     return this._shapeFilter;
   }
@@ -120,8 +119,34 @@ export class AppSettings {
     this.view.updateShapeFilter(this.shapeFilter);
     localStorage.setItem('shape-filter', JSON.stringify(Array.from(this._shapeFilter)));
   }
-  // private _colorFilter: Set<Color>;
-  // private _sizeFilter: Set<Size>;
+
+  get colorFilter(): Set<Color> {
+    return this._colorFilter;
+  }
+
+  updateColorFilter(color: Color): void {
+    if (this._colorFilter.has(color)) {
+      this._colorFilter.delete(color);
+    } else {
+      this._colorFilter.add(color);
+    }
+    this.view.updateColorFilter(this.colorFilter);
+    localStorage.setItem('color-filter', JSON.stringify(Array.from(this._colorFilter)));
+  }
+
+  get sizeFilter(): Set<Size> {
+    return this._sizeFilter;
+  }
+
+  updateSizeFilter(size: Size): void {
+    if (this._sizeFilter.has(size)) {
+      this._sizeFilter.delete(size);
+    } else {
+      this._sizeFilter.add(size);
+    }
+    this.view.updateSizeFilter(this.sizeFilter);
+    localStorage.setItem('size-filter', JSON.stringify(Array.from(this._sizeFilter)));
+  }
   // private _favoriteOnlyFilter: boolean;
   // private _countFilter: [number, number];
   // private _yearFilter: [number, number];
