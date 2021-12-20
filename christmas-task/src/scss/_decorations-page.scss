@@ -238,3 +238,7 @@
 .decor-card:hover {
   border-color: $gold;
 }
+
+.decor-card:active {
+  transform: scale(0.98);
+}
