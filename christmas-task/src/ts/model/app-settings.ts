@@ -165,4 +165,19 @@ export class AppSettings {
 
   // private _countFilter: [number, number];
   // private _yearFilter: [number, number];
+
+  resetFilters() {
+    this._shapeFilter = new Set();
+    this._colorFilter = new Set();
+    this._sizeFilter = new Set();
+    this._isFavoriteOnly = false;
+    this._countFilter = [COUNT_FILTER_MIN, COUNT_FILTER_MAX];
+    this._yearFilter = [YEAR_FILTER_MIN, YEAR_FILTER_MAX];
+    localStorage.removeItem('shape-filter');
+    localStorage.removeItem('color-filter');
+    localStorage.removeItem('size-filter');
+    localStorage.removeItem('is-favorite-only');
+    localStorage.removeItem('count-filter');
+    localStorage.removeItem('year-filter');
+  }
 }

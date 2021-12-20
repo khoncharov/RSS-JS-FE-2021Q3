@@ -132,6 +132,12 @@ export class Application extends AppController {
       );
     });
 
+    const resetFiltersBtn = <HTMLButtonElement>document.querySelector('#reset-decor-filters-btn');
+    resetFiltersBtn.addEventListener('click', () => {
+      this.settings.resetFilters();
+      this.getDecorationsPage();
+    });
+
     const resetSettingsBtn = <HTMLButtonElement>document.querySelector('#reset-settings-btn');
     resetSettingsBtn.addEventListener('click', () => {
       this.settings.resetSettings();
