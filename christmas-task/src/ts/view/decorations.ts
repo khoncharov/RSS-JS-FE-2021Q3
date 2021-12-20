@@ -246,7 +246,7 @@ export class DecorationsPage {
         max: YEAR_FILTER_MAX,
       },
 
-      step: 5,
+      step: 1,
       start: yearFilter,
       connect: true,
       direction: 'ltr',

@@ -4,12 +4,15 @@ import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';
 import { AppController } from './controller';
+import { SELF_CHECK } from './self-check';
 
 export class Application extends AppController {
   private view = new AppView();
   private decorData = new DecorData(rawDecorData);
 
   init(): void {
+    console.log(SELF_CHECK);
+
     this.view.drawSartPage();
 
     const startBtn = <HTMLElement>document.querySelector('.start-btn');
