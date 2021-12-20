@@ -50,6 +50,6 @@ export class AppView {
     this.decorationsPage.drawFilters();
     this.decorationsPage.setDefaultFocus();
     this.decorationsPage.setSearchQuery(settings.searchQuery);
-    this.decorationsPage.setSortFilter(settings.sortType);
+    this.decorationsPage.setSortType(settings.sortType);
   }
 }

@@ -159,7 +159,7 @@ export class DecorationsPage {
     searchInput.value = query;
   }
 
-  setSortFilter(index: SortType): void {
+  setSortType(index: SortType): void {
     const sortType = <HTMLSelectElement>document.querySelector('#decor-sort-type');
     sortType.selectedIndex = index;
   }
