@@ -33,3 +33,11 @@ export function translateFilterType(str: string): Shape | Color | Size | Error {
   }
   throw new Error(`Unknonw filter type ${str}`);
 }
+
+export function getDecorId(cardId: string): number {
+  return +cardId.split('-')[3];
+}
+
+export function getFilterType(id: string): string {
+  return id.split('-')[2];
+}

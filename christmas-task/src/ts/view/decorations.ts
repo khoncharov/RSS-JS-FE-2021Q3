@@ -1,5 +1,12 @@
 import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
-import { YEAR_FILTER_MIN, YEAR_FILTER_MAX, COUNT_FILTER_MIN, COUNT_FILTER_MAX } from '../const';
+import {
+  YEAR_FILTER_MIN,
+  YEAR_FILTER_MAX,
+  COUNT_FILTER_MIN,
+  COUNT_FILTER_MAX,
+  COUNT_FILTER_STEP,
+  YEAR_FILTER_STEP,
+} from '../const';
 import noUiSlider, { target } from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import wNumb from 'wnumb';
@@ -217,7 +224,7 @@ export class DecorationsPage {
         max: COUNT_FILTER_MAX,
       },
 
-      step: 1,
+      step: COUNT_FILTER_STEP,
       start: countFilter,
       connect: true,
       direction: 'ltr',
@@ -246,7 +253,7 @@ export class DecorationsPage {
         max: YEAR_FILTER_MAX,
       },
 
-      step: 1,
+      step: YEAR_FILTER_STEP,
       start: yearFilter,
       connect: true,
       direction: 'ltr',

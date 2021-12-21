@@ -19,14 +19,6 @@ export class AppController {
     }
   }
 
-  getDecorId(cardId: string): number {
-    return +cardId.split('-')[3];
-  }
-
-  getFilterType(id: string): string {
-    return id.split('-')[2];
-  }
-
   filterDecorData(data: TDecorData, settings: AppSettings): TDecorData | [] {
     const filter = new FilterDecorData(data);
     const result = filter

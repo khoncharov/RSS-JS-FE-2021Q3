@@ -1,5 +1,6 @@
 import { target } from 'nouislider';
 import * as rawDecorData from '../../data/data.json';
+import { getDecorId, getFilterType } from '../funclib/funclib';
 import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';
@@ -56,7 +57,7 @@ export class Application extends AppController {
       let card: HTMLLIElement;
       if (element.nodeName === 'LI' && !element.classList.contains('decor-card__not-found')) {
         card = element as HTMLLIElement;
-        this.updateFavoriteDecor(this.getDecorId(card.id));
+        this.updateFavoriteDecor(getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items, this.settings),
@@ -67,7 +68,7 @@ export class Application extends AppController {
         !(element.parentNode as HTMLElement).classList.contains('decor-card__not-found')
       ) {
         card = element.parentNode as HTMLLIElement;
-        this.updateFavoriteDecor(this.getDecorId(card.id));
+        this.updateFavoriteDecor(getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items, this.settings),
@@ -100,7 +101,7 @@ export class Application extends AppController {
     shapeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
       if (element.classList.contains('filter-item')) {
-        const shape = this.getFilterType(element.id) as Shape;
+        const shape = getFilterType(element.id) as Shape;
         this.settings.updateShapeFilter(shape);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items, this.settings),
@@ -113,7 +114,7 @@ export class Application extends AppController {
     colorFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
       if (element.classList.contains('filter-item')) {
-        const color = this.getFilterType(element.id) as Color;
+        const color = getFilterType(element.id) as Color;
         this.settings.updateColorFilter(color);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items, this.settings),
@@ -126,7 +127,7 @@ export class Application extends AppController {
     sizeFilter.addEventListener('click', (e) => {
       const element = e.target as HTMLElement;
       if (element.classList.contains('filter-item')) {
-        const size = this.getFilterType(element.id) as Size;
+        const size = getFilterType(element.id) as Size;
         this.settings.updateSizeFilter(size);
         this.view.updateCardList(
           this.filterDecorData(this.decorData.items, this.settings),
