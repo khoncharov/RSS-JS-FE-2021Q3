@@ -45,7 +45,7 @@ export class Application extends AppController {
     this.view.drawDecorationsPage();
     this.view.addFilters(this.settings);
     this.view.updateCardList(
-      this.filterDecorData(this.decorData.items),
+      this.filterDecorData(this.decorData.items, this.settings),
       this.settings.favoriteDecor
     );
     this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
@@ -59,7 +59,7 @@ export class Application extends AppController {
         this.updateFavoriteDecor(this.getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
         this.view.updateCardList(
-          this.filterDecorData(this.decorData.items),
+          this.filterDecorData(this.decorData.items, this.settings),
           this.settings.favoriteDecor
         );
       } else if (
@@ -70,7 +70,7 @@ export class Application extends AppController {
         this.updateFavoriteDecor(this.getDecorId(card.id));
         this.view.updateFavoriteCount(this.settings.favoriteDecor.size);
         this.view.updateCardList(
-          this.filterDecorData(this.decorData.items),
+          this.filterDecorData(this.decorData.items, this.settings),
           this.settings.favoriteDecor
         );
       }
@@ -80,7 +80,7 @@ export class Application extends AppController {
     searchInput.addEventListener('change', () => {
       this.settings.searchQuery = searchInput.value;
       this.view.updateCardList(
-        this.filterDecorData(this.decorData.items),
+        this.filterDecorData(this.decorData.items, this.settings),
         this.settings.favoriteDecor
       );
     });
@@ -91,7 +91,7 @@ export class Application extends AppController {
     sortTypeSelect.addEventListener('change', () => {
       this.settings.sortType = sortTypeSelect.selectedIndex;
       this.view.updateCardList(
-        this.filterDecorData(this.decorData.items),
+        this.filterDecorData(this.decorData.items, this.settings),
         this.settings.favoriteDecor
       );
     });
@@ -103,7 +103,7 @@ export class Application extends AppController {
         const shape = this.getFilterType(element.id) as Shape;
         this.settings.updateShapeFilter(shape);
         this.view.updateCardList(
-          this.filterDecorData(this.decorData.items),
+          this.filterDecorData(this.decorData.items, this.settings),
           this.settings.favoriteDecor
         );
       }
@@ -116,7 +116,7 @@ export class Application extends AppController {
         const color = this.getFilterType(element.id) as Color;
         this.settings.updateColorFilter(color);
         this.view.updateCardList(
-          this.filterDecorData(this.decorData.items),
+          this.filterDecorData(this.decorData.items, this.settings),
           this.settings.favoriteDecor
         );
       }
@@ -129,7 +129,7 @@ export class Application extends AppController {
         const size = this.getFilterType(element.id) as Size;
         this.settings.updateSizeFilter(size);
         this.view.updateCardList(
-          this.filterDecorData(this.decorData.items),
+          this.filterDecorData(this.decorData.items, this.settings),
           this.settings.favoriteDecor
         );
       }
@@ -139,7 +139,7 @@ export class Application extends AppController {
     favoriteOnlyFilter.addEventListener('click', () => {
       this.settings.updateFavoriteOnly();
       this.view.updateCardList(
-        this.filterDecorData(this.decorData.items),
+        this.filterDecorData(this.decorData.items, this.settings),
         this.settings.favoriteDecor
       );
     });
@@ -148,7 +148,7 @@ export class Application extends AppController {
     rangeCountFilter.noUiSlider?.on('update', (values) => {
       this.settings.updateCountFilter([+values[0], +values[1]]);
       this.view.updateCardList(
-        this.filterDecorData(this.decorData.items),
+        this.filterDecorData(this.decorData.items, this.settings),
         this.settings.favoriteDecor
       );
     });
@@ -157,7 +157,7 @@ export class Application extends AppController {
     rangeYearFilter.noUiSlider?.on('update', (values) => {
       this.settings.updateYearFilter([+values[0], +values[1]]);
       this.view.updateCardList(
-        this.filterDecorData(this.decorData.items),
+        this.filterDecorData(this.decorData.items, this.settings),
         this.settings.favoriteDecor
       );
     });
