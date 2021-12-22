@@ -1,0 +1,108 @@
+@use "sass:math";
+
+/* Shapes */
+
+.ico-decor {
+  &-ball::before {
+    @include filter-icon;
+    background-image: url("./assets/svg/ball.svg");
+  }
+
+  &-bell::before {
+    @include filter-icon;
+    background-image: url("./assets/svg/bell.svg");
+  }
+
+  &-cone::before {
+    @include filter-icon;
+    background-image: url("./assets/svg/cone.svg");
+  }
+
+  &-flake::before {
+    @include filter-icon;
+    background-image: url("./assets/svg/snowflake.svg");
+  }
+
+  &-figure::before {
+    @include filter-icon;
+    background-image: url("./assets/svg/toy.svg");
+  }
+}
+
+/* Favorite */
+
+.ico-favorite-decor::before {
+  content: "";
+  position: absolute;
+  top: 125px;
+  left: 18px;
+  width: $icon-box-size;
+  height: $icon-box-size;
+  background-image: url("./assets/svg/fav.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.ico-box::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: $ctrl-clr;
+  border-radius: 4px;
+}
+
+.ico-check::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: $icon-box-size;
+  height: $icon-box-size;
+  background-image: url("./assets/svg/check-mark.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
+
+/* Colors filter shape */
+
+.circle {
+  &-white::before {
+    @include color-filter-icon(white);
+  }
+
+  &-yellow::before {
+    @include color-filter-icon(yellow);
+  }
+
+  &-red::before {
+    @include color-filter-icon($red);
+  }
+
+  &-blue::before {
+    @include color-filter-icon($blue);
+  }
+
+  &-green::before {
+    @include color-filter-icon($green);
+  }
+}
+
+/* Wait */
+
+.wait-status {
+  cursor: wait;
+}
+
+/* Input icon */
+
+.ico-enter::before {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("./assets/svg/enter.svg");
+}

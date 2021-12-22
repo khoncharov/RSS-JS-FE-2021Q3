@@ -1,0 +1,38 @@
+/* Main */
+
+.main-tree-container {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 332px 1fr 332px;
+  gap: 1.5vw;
+}
+
+.options-left {
+  height: 100%;
+  padding: 0 24px;
+  background-color: rgba($background-color, 0.9);
+}
+
+.tree-view {
+  height: 100%;
+  padding: 0 24px;
+  background-color: rgba($background-color, 0.9);
+}
+
+.options-right {
+  height: 100%;
+  padding: 0 24px;
+  background-color: rgba($background-color, 0.9);
+}
+
+@media screen and (max-width: $mediaMidWidth) {
+  .main-tree-container {
+    grid-template-columns: 332px 1fr;
+    gap: 1vw;
+  }
+
+  .tree-view {
+    grid-area: 1/2/3/3;
+  }
+}

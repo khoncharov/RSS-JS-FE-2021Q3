@@ -1,0 +1,68 @@
+.game-title {
+  &__container {
+    position: relative;
+    width: max-content;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr max-content 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+
+  @include blured-bg;
+  width: 593px;
+  height: 249px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  border: 2px solid #ffffff90;
+  border-radius: 30px;
+  grid-area: 2/1/3/2;
+
+  &__caption {
+    @include font($font-2, $font-xxxl, 1.5);
+    display: block;
+  }
+}
+
+.start-btn {
+  @include font($font-1, $font-xl);
+  @include ui-control(320px, 54px, 2px);
+  @include blured-bg;
+  cursor: pointer;
+
+  grid-area: 3/1/4/2;
+  transition: 0.2s ease-out;
+}
+
+.start-btn:hover {
+  transform: scale(1.03);
+}
+
+.start-btn:active {
+  transform: scale(0.99);
+}
+
+.decoration-ball-1 {
+  position: absolute;
+  top: 18%;
+  left: -57%;
+  width: 418px;
+  height: 510px;
+  background: no-repeat center url(./assets/ball/1.png);
+  background-size: 100%;
+}
+
+.decoration-ball-2 {
+  position: absolute;
+  top: 27%;
+  right: -30%;
+  width: 246px;
+  height: 305px;
+  background: no-repeat center url(./assets/ball/2.png);
+  background-size: 100%;
+}

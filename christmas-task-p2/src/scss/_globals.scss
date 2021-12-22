@@ -1,0 +1,173 @@
+html {
+  font-family: $font-1;
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 75px 1fr 75px;
+}
+
+.header {
+  padding: 0 1.5vw;
+  background-color: $background-color;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  padding: 12px 1.5vw;
+  background: no-repeat center url(./assets/bg-1920.webp);
+  background-size: cover;
+  overflow: hidden;
+}
+
+.footer {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background-color;
+  z-index: 1;
+
+  &__link {
+    @include font($font-1);
+    display: flex;
+    justify-content: center;
+    width: 114px;
+    filter: opacity(0.6);
+    transition: 0.2s ease;
+  }
+
+  &__link:hover {
+    filter: opacity(1);
+    transform: scale(1.05);
+  }
+
+  &__logo {
+    filter: invert(1);
+    height: 40px;
+  }
+
+  &__year {
+    @include font($font-1);
+    filter: opacity(0.6);
+  }
+}
+
+/* Header */
+
+.fav-counter {
+  @include font($font-1, $font-m);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 30px;
+  width: 75px;
+  height: 100%;
+}
+
+.fav-counter::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/svg/fav.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.game-nav {
+  height: 100%;
+
+  &__container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 190px 190px;
+  }
+
+  &__menu-btn {
+    @include font($font-2, $font-xxl);
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+
+    &_selected {
+      background-color: $ctrl-clr;
+    }
+  }
+
+  &__menu-btn:hover {
+    background-color: $ctrl-clr-hover;
+  }
+
+  &__menu-btn:active {
+    color: $font-hover-color;
+    background-color: $ctrl-clr-active;
+  }
+}
+
+@media screen and (max-width: $mediaMinWidth) {
+  #app {
+    width: $mediaMinWidth;
+  }
+}
+
+@media screen and (min-width: $mediaMaxWidth) {
+  #app {
+    margin: 0 auto;
+    width: $mediaMaxWidth;
+  }
+}

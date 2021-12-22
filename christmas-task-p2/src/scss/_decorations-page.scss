@@ -1,0 +1,266 @@
+/* Main */
+
+.main-decor-container {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1.5vw;
+}
+
+/* Filters section */
+
+.decor-filter {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 0 24px;
+  background-color: rgba($background-color, 0.9);
+
+  &__search-container,
+  &__sort-container,
+  &__cat-title-container {
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr 270px;
+    row-gap: 16px;
+  }
+
+  &__search-container {
+    position: relative;
+  }
+
+  &__caption {
+    @include font($font-1, $font-l);
+    grid-area: 1/1/2/-1;
+  }
+
+  &__search-input {
+    padding: 0 16px;
+    grid-area: 2/2/3/-1;
+    @include font($font-1, $font-s);
+    @include ui-control(100%, 36px);
+    background-color: $ctrl-clr;
+    text-align: center;
+  }
+
+  &__search-input:focus {
+    border-color: $gold;
+  }
+
+  &__search-input::placeholder {
+    color: $dark-green-2;
+  }
+
+  &__select-option {
+    padding: 0 16px;
+    grid-area: 2/2/3/-1;
+    @include font($font-1, $font-s);
+    @include ui-control(100%, 36px);
+    background-color: $ctrl-clr;
+    text-align: center;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  &__select-option:hover {
+    background-color: $ctrl-clr-hover;
+  }
+
+  &__container {
+    &-1 {
+      margin: 16px 0 16px 24px;
+      height: 36px;
+      display: grid;
+      grid-template-columns: 70px repeat(5, 36px);
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    &-2 {
+      margin: 16px 0 16px 24px;
+      height: 36px;
+      display: grid;
+      grid-template-columns: max-content 36px;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    &-3 {
+      margin: 16px 0 16px 24px;
+      display: grid;
+      grid-template-columns: 80px 1fr 80px;
+      grid-auto-rows: 36px;
+      align-items: center;
+      column-gap: 16px;
+      row-gap: 10px;
+    }
+  }
+
+  &__sub-cat-name {
+    @include font($font-1, $font-m);
+    white-space: nowrap;
+  }
+
+  &__reset-btn-container {
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__reset-btn {
+    margin-top: 20px;
+    @include font($font-1, $font-s);
+    @include ui-control(100%, 36px);
+    background-color: $ctrl-clr;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+  }
+
+  &__reset-btn:hover {
+    background-color: $ctrl-clr-hover;
+    transform: scale(1.02);
+  }
+
+  &__reset-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+.decor-filter::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-item {
+  @include font($font-2, $font-m);
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filter-item:hover {
+  background-color: $dark-green-3;
+}
+
+.filter-item-chosen {
+  border-color: $white;
+}
+
+.filter-value-min,
+.filter-value-max {
+  @include font($font-1, $font-m, 1.9);
+  @include ui-control(100%, 36px);
+  background-color: $ctrl-clr;
+  text-align: center;
+}
+
+.filter-value-min {
+  grid-area: 2/1/3/2;
+}
+
+.filter-value-max {
+  grid-area: 2/3/3/4;
+}
+
+#range-count,
+#range-year {
+  grid-area: 2/2/3/3;
+  margin: 0px auto;
+  height: 16px;
+  width: 100%;
+  height: 10px;
+}
+
+#range-count .noUi-handle,
+#range-year .noUi-handle {
+  height: 18px;
+  width: 18px;
+  top: -5px;
+  right: -9px; /* half the width */
+  border-radius: 9px;
+}
+
+#range-count .noUi-handle::before,
+#range-count .noUi-handle::after,
+#range-year .noUi-handle::before,
+#range-year .noUi-handle::after {
+  background-color: transparent;
+}
+
+/* Cards section */
+
+.decorations-cards {
+  height: 100%;
+  overflow-y: scroll;
+
+  &__container {
+    height: auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+}
+
+.decorations-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.decor-card {
+  @include blured-bg;
+  @include font($font-1, $font-s);
+  position: relative;
+  padding: 18px;
+  letter-spacing: 1px;
+  max-width: 300px;
+  height: 340px;
+  border-radius: 10px;
+  border: 1px solid #ffffff90;
+  transition: 0.4s ease-out;
+  cursor: pointer;
+
+  &__caption {
+    @include font($font-2, $font-l);
+    letter-spacing: 2px;
+    text-align: center;
+    height: 58px;
+  }
+
+  &__img {
+    margin: 4px 0 16px;
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  &__prop {
+    margin: 8px 0;
+  }
+
+  &__not-found {
+    @include blured-bg;
+    @include font($font-2, $font-xl);
+    letter-spacing: 1px;
+    line-height: 50px;
+    text-align: center;
+    padding: 40px 16px;
+    height: 180px;
+    border-radius: 10px;
+    border: 1px solid #ffffff90;
+    grid-area: 1/1/2/-1;
+  }
+}
+
+.decor-card:hover {
+  border-color: $gold;
+}
+
+.decor-card:active {
+  transform: scale(0.98);
+}
