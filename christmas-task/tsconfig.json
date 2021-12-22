@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src",
     "sourceMap": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
     "moduleResolution": "node",
     "strict": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
