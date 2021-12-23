@@ -18,6 +18,11 @@ export class DecorationsPage {
     const menuDecorBtn = <HTMLElement>document.querySelector('#game-nav-1');
     menuDecorBtn.classList.add('game-nav__menu-btn_selected');
 
+    const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
+    gameNavigation.classList.remove('hidden');
+    const favCounter = <HTMLElement>document.querySelector('.fav-counter');
+    favCounter.classList.remove('hidden');
+
     const mainContainer = <HTMLElement>document.querySelector('.main');
     mainContainer.innerHTML = '';
 

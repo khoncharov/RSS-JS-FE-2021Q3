@@ -20,10 +20,6 @@ export class Application extends AppController {
     const startBtn = <HTMLElement>document.querySelector('.start-btn');
     startBtn.addEventListener('click', () => {
       this.getDecorationsPage();
-      const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
-      gameNavigation.classList.remove('hidden');
-      const favCounter = <HTMLElement>document.querySelector('.fav-counter');
-      favCounter.classList.remove('hidden');
     });
 
     const gameNavigation = document.querySelectorAll('.game-nav__menu-btn');
@@ -31,10 +27,12 @@ export class Application extends AppController {
     homePageBtn.addEventListener('click', () => {
       this.getHomePage();
     });
+
     const decorPageBtn = <HTMLButtonElement>gameNavigation[1];
     decorPageBtn.addEventListener('click', () => {
       this.getDecorationsPage();
     });
+
     const treePageBtn = <HTMLButtonElement>gameNavigation[2];
     treePageBtn.addEventListener('click', () => {
       this.getXmasTreePage();
