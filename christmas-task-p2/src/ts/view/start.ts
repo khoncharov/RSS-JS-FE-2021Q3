@@ -6,6 +6,11 @@ export class StartPage {
         <nav class="game-nav">
           <ul class="game-nav__container hidden">
             <li>
+              <button class="game-nav__menu-btn" id="game-nav-0" type="button">
+                <img class="game-nav__menu-btn-img" src="./assets/svg/tree.svg" alt="Tree icon" />
+              </button>
+            </li>
+            <li>
               <button class="game-nav__menu-btn" id="game-nav-1" type="button">
                 Игрушки
               </button>
