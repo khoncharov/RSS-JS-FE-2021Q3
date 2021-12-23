@@ -17,15 +17,15 @@ export class Application extends AppController {
     this.view.drawSartPage();
 
     const startBtn = <HTMLElement>document.querySelector('.start-btn');
-    const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
-    const favCounter = <HTMLElement>document.querySelector('.fav-counter');
-
     startBtn.addEventListener('click', () => {
       this.getDecorationsPage();
+      const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
       gameNavigation.classList.remove('hidden');
+      const favCounter = <HTMLElement>document.querySelector('.fav-counter');
       favCounter.classList.remove('hidden');
     });
 
+    const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
     gameNavigation.addEventListener('click', (e) => {
       const menuBtn = e.target as HTMLElement;
       if (

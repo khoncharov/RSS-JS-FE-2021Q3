@@ -98,7 +98,7 @@ export class DecorationsPage {
         <input class="decor-filter__search-input" type="text" autocomplete="off" placeholder="Название игрушки"/>
       </div>
       <div class="decor-filter__sort-container">
-        <h2 class="decor-filter__caption">Сортировать</h2>
+        <h2 class="decor-filter__caption">Сортировка</h2>
         <select
           class="decor-filter__select-option"
           name="decor-sort-type"
