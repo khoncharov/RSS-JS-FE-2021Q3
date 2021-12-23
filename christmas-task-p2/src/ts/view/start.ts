@@ -1,6 +1,7 @@
 export class StartPage {
   draw(): void {
     const pageContainer = <HTMLElement>document.querySelector('#app');
+    pageContainer.innerHTML = '';
     pageContainer.innerHTML = `      
       <header class="header">
         <nav class="game-nav">

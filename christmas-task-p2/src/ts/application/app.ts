@@ -5,15 +5,16 @@ import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';
 import { AppController } from './controller';
-import { SELF_CHECK } from './self-check';
 
 export class Application extends AppController {
   private view = new AppView();
   private decorData = new DecorData(rawDecorData);
 
   init(): void {
-    console.log(SELF_CHECK);
+    this.getHomePage();
+  }
 
+  getHomePage(): void {
     this.view.drawSartPage();
 
     const startBtn = <HTMLElement>document.querySelector('.start-btn');
@@ -25,20 +26,18 @@ export class Application extends AppController {
       favCounter.classList.remove('hidden');
     });
 
-    const gameNavigation = <HTMLElement>document.querySelector('.game-nav__container');
-    gameNavigation.addEventListener('click', (e) => {
-      const menuBtn = e.target as HTMLElement;
-      if (
-        menuBtn.id === 'game-nav-1' &&
-        !menuBtn.classList.contains('game-nav__menu-btn_selected')
-      ) {
-        this.getDecorationsPage();
-      } else if (
-        menuBtn.id === 'game-nav-2' &&
-        !menuBtn.classList.contains('game-nav__menu-btn_selected')
-      ) {
-        this.getXmasTreePage();
-      }
+    const gameNavigation = document.querySelectorAll('.game-nav__menu-btn');
+    const homePageBtn = <HTMLButtonElement>gameNavigation[0];
+    homePageBtn.addEventListener('click', () => {
+      this.getHomePage();
+    });
+    const decorPageBtn = <HTMLButtonElement>gameNavigation[1];
+    decorPageBtn.addEventListener('click', () => {
+      this.getDecorationsPage();
+    });
+    const treePageBtn = <HTMLButtonElement>gameNavigation[2];
+    treePageBtn.addEventListener('click', () => {
+      this.getXmasTreePage();
     });
   }
 
