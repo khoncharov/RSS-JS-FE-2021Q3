@@ -4,7 +4,7 @@
   height: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 332px 1fr 332px;
+  grid-template-columns: 330px 1fr 330px;
   gap: 1.5vw;
 }
 
@@ -12,18 +12,126 @@
   height: 100%;
   padding: 0 24px;
   background-color: rgba($background-color, 0.9);
+  overflow-y: scroll;
+}
+
+.options-left::-webkit-scrollbar {
+  display: none;
 }
 
 .tree-view {
+  padding: 48px;
   height: 100%;
-  padding: 0 24px;
   background-color: rgba($background-color, 0.9);
+  background-image: url("./assets/bg/1.webp");
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  justify-content: center;
+  align-items: flex-end;
+
+  &__container {
+    width: 100%;
+  }
 }
 
 .options-right {
   height: 100%;
   padding: 0 24px;
   background-color: rgba($background-color, 0.9);
+  overflow-y: scroll;
+}
+
+.options-right::-webkit-scrollbar {
+  display: none;
+}
+
+.option-container {
+  position: relative;
+  margin: 24px 0;
+
+  &__caption {
+    @include font($font-1, $font-l);
+  }
+
+  &__list {
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    &_minimized {
+      height: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.minimaize-btn {
+  @include ui-control(24px, 24px, 0);
+  position: absolute;
+  top: 4px;
+  right: 0;
+  background-color: $ctrl-clr;
+  background-image: url("./assets/svg/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 2px;
+  background-size: contain;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.minimaize-btn:hover {
+  background-color: $ctrl-clr-hover;
+}
+
+.minimaize-btn_minimized {
+  transform: rotate(-180deg);
+}
+
+.option {
+  &-item {
+    width: 63px;
+    height: 63px;
+    background-color: $dark-green-3;
+    border-radius: 5px;
+    border: 1px solid $dark-green-3;
+    transition: 0.2s ease-out;
+  }
+
+  &-item:hover {
+    background-color: $dark-green-1;
+    border-color: $gold;
+  }
+
+  &_to-load {
+    cursor: pointer;
+  }
+
+  &_to-grab {
+    cursor: grab;
+  }
+}
+
+.settings-btn {
+  position: relative;
+  @include font($font-1, $font-s);
+  @include ui-control(100%, 36px);
+  background-color: $ctrl-clr;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.settings-btn:hover {
+  background-color: $ctrl-clr-hover;
+}
+
+.settings-btn:active {
+  background-color: $ctrl-clr-active;
 }
 
 @media screen and (max-width: $mediaMidWidth) {

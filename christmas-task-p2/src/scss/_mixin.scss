@@ -45,3 +45,15 @@
   background-color: $color;
   border-radius: 4px;
 }
+
+@mixin settings-icon {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 17px;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+}

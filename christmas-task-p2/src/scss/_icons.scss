@@ -106,3 +106,20 @@
   background-position: center;
   background-image: url("./assets/svg/enter.svg");
 }
+
+/* Tree page buttons */
+
+.ico-snowflake::before {
+  @include settings-icon;
+  background-image: url("./assets/svg/snow.svg");
+}
+
+.ico-mute::before {
+  @include settings-icon;
+  background-image: url("./assets/svg/mute.svg");
+}
+
+.ico-mute-off::before {
+  @include settings-icon;
+  background-image: url("./assets/svg/audio.svg");
+}
