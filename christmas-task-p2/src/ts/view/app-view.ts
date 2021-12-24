@@ -17,6 +17,10 @@ export class AppView {
     this.decorationsPage.drawPage();
   }
 
+  drawXmasTreePage(): void {
+    this.xmastreePage.drawPage();
+  }
+
   updateCardList(decorItems: TDecorData | [], favotiveDecor: TFavoriteDecor): void {
     if (decorItems.length === 0) {
       this.decorationsPage.drawEmptyCard();
@@ -40,10 +44,6 @@ export class AppView {
   updateFavoriteCount(n: number): void {
     const counter = <HTMLDivElement>document.querySelector('.fav-counter');
     counter.textContent = n.toString();
-  }
-
-  drawXmasTreePage(): void {
-    this.xmastreePage.draw();
   }
 
   addFilters(settings: AppSettings): void {

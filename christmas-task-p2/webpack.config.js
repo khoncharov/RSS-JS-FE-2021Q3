@@ -51,8 +51,6 @@ const baseConfig = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: './src/assets/audio', to: './assets/audio' },
-        { from: './src/assets/svg', to: './assets/svg' },
         { from: './src/assets/toys', to: './assets/toys' },
         { from: './src/assets/tree', to: './assets/tree' },
         { from: './src/data', to: './data' },
