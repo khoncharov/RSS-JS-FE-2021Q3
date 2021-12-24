@@ -1,3 +1,7 @@
+import treeSvg from '../../assets/svg/tree.svg';
+import githubLogo from '../../assets/svg/github.svg';
+import rsschoolLogo from '../../assets/svg/rs_school_js.svg';
+
 export class StartPage {
   draw(): void {
     const pageContainer = <HTMLElement>document.querySelector('#app');
@@ -8,7 +12,7 @@ export class StartPage {
           <ul class="game-nav__container hidden">
             <li>
               <button class="game-nav__menu-btn" id="game-nav-0" type="button">
-                <img class="game-nav__menu-btn-img" src="./assets/svg/tree.svg" alt="Tree icon" />
+                <img class="game-nav__menu-btn-img" src=${treeSvg} alt="Tree icon" />
               </button>
             </li>
             <li>
@@ -37,11 +41,11 @@ export class StartPage {
       </main>
       <footer class="footer">
         <a class="footer__link" href="https://github.com/khoncharov">
-          <img class="footer__logo" src="./assets/svg/github.svg" alt="Github logo" />
+          <img class="footer__logo" src=${githubLogo} alt="Github logo" />
         </a>
         <div class="footer__year">2021</div>
         <a class="footer__link" href="https://rs.school/js/">
-          <img class="footer__logo" src="./assets/svg/rs_school_js.svg" alt="RSSchool logo" />
+          <img class="footer__logo" src=${rsschoolLogo} alt="RSSchool logo" />
         </a>
       </footer>`;
   }
