@@ -5,7 +5,7 @@ import {
   YEAR_FILTER_MAX,
   YEAR_FILTER_MIN,
 } from '../const';
-import { Color, IOption, Shape, Size, SortType, TDecorId, TFavoriteDecor } from '../types';
+import { Color, IOption, Shape, Size, SortType, TFavoriteDecor } from '../types';
 import { AppView } from '../view/app-view';
 
 export class AppSettings {
@@ -63,19 +63,19 @@ export class AppSettings {
     return this._favoriteItems;
   }
 
-  isFavorite(value: TDecorId): boolean {
-    return this._favoriteItems.has(value);
+  isFavorite(decorId: number): boolean {
+    return this._favoriteItems.has(decorId);
   }
 
-  addToFavorite(value: TDecorId): void {
-    this._favoriteItems.add(value);
-    this.view.addFavorite(value);
+  addToFavorite(decorId: number): void {
+    this._favoriteItems.add(decorId);
+    this.view.addFavorite(decorId);
     localStorage.setItem('favorite-items', JSON.stringify(Array.from(this._favoriteItems)));
   }
 
-  removeFromFavorite(value: TDecorId): void {
-    this._favoriteItems.delete(value);
-    this.view.removeFavorite(value);
+  removeFromFavorite(decorId: number): void {
+    this._favoriteItems.delete(decorId);
+    this.view.removeFavorite(decorId);
     localStorage.setItem('favorite-items', JSON.stringify(Array.from(this._favoriteItems)));
   }
 

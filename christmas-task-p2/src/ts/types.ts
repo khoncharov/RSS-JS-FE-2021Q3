@@ -1,21 +1,13 @@
 /* Decor data */
 
-export type TDecorId = number;
-export type TDecorName = string;
-export type TDecorCount = number;
-export type TDecorYear = number;
-export type TDecorShape = string;
-export type TDecorColor = string;
-export type TDecorSize = string;
-
 export interface IDecorItem {
-  id: TDecorId;
-  name: TDecorName;
-  count: TDecorCount;
-  year: TDecorYear;
-  shape: TDecorShape;
-  color: TDecorColor;
-  size: TDecorSize;
+  id: number;
+  name: string;
+  count: number;
+  year: number;
+  shape: string;
+  color: string;
+  size: string;
 }
 
 export type TDecorData = IDecorItem[];
@@ -43,7 +35,7 @@ export interface IOption {
   mute?: boolean;
 }
 
-export type TFavoriteDecor = Set<TDecorId>;
+export type TFavoriteDecor = Set<number>;
 
 /* Filter types */
 
