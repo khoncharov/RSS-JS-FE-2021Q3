@@ -51,11 +51,13 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     overflow: hidden;
-    max-height: 500px;
-    transition: max-height 0.4s;
+    max-height: 370px;
+    transition: 0.8s;
 
     &_minimized {
       max-height: 0;
+      border-bottom: 3px solid $dark-green-3;
+      border-radius: 1px;
     }
   }
 }
