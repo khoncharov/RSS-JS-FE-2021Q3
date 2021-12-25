@@ -8,14 +8,14 @@
   gap: 1.5vw;
 }
 
-.options-left {
+.options {
   height: 100%;
   padding: 0 24px;
   background-color: rgba($background-color, 0.9);
   overflow-y: scroll;
 }
 
-.options-left::-webkit-scrollbar {
+.options::-webkit-scrollbar {
   display: none;
 }
 
@@ -32,20 +32,9 @@
   justify-content: center;
   align-items: flex-end;
 
-  &__container {
-    width: 100%;
+  &__tree {
+    width: 90%;
   }
-}
-
-.options-right {
-  height: 100%;
-  padding: 0 24px;
-  background-color: rgba($background-color, 0.9);
-  overflow-y: scroll;
-}
-
-.options-right::-webkit-scrollbar {
-  display: none;
 }
 
 .option-container {
@@ -61,10 +50,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.4s;
 
     &_minimized {
-      height: 0;
-      visibility: hidden;
+      max-height: 0;
     }
   }
 }
@@ -113,6 +104,9 @@
 
   &_to-grab {
     cursor: grab;
+    @include font($font-1, $font-s, 1.2, $dark-green);
+    padding: 0 4px;
+    text-align: end;
   }
 }
 

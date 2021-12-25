@@ -175,5 +175,20 @@ export class Application extends AppController {
 
   getXmasTreePage(): void {
     this.view.drawXmasTreePage();
+
+    const minimizeBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.minimaize-btn');
+    minimizeBtn.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const container = btn.parentElement as HTMLDivElement;
+        const list = <HTMLUListElement>container.querySelector('.option-container__list');
+        if (btn.classList.contains('minimaize-btn_minimized')) {
+          btn.classList.remove('minimaize-btn_minimized');
+          list.classList.remove('option-container__list_minimized');
+        } else {
+          btn.classList.add('minimaize-btn_minimized');
+          list.classList.add('option-container__list_minimized');
+        }
+      });
+    });
   }
 }

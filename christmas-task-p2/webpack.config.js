@@ -28,7 +28,7 @@ const baseConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpg|jpeg|webp)$/i,
+        test: /\.(png|svg|jpg|jpeg|webp|mp3)$/i,
         type: 'asset/resource',
         generator: {
           filename: './assets/[hash][ext]',
@@ -50,11 +50,7 @@ const baseConfig = {
       filename: 'index.html',
     }),
     new CopyPlugin({
-      patterns: [
-        { from: './src/assets/toys', to: './assets/toys' },
-        { from: './src/assets/tree', to: './assets/tree' },
-        { from: './src/data', to: './data' },
-      ],
+      patterns: [{ from: './src/assets/toys', to: './assets/toys' }],
     }),
     new CleanWebpackPlugin(),
   ],
