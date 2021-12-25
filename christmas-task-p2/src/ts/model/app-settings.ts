@@ -11,6 +11,7 @@ import { AppView } from '../view/app-view';
 export class AppSettings {
   private view = new AppView();
   private _options: IOption;
+  private _minimized: Array<boolean>;
   private _favoriteItems: TFavoriteDecor;
 
   public searchQuery: string;
@@ -28,6 +29,7 @@ export class AppSettings {
       volume: DEFAUL_VOLUME,
       mute: true,
     };
+    this._minimized = new Array(6).fill(false);
     this._favoriteItems =
       new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
     this.searchQuery = '';
@@ -57,6 +59,14 @@ export class AppSettings {
   set option(value: IOption) {
     this._options = { ...this._options, ...value };
     localStorage.setItem('options', JSON.stringify(this._options));
+  }
+
+  get minimized(): Array<boolean> {
+    return this._minimized;
+  }
+
+  updateMinimized(btnId: number, value: boolean): void {
+    this._minimized[btnId] = value;
   }
 
   get favoriteDecor(): TFavoriteDecor {

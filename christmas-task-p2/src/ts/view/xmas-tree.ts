@@ -27,15 +27,15 @@ export class XmasTreePage {
     const optionsLeft: HTMLElement = document.createElement('section');
     optionsLeft.classList.add('options');
     optionsLeft.append(
-      this.createCategory('Фон', 8),
-      this.createCategory('Ёлки', 4),
-      this.createCategory('Гирлянды', 4),
-      this.createCategory('Игрушки', 20)
+      this.createCategory('Фон', 8, 0),
+      this.createCategory('Ёлки', 4, 1),
+      this.createCategory('Гирлянды', 4, 2),
+      this.createCategory('Игрушки', 20, 3)
     );
     return optionsLeft;
   }
 
-  createCategory(typeName: string, optionsNum: number): HTMLDivElement {
+  createCategory(typeName: string, optionsNum: number, minimaizeBtnId: number): HTMLDivElement {
     const container: HTMLDivElement = document.createElement('div');
     container.className = 'option-container';
 
@@ -53,12 +53,13 @@ export class XmasTreePage {
       optionsList.appendChild(optionItem);
     }
 
-    container.append(this.createMinimizeBtn(), containerCpation, optionsList);
+    container.append(this.createMinimizeBtn(minimaizeBtnId), containerCpation, optionsList);
     return container;
   }
 
-  createMinimizeBtn(): HTMLButtonElement {
+  createMinimizeBtn(idNum: number): HTMLButtonElement {
     const minimizeBtn: HTMLButtonElement = document.createElement('button');
+    minimizeBtn.id = `minimize-btn-${idNum}`;
     minimizeBtn.type = 'button';
     minimizeBtn.title = 'свернуть';
     minimizeBtn.className = 'minimaize-btn';
@@ -83,8 +84,8 @@ export class XmasTreePage {
     optionsRight.classList.add('options');
 
     optionsRight.append(
-      this.createCategory('Настройки', 4),
-      this.createCategory('Вы нарядили', 20)
+      this.createCategory('Настройки', 4, 4),
+      this.createCategory('Вы нарядили', 20, 5)
     );
     return optionsRight;
   }

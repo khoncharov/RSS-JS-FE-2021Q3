@@ -38,6 +38,10 @@ export function getDecorId(cardId: string): number {
   return +cardId.split('-')[3];
 }
 
+export function getIdNum(idString: string): number {
+  return +idString.split('-')[2];
+}
+
 export function getFilterType(id: string): string {
   return id.split('-')[2];
 }

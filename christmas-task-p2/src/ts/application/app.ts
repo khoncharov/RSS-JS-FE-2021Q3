@@ -1,6 +1,6 @@
 import { target } from 'nouislider';
 import * as rawDecorData from '../../data/data.json';
-import { getDecorId, getFilterType } from '../funclib/funclib';
+import { getDecorId, getFilterType, getIdNum } from '../funclib/funclib';
 import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';
@@ -184,11 +184,18 @@ export class Application extends AppController {
         if (btn.classList.contains('minimaize-btn_minimized')) {
           btn.classList.remove('minimaize-btn_minimized');
           list.classList.remove('option-container__list_minimized');
+          this.settings.updateMinimized(getIdNum(btn.id), false);
         } else {
           btn.classList.add('minimaize-btn_minimized');
           list.classList.add('option-container__list_minimized');
+          this.settings.updateMinimized(getIdNum(btn.id), true);
         }
       });
+    });
+    minimizeBtn.forEach((btn) => {
+      if (this.settings.minimized[getIdNum(btn.id)]) {
+        btn.click();
+      }
     });
   }
 }
