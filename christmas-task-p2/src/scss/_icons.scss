@@ -114,12 +114,100 @@
   background-image: url("./assets/svg/snow.svg");
 }
 
-.ico-mute::before {
+.ico-muted::before {
   @include settings-icon;
   background-image: url("./assets/svg/mute.svg");
 }
 
-.ico-mute-off::before {
+.ico-muted-off::before {
   @include settings-icon;
   background-image: url("./assets/svg/audio.svg");
 }
+
+/* Tree backgrounds */
+
+.icon-background {
+  &-1 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/1.webp");
+  }
+
+  &-2 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/2.webp");
+  }
+
+  &-3 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/3.webp");
+  }
+
+  &-4 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/4.webp");
+  }
+
+  &-5 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/5.webp");
+  }
+
+  &-6 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/6.webp");
+  }
+
+  &-7 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/7.webp");
+  }
+
+  &-8 {
+    @include option-item-icon;
+    background-image: url("./assets/bg/8.webp");
+  }
+}
+
+/* Trees pictures */
+
+.icon-tree {
+  &-1 {
+    @include option-item-icon(70%);
+    background-image: url("./assets/tree/1.png");
+  }
+
+  &-2 {
+    @include option-item-icon(70%);
+    background-image: url("./assets/tree/2.png");
+  }
+
+  &-3 {
+    @include option-item-icon(70%);
+    background-image: url("./assets/tree/3.png");
+  }
+
+  &-4 {
+    @include option-item-icon(70%);
+    background-image: url("./assets/tree/4.png");
+  }
+}
+
+/* Festoon pictures */
+
+// .icon-festoon {
+//   &-1 {
+//     background-color: $red !important;
+//   }
+
+//   &-2 {
+//     background-color: $red;
+//   }
+
+//   &-3 {
+//     background-color: $red;
+//   }
+
+//   &-4 {
+//     background-color: $red;
+//   }
+// }

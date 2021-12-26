@@ -33,4 +33,37 @@ export class AppController {
       .getResult();
     return result;
   }
+
+  playAudioHandle(isMuted: boolean): void {
+    const audio = <HTMLAudioElement>document.querySelector('audio');
+    audio.volume = <number>this.settings.sound.volume;
+    if (isMuted) {
+      this.settings.sound = { isMuted: false };
+      audio.play();
+    } else {
+      this.settings.sound = {
+        isMuted: true,
+        currentTime: audio.currentTime,
+      };
+      audio.pause();
+    }
+    audio.currentTime = <number>this.settings.sound.currentTime;
+  }
+
+  pauseAudio(): void {
+    const audio = <HTMLAudioElement>document.querySelector('audio');
+    audio.pause();
+    this.settings.sound = {
+      currentTime: audio.currentTime,
+    };
+  }
+
+  playAudio(isMuted: boolean): void {
+    const audio = <HTMLAudioElement>document.querySelector('audio');
+    audio.volume = <number>this.settings.sound.volume;
+    audio.currentTime = <number>this.settings.sound.currentTime;
+    if (!isMuted) {
+      audio.play();
+    }
+  }
 }

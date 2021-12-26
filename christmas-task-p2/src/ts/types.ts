@@ -30,9 +30,10 @@ export type TRawDecorData = {
 
 /* Settings types */
 
-export interface IOption {
-  volume?: string;
-  mute?: boolean;
+export interface ISound {
+  volume?: number;
+  isMuted?: boolean;
+  currentTime?: number;
 }
 
 export type TFavoriteDecor = Set<number>;

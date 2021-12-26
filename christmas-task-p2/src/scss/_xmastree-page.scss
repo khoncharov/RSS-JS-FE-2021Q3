@@ -93,15 +93,12 @@
     border-radius: 5px;
     border: 1px solid $dark-green-3;
     transition: 0.2s ease-out;
+    cursor: pointer;
   }
 
   &-item:hover {
     background-color: $dark-green-1;
     border-color: $gold;
-  }
-
-  &_to-load {
-    cursor: pointer;
   }
 
   &_to-grab {

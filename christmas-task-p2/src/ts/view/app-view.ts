@@ -17,8 +17,10 @@ export class AppView {
     this.decorationsPage.drawPage();
   }
 
-  drawXmasTreePage(): void {
-    this.xmastreePage.drawPage();
+  drawXmasTreePage(settings: AppSettings): void {
+    const mainContainer = <HTMLElement>document.querySelector('.main');
+    mainContainer.innerHTML = '';
+    mainContainer.append(this.xmastreePage.drawPage(settings));
   }
 
   updateCardList(decorItems: TDecorData | [], favotiveDecor: TFavoriteDecor): void {
@@ -73,5 +75,13 @@ export class AppView {
 
   updateFavoriteOnlyFilter(isFavoriteOnly: boolean) {
     this.decorationsPage.setFavoriteOnlyFilter(isFavoriteOnly);
+  }
+
+  updateSoundBtn(isMuted: boolean): void {
+    if (isMuted) {
+      this.xmastreePage.soundBtnStateUnmuted();
+    } else {
+      this.xmastreePage.soundBtnStateMuted();
+    }
   }
 }

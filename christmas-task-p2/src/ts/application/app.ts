@@ -25,16 +25,19 @@ export class Application extends AppController {
     const gameNavigation = document.querySelectorAll('.game-nav__menu-btn');
     const homePageBtn = <HTMLButtonElement>gameNavigation[0];
     homePageBtn.addEventListener('click', () => {
+      this.pauseAudio();
       this.getHomePage();
     });
 
     const decorPageBtn = <HTMLButtonElement>gameNavigation[1];
     decorPageBtn.addEventListener('click', () => {
+      this.pauseAudio();
       this.getDecorationsPage();
     });
 
     const treePageBtn = <HTMLButtonElement>gameNavigation[2];
     treePageBtn.addEventListener('click', () => {
+      this.playAudio(<boolean>this.settings.sound.isMuted);
       this.getXmasTreePage();
     });
   }
@@ -174,7 +177,7 @@ export class Application extends AppController {
   }
 
   getXmasTreePage(): void {
-    this.view.drawXmasTreePage();
+    this.view.drawXmasTreePage(this.settings);
 
     const minimizeBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.minimaize-btn');
     minimizeBtn.forEach((btn) => {
@@ -197,5 +200,22 @@ export class Application extends AppController {
         btn.click();
       }
     });
+
+    const snowflakesBtn = <HTMLButtonElement>document.querySelector('#snowflakes-btn');
+
+    const soundBtn = <HTMLButtonElement>document.querySelector('#mute-btn');
+    soundBtn.addEventListener('click', () => {
+      this.view.updateSoundBtn(<boolean>this.settings.sound.isMuted);
+      this.playAudioHandle(<boolean>this.settings.sound.isMuted);
+    });
+
+    // const backgroundList = <HTMLUListElement>document.querySelector('#backgrounds-list');
+    // const backgroundItems = <HTMLLIElement[]>Array.from(backgroundList.children);
+    // backgroundItems.forEach((item) => {
+    //   item.addEventListener('click', (e) => {
+    //     const btn = e.target as HTMLLIElement;
+
+    //   });
+    // });
   }
 }

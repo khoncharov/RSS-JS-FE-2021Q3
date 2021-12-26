@@ -5,12 +5,12 @@ import {
   YEAR_FILTER_MAX,
   YEAR_FILTER_MIN,
 } from '../const';
-import { Color, IOption, Shape, Size, SortType, TFavoriteDecor } from '../types';
+import { Color, ISound, Shape, Size, SortType, TFavoriteDecor } from '../types';
 import { AppView } from '../view/app-view';
 
 export class AppSettings {
   private view = new AppView();
-  private _options: IOption;
+  private _sound: ISound;
   private _minimized: Array<boolean>;
   private _favoriteItems: TFavoriteDecor;
 
@@ -25,11 +25,12 @@ export class AppSettings {
   private _yearFilter: [number, number];
 
   constructor() {
-    this._options = JSON.parse(<string>localStorage.getItem('options')) ?? {
+    this._sound = JSON.parse(<string>localStorage.getItem('sound')) ?? {
       volume: DEFAUL_VOLUME,
-      mute: true,
+      isMuted: true,
+      currentTime: 0,
     };
-    this._minimized = new Array(6).fill(false);
+    this._minimized = new Array(5).fill(false);
     this._favoriteItems =
       new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
     this.searchQuery = '';
@@ -52,13 +53,13 @@ export class AppSettings {
     ];
   }
 
-  get options(): IOption {
-    return this._options;
+  get sound(): ISound {
+    return this._sound;
   }
 
-  set option(value: IOption) {
-    this._options = { ...this._options, ...value };
-    localStorage.setItem('options', JSON.stringify(this._options));
+  set sound(value: ISound) {
+    this._sound = { ...this._sound, ...value };
+    localStorage.setItem('sound', JSON.stringify(this._sound));
   }
 
   get minimized(): Array<boolean> {
@@ -102,10 +103,7 @@ export class AppSettings {
     localStorage.clear();
 
     this.searchQuery = '';
-    this._options = {
-      volume: DEFAUL_VOLUME,
-      mute: true,
-    };
+
     this._favoriteItems = new Set();
     this._sortType = SortType.noSort;
 

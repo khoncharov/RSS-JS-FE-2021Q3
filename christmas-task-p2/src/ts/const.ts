@@ -1,6 +1,6 @@
-export const DEFAUL_VOLUME = '0.2';
+export const DEFAUL_VOLUME = 0.2;
 
-export const FAVORITE_DECOR_MAX_COUNT = 20;
+export const FAVORITE_DECOR_MAX_COUNT = 10;
 
 export const COUNT_FILTER_MIN = 0;
 export const COUNT_FILTER_MAX = 15;

@@ -1,6 +1,7 @@
 import treeSvg from '../../assets/svg/tree.svg';
 import githubLogo from '../../assets/svg/github.svg';
 import rsschoolLogo from '../../assets/svg/rs_school_js.svg';
+import audioTrack from '../../assets/audio/audio.mp3';
 
 export class StartPage {
   draw(): void {
@@ -48,5 +49,13 @@ export class StartPage {
           <img class="footer__logo" src=${rsschoolLogo} alt="RSSchool logo" />
         </a>
       </footer>`;
+    pageContainer.appendChild(this.createAudioItem());
+  }
+
+  createAudioItem(): HTMLAudioElement {
+    const audio: HTMLAudioElement = document.createElement('audio');
+    audio.src = audioTrack;
+    audio.loop = true;
+    return audio;
   }
 }
