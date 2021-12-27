@@ -17,10 +17,10 @@ export class AppView {
     this.decorationsPage.drawPage();
   }
 
-  drawXmasTreePage(settings: AppSettings): void {
+  drawXmasTreePage(settings: AppSettings, decorData: TDecorData): void {
     const mainContainer = <HTMLElement>document.querySelector('.main');
     mainContainer.innerHTML = '';
-    mainContainer.append(this.xmastreePage.drawPage(settings));
+    mainContainer.append(this.xmastreePage.drawPage(settings, decorData));
   }
 
   updateCardList(decorItems: TDecorData | [], favotiveDecor: TFavoriteDecor): void {

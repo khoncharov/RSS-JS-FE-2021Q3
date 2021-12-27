@@ -11,6 +11,7 @@ import { AppView } from '../view/app-view';
 export class AppSettings {
   private view = new AppView();
   private _sound: ISound;
+  private _isSnowing: boolean;
   private _minimized: Array<boolean>;
   private _favoriteItems: TFavoriteDecor;
 
@@ -30,6 +31,7 @@ export class AppSettings {
       isMuted: true,
       currentTime: 0,
     };
+    this._isSnowing = JSON.parse(<string>localStorage.getItem('is-snowing')) ?? false;
     this._minimized = new Array(5).fill(false);
     this._favoriteItems =
       new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
@@ -60,6 +62,15 @@ export class AppSettings {
   set sound(value: ISound) {
     this._sound = { ...this._sound, ...value };
     localStorage.setItem('sound', JSON.stringify(this._sound));
+  }
+
+  get isSnowing(): boolean {
+    return this._isSnowing;
+  }
+
+  set isSnowing(value: boolean) {
+    this._isSnowing = value;
+    localStorage.setItem('is-snowing', JSON.stringify(this._isSnowing));
   }
 
   get minimized(): Array<boolean> {

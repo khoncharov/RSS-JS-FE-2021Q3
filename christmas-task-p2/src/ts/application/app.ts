@@ -177,7 +177,7 @@ export class Application extends AppController {
   }
 
   getXmasTreePage(): void {
-    this.view.drawXmasTreePage(this.settings);
+    this.view.drawXmasTreePage(this.settings, this.decorData.items);
 
     const minimizeBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.minimaize-btn');
     minimizeBtn.forEach((btn) => {
@@ -202,6 +202,16 @@ export class Application extends AppController {
     });
 
     const snowflakesBtn = <HTMLButtonElement>document.querySelector('#snowflakes-btn');
+    snowflakesBtn.addEventListener('click', () => {
+      const snowContainer = <HTMLDivElement>document.querySelector('.snowflakes');
+      if (this.settings.isSnowing) {
+        this.settings.isSnowing = false;
+        snowContainer.classList.add('hidden');
+      } else {
+        this.settings.isSnowing = true;
+        snowContainer.classList.remove('hidden');
+      }
+    });
 
     const soundBtn = <HTMLButtonElement>document.querySelector('#mute-btn');
     soundBtn.addEventListener('click', () => {
@@ -209,13 +219,26 @@ export class Application extends AppController {
       this.playAudioHandle(<boolean>this.settings.sound.isMuted);
     });
 
-    // const backgroundList = <HTMLUListElement>document.querySelector('#backgrounds-list');
-    // const backgroundItems = <HTMLLIElement[]>Array.from(backgroundList.children);
-    // backgroundItems.forEach((item) => {
-    //   item.addEventListener('click', (e) => {
-    //     const btn = e.target as HTMLLIElement;
+    const backgroundList = <HTMLUListElement>document.querySelector('#backgrounds-list');
+    const backgroundItems = <HTMLLIElement[]>Array.from(backgroundList.children);
+    backgroundItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        const btn = e.target as HTMLLIElement;
+        const backgroundId = getIdNum(btn.id);
+        const bgContainer = <HTMLElement>document.querySelector('.tree-view');
+        bgContainer.className = `tree-view icon-background-${backgroundId}`;
+      });
+    });
 
-    //   });
-    // });
+    const treesList = <HTMLUListElement>document.querySelector('#trees-list');
+    const treesItems = <HTMLLIElement[]>Array.from(treesList.children);
+    treesItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        const btn = e.target as HTMLLIElement;
+        const treeId = getIdNum(btn.id);
+        const treeContainer = <HTMLElement>document.querySelector('.tree-view__tree');
+        treeContainer.className = `tree-view__tree icon-tree-${treeId}`;
+      });
+    });
   }
 }
