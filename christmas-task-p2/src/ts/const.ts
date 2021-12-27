@@ -1,4 +1,4 @@
-export const DEFAUL_VOLUME = 0.2;
+export const DEFAUL_VOLUME = 0.1;
 
 export const FAVORITE_DECOR_MAX_COUNT = 10;
 

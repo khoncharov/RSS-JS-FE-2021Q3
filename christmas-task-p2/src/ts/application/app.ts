@@ -225,6 +225,7 @@ export class Application extends AppController {
       item.addEventListener('click', (e) => {
         const btn = e.target as HTMLLIElement;
         const backgroundId = getIdNum(btn.id);
+        this.settings.background = backgroundId;
         const bgContainer = <HTMLElement>document.querySelector('.tree-view');
         bgContainer.className = `tree-view icon-background-${backgroundId}`;
       });
@@ -236,9 +237,23 @@ export class Application extends AppController {
       item.addEventListener('click', (e) => {
         const btn = e.target as HTMLLIElement;
         const treeId = getIdNum(btn.id);
+        this.settings.tree = treeId;
         const treeContainer = <HTMLElement>document.querySelector('.tree-view__tree');
         treeContainer.className = `tree-view__tree icon-tree-${treeId}`;
+        const area = <HTMLAreaElement>document.getElementById('tree-area');
+        area.coords = this.getAreaCoords().join();
       });
     });
+  }
+
+  getAreaCoords(): Array<number> {
+    const treeContainer = <HTMLDivElement>document.querySelector('.tree-view__tree');
+    const w = treeContainer.clientWidth;
+    const h = treeContainer.clientHeight;
+    const top = [w / 2, 100];
+    const k = (h - 300) * Math.tan((20 * Math.PI) / 180);
+    const right = [Math.round(w / 2 + k), h - 200];
+    const left = [Math.round(w / 2 - k), h - 200];
+    return [...top, ...right, ...left];
   }
 }

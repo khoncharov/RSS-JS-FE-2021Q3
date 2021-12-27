@@ -54,8 +54,10 @@ export class XmasTreePage {
           </ul>
         </div>
       </section>
-      <section class="tree-view">
-        <div class="snowflakes ${settings.isSnowing ? '' : 'hidden'}">
+      <section class="tree-view ${
+        settings.background ? `icon-background-${settings.background}` : ''
+      }">
+          <div class="snowflakes ${settings.isSnowing ? '' : 'hidden'}">
           <div class="snowflake">❅</div>
           <div class="snowflake">❅</div>
           <div class="snowflake">❆</div>
@@ -67,7 +69,10 @@ export class XmasTreePage {
           <div class="snowflake">❆</div>
           <div class="snowflake">❄</div>
         </div>
-        <div class="tree-view__tree"></div>
+        <map name="xmas-tree">
+          <area id="tree-area" shape="poly" href="#"/>
+        </map>
+        <div class="tree-view__tree ${settings.tree ? ` icon-tree-${settings.tree}` : ''}"></div>
       </section>
       <section class="options">
         <div class="option-container">

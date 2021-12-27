@@ -13,6 +13,9 @@ export class AppSettings {
   private _sound: ISound;
   private _isSnowing: boolean;
   private _minimized: Array<boolean>;
+  private _background: number;
+  private _tree: number;
+
   private _favoriteItems: TFavoriteDecor;
 
   public searchQuery: string;
@@ -33,6 +36,9 @@ export class AppSettings {
     };
     this._isSnowing = JSON.parse(<string>localStorage.getItem('is-snowing')) ?? false;
     this._minimized = new Array(5).fill(false);
+    this._background = JSON.parse(<string>localStorage.getItem('background')) ?? 0;
+    this._tree = JSON.parse(<string>localStorage.getItem('tree')) ?? 0;
+
     this._favoriteItems =
       new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
     this.searchQuery = '';
@@ -71,6 +77,24 @@ export class AppSettings {
   set isSnowing(value: boolean) {
     this._isSnowing = value;
     localStorage.setItem('is-snowing', JSON.stringify(this._isSnowing));
+  }
+
+  get background(): number {
+    return this._background;
+  }
+
+  set background(value: number) {
+    this._background = value;
+    localStorage.setItem('background', JSON.stringify(this._background));
+  }
+
+  get tree(): number {
+    return this._tree;
+  }
+
+  set tree(value: number) {
+    this._tree = value;
+    localStorage.setItem('tree', JSON.stringify(this._tree));
   }
 
   get minimized(): Array<boolean> {
