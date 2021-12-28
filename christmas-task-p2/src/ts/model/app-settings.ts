@@ -135,19 +135,14 @@ export class AppSettings {
   }
 
   resetSettings() {
-    localStorage.clear();
-
     this.searchQuery = '';
 
     this._favoriteItems = new Set();
     this._sortType = SortType.noSort;
+    localStorage.removeItem('favorite-items');
+    localStorage.removeItem('sort-type');
 
-    this._shapeFilter = new Set();
-    this._colorFilter = new Set();
-    this._sizeFilter = new Set();
-    this._isFavoriteOnly = false;
-    this._countFilter = [COUNT_FILTER_MIN, COUNT_FILTER_MAX];
-    this._yearFilter = [YEAR_FILTER_MIN, YEAR_FILTER_MAX];
+    this.resetFilters();
   }
 
   get shapeFilter(): Set<Shape> {
@@ -224,7 +219,7 @@ export class AppSettings {
     localStorage.setItem('year-filter', JSON.stringify(this._yearFilter));
   }
 
-  resetFilters() {
+  resetFilters(): void {
     this._shapeFilter = new Set();
     this._colorFilter = new Set();
     this._sizeFilter = new Set();
@@ -237,5 +232,21 @@ export class AppSettings {
     localStorage.removeItem('is-favorite-only');
     localStorage.removeItem('count-filter');
     localStorage.removeItem('year-filter');
+  }
+
+  resetTreeSettings() {
+    this._isSnowing = false;
+    this._sound = {
+      volume: DEFAUL_VOLUME,
+      isMuted: true,
+      currentTime: 0,
+    };
+    this._background = 0;
+    this._tree = 0;
+
+    localStorage.removeItem('is-snowing');
+    localStorage.removeItem('sound');
+    localStorage.removeItem('background');
+    localStorage.removeItem('tree');
   }
 }

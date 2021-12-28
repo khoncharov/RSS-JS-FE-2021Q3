@@ -66,4 +66,23 @@ export class AppController {
       audio.play();
     }
   }
+
+  getAreaCoords(): Array<number> {
+    const treeContainer = <HTMLDivElement>document.querySelector('.tree-view__tree');
+    const w = treeContainer.clientWidth;
+    const h = treeContainer.clientHeight;
+    // Tree triangle coords
+    const top1 = [w / 2 - 10, 0];
+    const top2 = [w / 2 + 10, 0];
+    const H = h - 90;
+    const k = H * Math.tan(22 * (Math.PI / 180));
+    const right = [Math.round(w / 2 + k), H];
+    const left = [Math.round(w / 2 - k), H];
+    return [...top1, ...top2, ...right, ...left];
+  }
+
+  moveAt(item: HTMLElement, pageX: number, pageY: number): void {
+    item.style.left = pageX - item.offsetWidth / 2 + 'px';
+    item.style.top = pageY - item.offsetHeight / 2 + 'px';
+  }
 }

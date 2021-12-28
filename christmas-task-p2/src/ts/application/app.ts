@@ -177,7 +177,25 @@ export class Application extends AppController {
   }
 
   getXmasTreePage(): void {
+    let coordX: number;
+    let coordY: number;
+
     this.view.drawXmasTreePage(this.settings, this.decorData.items);
+
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target.classList.contains('tree-view')) {
+          const treeView = document.querySelector('.tree-view');
+          if (treeView) {
+            this.view.updateAreaCoords(this.getAreaCoords());
+          }
+        }
+      }
+    });
+    ro.observe(<HTMLElement>document.querySelector('.tree-view'));
+    setTimeout(() => {
+      this.view.updateAreaCoords(this.getAreaCoords());
+    }, 100);
 
     const minimizeBtn: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.minimaize-btn');
     minimizeBtn.forEach((btn) => {
@@ -240,20 +258,55 @@ export class Application extends AppController {
         this.settings.tree = treeId;
         const treeContainer = <HTMLElement>document.querySelector('.tree-view__tree');
         treeContainer.className = `tree-view__tree icon-tree-${treeId}`;
-        const area = <HTMLAreaElement>document.getElementById('tree-area');
-        area.coords = this.getAreaCoords().join();
+        this.view.updateAreaCoords(this.getAreaCoords());
       });
     });
-  }
 
-  getAreaCoords(): Array<number> {
-    const treeContainer = <HTMLDivElement>document.querySelector('.tree-view__tree');
-    const w = treeContainer.clientWidth;
-    const h = treeContainer.clientHeight;
-    const top = [w / 2, 100];
-    const k = (h - 300) * Math.tan((20 * Math.PI) / 180);
-    const right = [Math.round(w / 2 + k), h - 200];
-    const left = [Math.round(w / 2 - k), h - 200];
-    return [...top, ...right, ...left];
+    /* Drag n Drop */
+
+    const decorList: NodeListOf<HTMLElement> = document.querySelectorAll('.option__img');
+    const decorItems = Array.from(decorList);
+
+    decorItems.forEach((item) => {
+      item.addEventListener('dragstart', (e) => {
+        item.classList.add('selected');
+        // e.dataTransfer?.setData('text/html', 'dragstart');
+        coordX = e.offsetX;
+        coordY = e.offsetY;
+      });
+
+      item.addEventListener('dragend', () => {
+        item.classList.remove('selected');
+        item.classList.add('moved');
+      });
+    });
+
+    const treeContainer = <HTMLElement>document.querySelector('.tree-view');
+    const tree = <HTMLMapElement>document.querySelector('map');
+    tree.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    tree.addEventListener('drop', (e) => {
+      const selectedToy = <HTMLElement>document.querySelector('.selected');
+      selectedToy.style.position = 'absolute';
+      selectedToy.style.left = e.pageX - coordX - treeContainer.offsetLeft + 'px';
+      selectedToy.style.top = e.pageY - coordY - treeContainer.offsetTop + 'px';
+      tree.append(selectedToy);
+    });
+
+    /* *** */
+
+    const resetSettings = <HTMLButtonElement>document.querySelector('#reset-tree-settings-btn');
+    resetSettings.addEventListener('click', () => {
+      this.pauseAudio();
+      this.settings.resetTreeSettings();
+      this.getXmasTreePage();
+    });
+
+    const saveTree = <HTMLButtonElement>document.querySelector('#save-xmas-tree-btn');
+    saveTree.addEventListener('click', () => {
+      console.log('function is not implemented');
+    });
   }
 }

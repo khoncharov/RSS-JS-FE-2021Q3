@@ -29,7 +29,10 @@
   background-size: cover;
 
   &__tree {
+    display: block;
+    margin: 0 auto;
     background-size: contain !important;
+    max-width: 100%;
     height: 100%;
   }
 }
@@ -101,9 +104,9 @@
   }
 
   &_to-grab {
-    cursor: grab;
     @include font($font-1, $font-s, 1.2, $dark-green);
     padding: 4px;
+    cursor: default;
   }
 
   &__decor-count {
@@ -119,6 +122,7 @@
   }
 
   &__img {
+    cursor: grab;
     width: 100%;
     height: 100%;
     grid-area: 1/1/2/2;
@@ -141,6 +145,16 @@
 
 .settings-btn:active {
   background-color: $ctrl-clr-active;
+}
+
+.selected {
+  width: 63px;
+  height: 63px;
+}
+
+.moved {
+  width: 63px;
+  height: 63px;
 }
 
 @media screen and (max-width: $mediaMidWidth) {

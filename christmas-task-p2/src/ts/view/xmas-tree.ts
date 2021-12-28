@@ -1,5 +1,6 @@
 import { AppSettings } from '../model/app-settings';
 import { IDecorItem, TDecorData, TFavoriteDecor } from '../types';
+import treeBg from '../../assets/tree/t.png';
 
 export class XmasTreePage {
   drawPage(settings: AppSettings, decorData: TDecorData): HTMLElement {
@@ -69,10 +70,12 @@ export class XmasTreePage {
           <div class="snowflake">❆</div>
           <div class="snowflake">❄</div>
         </div>
+        <image class="tree-view__tree ${
+          settings.tree ? `icon-tree-${settings.tree}` : ''
+        }" usemap="#xmas-tree" src=${treeBg} alt="Christmas tree"/>
         <map name="xmas-tree">
-          <area id="tree-area" shape="poly" href="#"/>
-        </map>
-        <div class="tree-view__tree ${settings.tree ? ` icon-tree-${settings.tree}` : ''}"></div>
+          <area id="tree-area" shape="poly"/>
+        </map>        
       </section>
       <section class="options">
         <div class="option-container">
@@ -129,7 +132,7 @@ export class XmasTreePage {
         result += `
           <li class="option-item option_to-grab">
             <span class="option__decor-count">${quantity}</span>
-            <img class="option__img" src="./assets/toys/${decorId}.png">
+            <img class="option__img"  id="${decorId}" src="./assets/toys/${decorId}.png">
           </li>`;
       });
     } else {
@@ -138,7 +141,7 @@ export class XmasTreePage {
         result += `
           <li class="option-item option_to-grab">
             <span class="option__decor-count">${quantity}</span>
-            <img class="option__img" src="./assets/toys/${i}.png">
+            <img class="option__img" id="${i}" src="./assets/toys/${i}.png">
           </li>`;
       }
     }

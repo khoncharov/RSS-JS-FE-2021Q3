@@ -84,4 +84,13 @@ export class AppView {
       this.xmastreePage.soundBtnStateMuted();
     }
   }
+
+  updateAreaCoords(coords: Array<number>): void {
+    const treeImg = <HTMLImageElement>document.querySelector('.tree-view__tree');
+    const treeIsAdded = treeImg.className !== 'tree-view__tree';
+    if (treeIsAdded) {
+      const area = <HTMLAreaElement>document.getElementById('tree-area');
+      area.coords = coords.join();
+    }
+  }
 }
