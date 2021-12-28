@@ -80,9 +80,4 @@ export class AppController {
     const left = [Math.round(w / 2 - k), H];
     return [...top1, ...top2, ...right, ...left];
   }
-
-  moveAt(item: HTMLElement, pageX: number, pageY: number): void {
-    item.style.left = pageX - item.offsetWidth / 2 + 'px';
-    item.style.top = pageY - item.offsetHeight / 2 + 'px';
-  }
 }
