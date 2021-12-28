@@ -50,7 +50,10 @@ const baseConfig = {
       filename: 'index.html',
     }),
     new CopyPlugin({
-      patterns: [{ from: './src/assets/toys', to: './assets/toys' }],
+      patterns: [
+        { from: './src/assets/toys', to: './assets/toys' },
+        { from: './src/data', to: './data' },
+      ],
     }),
     new CleanWebpackPlugin(),
   ],
