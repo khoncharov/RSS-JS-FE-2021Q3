@@ -147,14 +147,10 @@
   background-color: $ctrl-clr-active;
 }
 
-.selected {
-  width: 63px;
-  height: 63px;
-}
-
 .moved {
-  width: 63px;
-  height: 63px;
+  width: 55px;
+  height: 55px;
+  pointer-events: none;
 }
 
 @media screen and (max-width: $mediaMidWidth) {

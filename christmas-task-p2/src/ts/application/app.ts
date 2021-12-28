@@ -277,7 +277,6 @@ export class Application extends AppController {
 
       item.addEventListener('dragend', () => {
         item.classList.remove('selected');
-        item.classList.add('moved');
       });
     });
 
@@ -289,10 +288,13 @@ export class Application extends AppController {
 
     tree.addEventListener('drop', (e) => {
       const selectedToy = <HTMLElement>document.querySelector('.selected');
-      selectedToy.style.position = 'absolute';
-      selectedToy.style.left = e.pageX - coordX - treeContainer.offsetLeft + 'px';
-      selectedToy.style.top = e.pageY - coordY - treeContainer.offsetTop + 'px';
-      tree.append(selectedToy);
+      const toyCopy = <HTMLElement>selectedToy.cloneNode(true);
+      toyCopy.classList.add('moved');
+      toyCopy.style.position = 'absolute';
+      toyCopy.style.left = e.pageX - coordX - treeContainer.offsetLeft + 'px';
+      toyCopy.style.top = e.pageY - coordY - treeContainer.offsetTop + 'px';
+
+      tree.append(toyCopy);
     });
 
     /* *** */
