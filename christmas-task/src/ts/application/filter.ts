@@ -56,46 +56,35 @@ export class FilterDecorData {
   }
 
   sort(sortType: SortType) {
-    switch (sortType) {
-      case SortType.byNameAscending:
-        this.result.sort((a, b) => {
-          const nameA = a.name.toUpperCase();
-          const nameB = b.name.toUpperCase();
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case SortType.byNameDescending:
-        this.result.sort((a, b) => {
-          const nameA = a.name.toUpperCase();
-          const nameB = b.name.toUpperCase();
-          if (nameA > nameB) {
-            return -1;
-          }
-          if (nameA < nameB) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case SortType.byYearAscending:
-        this.result.sort((a, b) => {
-          return a.year - b.year;
-        });
-        break;
-      case SortType.byYearDescending:
-        this.result.sort((a, b) => {
-          return b.year - a.year;
-        });
-        break;
+    if (sortType === SortType.byNameAscending) {
+      this.sortByLetter(1);
+    } else if (sortType === SortType.byNameDescending) {
+      this.sortByLetter(-1);
+    } else if (sortType === SortType.byYearAscending) {
+      this.sortByNumber(1);
+    } else if (sortType === SortType.byYearDescending) {
+      this.sortByNumber(-1);
     }
     return this;
   }
+
+  sortByLetter = (orderSign: 1 | -1) => {
+    this.result.sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1 * orderSign;
+      }
+      if (nameA > nameB) {
+        return 1 * orderSign;
+      }
+      return 0;
+    });
+  };
+
+  sortByNumber = (orderSign: 1 | -1): void => {
+    this.result.sort((a, b) => (a.year - b.year) * orderSign);
+  };
 
   getResult(): TDecorData | [] {
     return this.result;
