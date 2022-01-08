@@ -44,20 +44,13 @@ export class FilterDecorData {
     return this;
   }
 
-  byCount(countFilter: [number, number]): FilterDecorData {
+  filterByRange(
+    property: keyof Pick<IDecorItem, 'count' | 'year'>,
+    range: [number, number]
+  ): FilterDecorData {
     this.result = this.result.filter((item) => {
-      const minCount = countFilter[0];
-      const maxCount = countFilter[1];
-      return item.count >= minCount && item.count <= maxCount;
-    });
-    return this;
-  }
-
-  byYear(yearFilter: [number, number]): FilterDecorData {
-    this.result = this.result.filter((item) => {
-      const minYear = yearFilter[0];
-      const maxYear = yearFilter[1];
-      return item.year >= minYear && item.year <= maxYear;
+      const [minValue, maxValue] = range;
+      return item[property] >= minValue && item[property] <= maxValue;
     });
     return this;
   }

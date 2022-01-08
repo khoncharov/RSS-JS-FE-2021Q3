@@ -27,8 +27,8 @@ export class AppController {
       .filterBy('color', settings.colorFilter)
       .filterBy('size', settings.sizeFilter)
       .favoriteOnly(settings.isFavoriteOnly, settings.favoriteDecor)
-      .byCount(settings.countFilter)
-      .byYear(settings.yearFilter)
+      .filterByRange('count', settings.countFilter)
+      .filterByRange('year', settings.yearFilter)
       .sort(settings.sortType)
       .getResult();
     return result;
