@@ -23,9 +23,9 @@ export class AppController {
     const filter = new FilterDecorData(data);
     const result = filter
       .byName(settings.searchQuery)
-      .byShape(settings.shapeFilter)
-      .byColor(settings.colorFilter)
-      .bySize(settings.sizeFilter)
+      .filterBy('shape', settings.shapeFilter)
+      .filterBy('color', settings.colorFilter)
+      .filterBy('size', settings.sizeFilter)
       .favoriteOnly(settings.isFavoriteOnly, settings.favoriteDecor)
       .byCount(settings.countFilter)
       .byYear(settings.yearFilter)

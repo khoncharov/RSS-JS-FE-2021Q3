@@ -1,5 +1,7 @@
-import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
+import { Color, IDecorItem, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
 import { translateFilterType } from '../funclib/funclib';
+
+type TPropFilter = Shape | Color | Size;
 
 export class FilterDecorData {
   private result: TDecorData | [];
@@ -19,28 +21,13 @@ export class FilterDecorData {
     return this;
   }
 
-  byShape(shapeFilter: Set<Shape>): FilterDecorData {
-    if (shapeFilter.size !== 0) {
+  filterBy(
+    property: keyof Pick<IDecorItem, 'shape' | 'color' | 'size'>,
+    dataFilter: Set<TPropFilter>
+  ): FilterDecorData {
+    if (dataFilter.size) {
       this.result = this.result.filter((item) => {
-        return shapeFilter.has(translateFilterType(item.shape) as Shape);
-      });
-    }
-    return this;
-  }
-
-  byColor(colorFilter: Set<Color>): FilterDecorData {
-    if (colorFilter.size !== 0) {
-      this.result = this.result.filter((item) => {
-        return colorFilter.has(translateFilterType(item.color) as Color);
-      });
-    }
-    return this;
-  }
-
-  bySize(sizeFilter: Set<Size>): FilterDecorData {
-    if (sizeFilter.size !== 0) {
-      this.result = this.result.filter((item) => {
-        return sizeFilter.has(translateFilterType(item.size) as Size);
+        return dataFilter.has(translateFilterType(item[property]) as TPropFilter);
       });
     }
     return this;
