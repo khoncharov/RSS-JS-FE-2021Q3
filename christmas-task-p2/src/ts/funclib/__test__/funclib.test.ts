@@ -9,7 +9,7 @@ describe('Test get decor id function', () => {
   });
 });
 
-describe('Test get id тгьиук function', () => {
+describe('Test get id number function', () => {
   test("Str 'some-id-123' should be equal to 123", () => {
     expect(getDecorId('some-decor-id-123')).toBe(123);
   });
