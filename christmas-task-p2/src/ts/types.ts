@@ -1,5 +1,3 @@
-/* Decor data */
-
 export interface IDecorItem {
   id: number;
   name: string;
@@ -11,8 +9,6 @@ export interface IDecorItem {
 }
 
 export type TDecorData = IDecorItem[];
-
-/* Raw decor data */
 
 export interface IRawDecorItem {
   id: string;
@@ -28,8 +24,6 @@ export type TRawDecorData = {
   items: IRawDecorItem[];
 };
 
-/* Settings types */
-
 export interface ISound {
   volume?: number;
   isMuted?: boolean;
@@ -37,8 +31,6 @@ export interface ISound {
 }
 
 export type TFavoriteDecor = Set<number>;
-
-/* Filter types */
 
 export enum SortType {
   noSort,
