@@ -77,7 +77,7 @@ export class FilterDecorData {
 
   sort(sortType: SortType) {
     switch (sortType) {
-      case SortType.byNameAscending:
+      case SortType.ByNameAscending:
         this.result.sort((a, b) => {
           const nameA = a.name.toUpperCase();
           const nameB = b.name.toUpperCase();
@@ -90,7 +90,7 @@ export class FilterDecorData {
           return 0;
         });
         break;
-      case SortType.byNameDescending:
+      case SortType.ByNameDescending:
         this.result.sort((a, b) => {
           const nameA = a.name.toUpperCase();
           const nameB = b.name.toUpperCase();
@@ -103,12 +103,12 @@ export class FilterDecorData {
           return 0;
         });
         break;
-      case SortType.byYearAscending:
+      case SortType.ByYearAscending:
         this.result.sort((a, b) => {
           return a.year - b.year;
         });
         break;
-      case SortType.byYearDescending:
+      case SortType.ByYearDescending:
         this.result.sort((a, b) => {
           return b.year - a.year;
         });

@@ -3,35 +3,35 @@ import { Color, Feature, Shape, Size } from '../types';
 export function translateFilterType(str: string): Shape | Color | Size | Feature {
   switch (str.toLowerCase().trim()) {
     case 'шар':
-      return Shape.ball;
+      return Shape.Ball;
     case 'колокольчик':
-      return Shape.bell;
+      return Shape.Bell;
     case 'шишка':
-      return Shape.cone;
+      return Shape.Cone;
     case 'снежинка':
-      return Shape.flake;
+      return Shape.Flake;
     case 'фигурка':
-      return Shape.figure;
+      return Shape.Figure;
     case 'белый':
-      return Color.white;
+      return Color.White;
     case 'желтый':
     case 'жёлтый':
-      return Color.yellow;
+      return Color.Yellow;
     case 'красный':
-      return Color.red;
+      return Color.Red;
     case 'синий':
-      return Color.blue;
+      return Color.Blue;
     case 'зеленый':
     case 'зелёный':
-      return Color.green;
+      return Color.Green;
     case 'большой':
-      return Size.large;
+      return Size.Large;
     case 'средний':
-      return Size.medium;
+      return Size.Medium;
     case 'малый':
-      return Size.small;
+      return Size.Small;
     default:
-      return Feature.unknown;
+      return Feature.Unknown;
   }
 }
 

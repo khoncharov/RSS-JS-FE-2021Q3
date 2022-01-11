@@ -33,35 +33,35 @@ export interface ISound {
 export type TFavoriteDecor = Set<number>;
 
 export enum SortType {
-  noSort,
-  byNameAscending,
-  byNameDescending,
-  byYearAscending,
-  byYearDescending,
+  NoSort,
+  ByNameAscending,
+  ByNameDescending,
+  ByYearAscending,
+  ByYearDescending,
 }
 
 export enum Shape {
-  ball = 'ball',
-  bell = 'bell',
-  cone = 'cone',
-  flake = 'flake',
-  figure = 'figure',
+  Ball = 'Ball',
+  Bell = 'Bell',
+  Cone = 'Cone',
+  Flake = 'Flake',
+  Figure = 'Figure',
 }
 
 export enum Color {
-  white = 'white',
-  yellow = 'yellow',
-  red = 'red',
-  blue = 'blue',
-  green = 'green',
+  White = 'White',
+  Yellow = 'Yellow',
+  Red = 'Red',
+  Blue = 'Blue',
+  Green = 'Green',
 }
 
 export enum Size {
-  large = 'large',
-  medium = 'medium',
-  small = 'small',
+  Large = 'Large',
+  Medium = 'Medium',
+  Small = 'Small',
 }
 
 export enum Feature {
-  unknown = 'unknown',
+  Unknown = 'Unknown',
 }

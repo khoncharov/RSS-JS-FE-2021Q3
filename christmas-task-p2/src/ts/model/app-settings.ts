@@ -42,7 +42,7 @@ export class AppSettings {
     this._favoriteItems =
       new Set(JSON.parse(<string>localStorage.getItem('favorite-items'))) ?? new Set();
     this.searchQuery = '';
-    this._sortType = +JSON.parse(<string>localStorage.getItem('sort-type')) ?? SortType.noSort;
+    this._sortType = +JSON.parse(<string>localStorage.getItem('sort-type')) ?? SortType.NoSort;
 
     this._shapeFilter =
       new Set(JSON.parse(<string>localStorage.getItem('shape-filter'))) ?? new Set();
@@ -138,7 +138,7 @@ export class AppSettings {
     this.searchQuery = '';
 
     this._favoriteItems = new Set();
-    this._sortType = SortType.noSort;
+    this._sortType = SortType.NoSort;
     localStorage.removeItem('favorite-items');
     localStorage.removeItem('sort-type');
 
