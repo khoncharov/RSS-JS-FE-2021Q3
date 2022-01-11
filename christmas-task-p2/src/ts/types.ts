@@ -69,3 +69,7 @@ export enum Size {
   medium = 'medium',
   small = 'small',
 }
+
+export enum Feature {
+  unknown = 'unknown',
+}

@@ -1,6 +1,6 @@
-import { Color, Shape, Size } from '../types';
+import { Color, Feature, Shape, Size } from '../types';
 
-export function translateFilterType(str: string): Shape | Color | Size | Error {
+export function translateFilterType(str: string): Shape | Color | Size | Feature {
   switch (str.toLowerCase().trim()) {
     case 'шар':
       return Shape.ball;
@@ -30,8 +30,9 @@ export function translateFilterType(str: string): Shape | Color | Size | Error {
       return Size.medium;
     case 'малый':
       return Size.small;
+    default:
+      return Feature.unknown;
   }
-  throw new Error(`Unknonw filter type ${str}`);
 }
 
 export function getDecorId(cardId: string): number {

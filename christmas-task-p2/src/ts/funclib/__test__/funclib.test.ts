@@ -1,4 +1,4 @@
-import { Color, Shape, Size } from '../../types';
+import { Color, Feature, Shape, Size } from '../../types';
 import { getDecorId } from '../funclib';
 import { getFilterType } from '../funclib';
 import { translateFilterType } from '../funclib';
@@ -77,12 +77,7 @@ describe('Test translate filter type function', () => {
     expect(translateFilterType('малый')).toBe(Size.small);
   });
 
-  test("Str 'ff' should throw error", () => {
-    const msg = 'Unknonw filter type ff';
-    const t = () => {
-      throw new Error(msg);
-    };
-    expect(t).toThrow(Error);
-    expect(t).toThrow(msg);
+  test(`Str 'деревянный' should be equal to '${Feature.unknown}'`, () => {
+    expect(translateFilterType('деревянный')).toBe(Feature.unknown);
   });
 });
