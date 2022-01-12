@@ -1,7 +1,7 @@
 import { StartPage } from './start';
 import { DecorationsPage } from './decorations';
 import { XmasTreePage } from './xmas-tree';
-import { Color, Shape, Size, TDecorData, TFavoriteDecor } from '../types';
+import { Color, Shape, Size, TDecorData, TFavoriteDecor } from '../types/types';
 import { AppSettings } from '../model/app-settings';
 
 export class AppView {

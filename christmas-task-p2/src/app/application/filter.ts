@@ -1,4 +1,4 @@
-import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
+import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types/types';
 import { translateFilterType } from '../func-lib/func-lib';
 
 export class FilterDecorData {

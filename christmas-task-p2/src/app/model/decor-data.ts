@@ -1,5 +1,5 @@
-import { TDecorData } from '../types';
-import { TRawDecorData } from '../types';
+import { TDecorData } from '../types/types';
+import { TRawDecorData } from '../types/types';
 
 export class DecorData {
   public items: TDecorData;

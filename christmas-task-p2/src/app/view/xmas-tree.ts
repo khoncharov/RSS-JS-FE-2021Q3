@@ -1,5 +1,5 @@
 import { AppSettings } from '../model/app-settings';
-import { IDecorItem, TDecorData, TFavoriteDecor } from '../types';
+import { IDecorItem, TDecorData, TFavoriteDecor } from '../types/types';
 import treeBg from '../../assets/tree/t.png';
 
 export class XmasTreePage {

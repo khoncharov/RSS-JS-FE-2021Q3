@@ -1,6 +1,6 @@
 import './style.scss';
-import { Application } from './ts/application/app';
-import { SELF_CHECK } from './ts/application/self-check';
+import { Application } from './app/application/app';
+import { SELF_CHECK } from './app/application/self-check';
 
 function bootstrap(): void {
   const app = new Application();

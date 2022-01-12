@@ -1,4 +1,4 @@
-import { Color, Feature, Size } from '../../types';
+import { Color, Feature, Size } from '../../types/types';
 import { getDecorId } from '../func-lib';
 import { getFilterType } from '../func-lib';
 import { translateFilterType } from '../func-lib';

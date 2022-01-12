@@ -1,4 +1,4 @@
-import { Color, Feature, Shape, Size } from '../types';
+import { Color, Feature, Shape, Size } from '../types/types';
 
 export function translateFilterType(str: string): Shape | Color | Size | Feature {
   switch (str.toLowerCase().trim()) {

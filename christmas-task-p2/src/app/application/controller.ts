@@ -1,6 +1,6 @@
 import { FAVORITE_DECOR_MAX_COUNT } from '../const';
 import { AppSettings } from '../model/app-settings';
-import { TDecorData } from '../types';
+import { TDecorData } from '../types/types';
 import { FilterDecorData } from './filter';
 
 export class AppController {

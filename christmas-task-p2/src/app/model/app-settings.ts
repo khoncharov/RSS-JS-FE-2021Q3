@@ -5,7 +5,7 @@ import {
   YEAR_FILTER_MAX,
   YEAR_FILTER_MIN,
 } from '../const';
-import { Color, ISound, Shape, Size, SortType, TFavoriteDecor } from '../types';
+import { Color, ISound, Shape, Size, SortType, TFavoriteDecor } from '../types/types';
 import { AppView } from '../view/app-view';
 
 export class AppSettings {

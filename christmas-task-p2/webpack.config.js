@@ -52,7 +52,7 @@ const baseConfig = {
     new CopyPlugin({
       patterns: [
         { from: './src/assets/toys', to: './assets/toys' },
-        { from: './src/data', to: './data' },
+        { from: './src/app/data', to: './data' },
       ],
     }),
     new CleanWebpackPlugin(),

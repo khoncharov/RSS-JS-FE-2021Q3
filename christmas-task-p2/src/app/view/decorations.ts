@@ -1,4 +1,4 @@
-import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
+import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types/types';
 import {
   YEAR_FILTER_MIN,
   YEAR_FILTER_MAX,
