@@ -31,6 +31,7 @@ export class AppController {
       .byYear(settings.yearFilter)
       .sort(settings.sortType)
       .getResult();
+    console.log(result);
     return result;
   }
 

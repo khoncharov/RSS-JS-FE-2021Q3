@@ -121,25 +121,25 @@ export class DecorationsPage {
       </div>
       <div class="decor-filter__container-1" id="shape-filter-id">
         <h3 class="decor-filter__sub-cat-name">Форма</h3>
-        <div class="filter-item ico-decor-ball" id="decor-shape-ball" title="Шар"></div>
-        <div class="filter-item ico-decor-bell" id="decor-shape-bell" title="Колокольчик"></div>
-        <div class="filter-item ico-decor-cone" id="decor-shape-cone" title="Шишка"></div>
-        <div class="filter-item ico-decor-flake" id="decor-shape-flake" title="Снежинка"></div>
-        <div class="filter-item ico-decor-figure" id="decor-shape-figure" title="Фигурка"></div>
+        <div class="filter-item ico-decor-ball" id="decor-shape-${Shape.Ball}" title="Шар"></div>
+        <div class="filter-item ico-decor-bell" id="decor-shape-${Shape.Bell}" title="Колокольчик"></div>
+        <div class="filter-item ico-decor-cone" id="decor-shape-${Shape.Cone}" title="Шишка"></div>
+        <div class="filter-item ico-decor-flake" id="decor-shape-${Shape.Flake}" title="Снежинка"></div>
+        <div class="filter-item ico-decor-figure" id="decor-shape-${Shape.Figure}" title="Фигурка"></div>
       </div>
       <div class="decor-filter__container-1" id="color-filter-id">
         <h3 class="decor-filter__sub-cat-name">Цвет</h3>
-        <div class="filter-item circle-white" id="decor-color-white" title="Белый"></div>
-        <div class="filter-item circle-yellow" id="decor-color-yellow" title="Желтый"></div>
-        <div class="filter-item circle-red" id="decor-color-red" title="Красный"></div>
-        <div class="filter-item circle-blue" id="decor-color-blue" title="Синий"></div>
-        <div class="filter-item circle-green" id="decor-color-green" title="Зеленый"></div>
+        <div class="filter-item circle-white" id="decor-color-${Color}" title="Белый"></div>
+        <div class="filter-item circle-yellow" id="decor-color-${Color.Yellow}" title="Желтый"></div>
+        <div class="filter-item circle-red" id="decor-color-${Color.Red}" title="Красный"></div>
+        <div class="filter-item circle-blue" id="decor-color-${Color.Blue}" title="Синий"></div>
+        <div class="filter-item circle-green" id="decor-color-${Color.Green}" title="Зеленый"></div>
       </div>
       <div class="decor-filter__container-1" id="size-filter-id">
         <h3 class="decor-filter__sub-cat-name">Размер</h3>
-        <div class="filter-item" id="decor-size-large" title="Большой">L</div>
-        <div class="filter-item" id="decor-size-medium" title="Средний">M</div>
-        <div class="filter-item" id="decor-size-small" title="Малый">S</div>
+        <div class="filter-item" id="decor-size-${Size.Large}" title="Большой">L</div>
+        <div class="filter-item" id="decor-size-${Size.Medium}" title="Средний">M</div>
+        <div class="filter-item" id="decor-size-${Size.Small}" title="Малый">S</div>
       </div>
       <div class="decor-filter__container-2">
         <h3 class="decor-filter__sub-cat-name">Только любимые</h3>

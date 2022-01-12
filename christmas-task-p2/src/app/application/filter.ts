@@ -105,12 +105,12 @@ export class FilterDecorData {
         break;
       case SortType.ByYearAscending:
         this.result.sort((a, b) => {
-          return a.year - b.year;
+          return b.year - a.year;
         });
         break;
       case SortType.ByYearDescending:
         this.result.sort((a, b) => {
-          return b.year - a.year;
+          return a.year - b.year;
         });
         break;
     }

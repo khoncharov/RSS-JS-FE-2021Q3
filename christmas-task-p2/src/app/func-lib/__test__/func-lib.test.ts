@@ -1,4 +1,3 @@
-import { Color, Feature, Size } from '../../types/types';
 import { getDecorId } from '../func-lib';
 import { getFilterType } from '../func-lib';
 import { translateFilterType } from '../func-lib';
@@ -22,62 +21,62 @@ describe('Test get filter type function', () => {
 });
 
 describe('Test translate filter type function', () => {
-  test("Str '   шар  ' should be equal to 'Ball'", () => {
-    expect(translateFilterType('   шар  ')).toBe('Ball');
+  test("Str '   шар  ' should be equal to 'ball'", () => {
+    expect(translateFilterType('   шар  ')).toBe('ball');
   });
 
-  test("Str ' кОлОкольЧИК ' should be equal to 'Bell'", () => {
-    expect(translateFilterType(' кОлОкольЧИК ')).toBe('Bell');
+  test("Str ' кОлОкольЧИК ' should be equal to 'bell'", () => {
+    expect(translateFilterType(' кОлОкольЧИК ')).toBe('bell');
   });
 
-  test("Str ' Шишка' should be equal to 'Cone'", () => {
-    expect(translateFilterType(' Шишка')).toBe('Cone');
+  test("Str ' Шишка' should be equal to 'cone'", () => {
+    expect(translateFilterType(' Шишка')).toBe('cone');
   });
 
-  test("Str 'снежинка     ' should be equal to 'Flake'", () => {
-    expect(translateFilterType('снежинка     ')).toBe('Flake');
+  test("Str 'снежинка     ' should be equal to 'flake'", () => {
+    expect(translateFilterType('снежинка     ')).toBe('flake');
   });
 
-  test("Str 'фигурки' should be equal to 'Figure'", () => {
-    expect(translateFilterType('фигурка')).toBe('Figure');
+  test("Str 'фигурки' should be equal to 'figure'", () => {
+    expect(translateFilterType('фигурка')).toBe('figure');
   });
 
-  test(`Str 'белый' should be equal to '${Color.White}'`, () => {
-    expect(translateFilterType('белый')).toBe(Color.White);
+  test(`Str 'белый' should be equal to 'white'`, () => {
+    expect(translateFilterType('белый')).toBe('white');
   });
 
-  test(`Str 'желтый' and 'жёлтый' should be equal to '${Color.Yellow}'`, () => {
-    expect(translateFilterType('желтый')).toBe(Color.Yellow);
-    expect(translateFilterType('жёлтый')).toBe(Color.Yellow);
-    expect(translateFilterType('   жёлтый ')).toBe(Color.Yellow);
+  test(`Str 'желтый' and 'жёлтый' should be equal to 'yellow'`, () => {
+    expect(translateFilterType('желтый')).toBe('yellow');
+    expect(translateFilterType('жёлтый')).toBe('yellow');
+    expect(translateFilterType('   жёлтый ')).toBe('yellow');
   });
 
-  test(`Str 'красный' should be equal to '${Color.Red}'`, () => {
-    expect(translateFilterType('красный')).toBe(Color.Red);
+  test(`Str 'красный' should be equal to 'red'`, () => {
+    expect(translateFilterType('красный')).toBe('red');
   });
 
-  test(`Str 'синий' should be equal to '${Color.Blue}'`, () => {
-    expect(translateFilterType('синий')).toBe(Color.Blue);
+  test(`Str 'синий' should be equal to 'blue'`, () => {
+    expect(translateFilterType('синий')).toBe('blue');
   });
 
-  test(`Str 'зеленый' and 'зелёный' should be equal to '${Color.Green}'`, () => {
-    expect(translateFilterType('зеленый')).toBe(Color.Green);
-    expect(translateFilterType('зелёный')).toBe(Color.Green);
+  test(`Str 'зеленый' and 'зелёный' should be equal to 'Green'`, () => {
+    expect(translateFilterType('зеленый')).toBe('green');
+    expect(translateFilterType('зелёный')).toBe('green');
   });
 
-  test(`Str 'большой' should be equal to '${Size.Large}'`, () => {
-    expect(translateFilterType('большой')).toBe(Size.Large);
+  test(`Str 'большой' should be equal to 'large'`, () => {
+    expect(translateFilterType('большой')).toBe('large');
   });
 
-  test(`Str 'средний' should be equal to '${Size.Medium}'`, () => {
-    expect(translateFilterType('средний')).toBe(Size.Medium);
+  test(`Str 'средний' should be equal to 'medium'`, () => {
+    expect(translateFilterType('средний')).toBe('medium');
   });
 
-  test(`Str 'малый' should be equal to '${Size.Small}'`, () => {
-    expect(translateFilterType('малый')).toBe(Size.Small);
+  test(`Str 'малый' should be equal to 'small'`, () => {
+    expect(translateFilterType('малый')).toBe('small');
   });
 
-  test(`Str 'деревянный' should be equal to '${Feature.Unknown}'`, () => {
-    expect(translateFilterType('деревянный')).toBe(Feature.Unknown);
+  test(`Str 'деревянный' should be equal to 'unknown'`, () => {
+    expect(translateFilterType('деревянный')).toBe('unknown');
   });
 });

@@ -41,27 +41,27 @@ export enum SortType {
 }
 
 export enum Shape {
-  Ball = 'Ball',
-  Bell = 'Bell',
-  Cone = 'Cone',
-  Flake = 'Flake',
-  Figure = 'Figure',
+  Ball = 'ball',
+  Bell = 'bell',
+  Cone = 'cone',
+  Flake = 'flake',
+  Figure = 'figure',
 }
 
 export enum Color {
-  White = 'White',
-  Yellow = 'Yellow',
-  Red = 'Red',
-  Blue = 'Blue',
-  Green = 'Green',
+  White = 'white',
+  Yellow = 'yellow',
+  Red = 'red',
+  Blue = 'blue',
+  Green = 'green',
 }
 
 export enum Size {
-  Large = 'Large',
-  Medium = 'Medium',
-  Small = 'Small',
+  Large = 'large',
+  Medium = 'medium',
+  Small = 'small',
 }
 
 export enum Feature {
-  Unknown = 'Unknown',
+  Unknown = 'unknown',
 }
