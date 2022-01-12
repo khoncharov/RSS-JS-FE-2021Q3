@@ -1,6 +1,6 @@
 import { target } from 'nouislider';
 import * as rawDecorData from '../../data/data.json';
-import { getDecorId, getFilterType, getIdNum } from '../funclib/funclib';
+import { getDecorId, getFilterType, getIdNum } from '../func-lib/func-lib';
 import { DecorData } from '../model/decor-data';
 import { Color, Shape, Size } from '../types';
 import { AppView } from '../view/app-view';

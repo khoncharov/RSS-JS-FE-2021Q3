@@ -1,5 +1,5 @@
 import { Color, Shape, Size, SortType, TDecorData, TFavoriteDecor } from '../types';
-import { translateFilterType } from '../funclib/funclib';
+import { translateFilterType } from '../func-lib/func-lib';
 
 export class FilterDecorData {
   private result: TDecorData | [];

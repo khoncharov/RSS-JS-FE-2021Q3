@@ -1,7 +1,7 @@
 import { Color, Feature, Size } from '../../types';
-import { getDecorId } from '../funclib';
-import { getFilterType } from '../funclib';
-import { translateFilterType } from '../funclib';
+import { getDecorId } from '../func-lib';
+import { getFilterType } from '../func-lib';
+import { translateFilterType } from '../func-lib';
 
 describe('Test get decor id function', () => {
   test("Str 'some-decor-id-123' should be equal to 123", () => {
