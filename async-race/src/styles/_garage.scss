@@ -1,0 +1,18 @@
+.editor__item {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 70px 150px 50px 100px;
+  gap: 10px;
+  align-items: center;
+}
+
+#btn-generate {
+  grid-column: 2/4;
+}
+
+.controls-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  align-items: center;
+  gap: 10px;
+}

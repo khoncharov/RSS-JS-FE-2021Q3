@@ -14,7 +14,72 @@
   </head>
   <body>
     <div id="app">
-      <h1>Hello world</h1>
+      <header class="header">
+        <h1 class="task-logo">Async-race</h1>
+        <nav class="navigation">
+          <ul class="menu">
+            <li class="menu__item">
+              <a class="menu__link menu__link_selected" href="#/garage">garage</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#/winners">winners</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="main__section-container">
+          <h2 class="section-caption">Car editor</h2>
+          <div class="editor__item">
+            <h3 class="ui-caption">Create</h3>
+            <input class="ui-input" type="text" placeholder="Type name" />
+            <input class="ui-input" type="color" value="#ff0000" />
+            <button class="ui-btn" type="button">Submit</button>
+          </div>
+          <div class="editor__item">
+            <h3 class="ui-caption">Update</h3>
+            <input class="ui-input" type="text" placeholder="Change name" />
+            <input class="ui-input" type="color" value="#ff0000" />
+            <button class="ui-btn disabled" type="button" disabled>Submit</button>
+          </div>
+          <div class="editor__item">
+            <button class="ui-btn" id="btn-generate" type="button" title="Generate 100 random car">
+              Generate
+            </button>
+          </div>
+        </section>
+        <section class="main__section-container">
+          <h2 class="section-caption">Race control</h2>
+          <div class="controls-container">
+            <button class="ui-btn" type="button">Start</button>
+            <button class="ui-btn" type="button">Reset</button>
+          </div>
+        </section>
+        <section class="main__section-container">
+          <h2 class="section-caption">Garage (<span>XX</span>)</h2>
+          <div class="list__container">
+            <!-- Tracks list -->
+            <ul class="tracks-table">
+              <li class="tracks-table__container"></li>
+              <li class="tracks-table__container"></li>
+              <li class="tracks-table__container"></li>
+            </ul>
+            <!-- Winners list -->
+            <ul class="winners-table">
+              <li class="winners-table__header"></li>
+              <li class="winners-table__line"></li>
+              <li class="winners-table__line"></li>
+            </ul>
+          </div>
+          <div class="list__controls">
+            <div class="controls-container">
+              <button class="ui-btn" type="button">prev</button>
+              <button class="ui-btn" type="button">next</button>
+              <p class="ui-caption">Page X</p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>

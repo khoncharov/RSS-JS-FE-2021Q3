@@ -1,0 +1,13 @@
+@mixin font(
+  $font-name,
+  $font-size: $font-m,
+  $font-line: 150%,
+  $font-color: $clr-font-prime,
+  $font-weight: $font-weight-regular
+) {
+  font-family: $font-name;
+  font-size: $font-size;
+  line-height: $font-line;
+  color: $font-color;
+  font-weight: $font-weight;
+}
