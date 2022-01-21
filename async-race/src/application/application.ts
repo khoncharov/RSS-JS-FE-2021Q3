@@ -1,6 +1,9 @@
 import { garage } from './components/garage';
 import { navbar } from './components/navigation';
 import { winners } from './components/winners';
+import { eventsHandler } from './events';
+import { store } from './store';
+import { updateCurrentPage } from './app-state/garage-list-slice';
 
 class Application {
   protected page = document.querySelector('#app') as HTMLDivElement;
@@ -23,6 +26,15 @@ class Application {
     this.page.append(header, main);
 
     header.addEventListener('click', navbar.gameNavigationHandler);
+
+    window.addEventListener('click', eventsHandler);
+
+    // test -----------------------------------------------------------
+    // const nextBtn = document.querySelector('#garage-next') as HTMLButtonElement;
+    // nextBtn.addEventListener('click', () => {
+    //   const page = store.getState().garage.currentPage;
+    //   store.dispatch(updateCurrentPage(page + 1));
+    // });
   }
 }
 

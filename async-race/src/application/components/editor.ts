@@ -6,9 +6,9 @@ class Editor {
       <h2 class="section-caption">Car editor</h2>
         <div class="editor__item">
           <h3 class="ui-caption">Create</h3>
-          <input class="ui-input" type="text" placeholder="Type name" />
-          <input class="ui-input" type="color" value="#ff0000" />
-          <button class="ui-btn" type="button">Submit</button>
+          <input class="ui-input" id="new-car-name-input" type="text" placeholder="Type name" />
+          <input class="ui-input" id="new-car-color-input" type="color" value="#ff0000" />
+          <button class="ui-btn" id="new-car-submit-btn" type="button">Submit</button>
         </div>
         <div class="editor__item">
           <h3 class="ui-caption">Update</h3>

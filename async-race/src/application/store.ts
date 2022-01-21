@@ -1,6 +1,8 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import counterRecuder from './features/conter/conterSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import garageReducer, { updateCurrentPage } from './app-state/garage-list-slice';
 
-// export const store = configureStore({
-//   reducer: { counter: counterRecuder },
-// });
+export const store = configureStore({
+  reducer: { garage: garageReducer },
+});
+
+store.subscribe(() => console.log(store.getState()));
