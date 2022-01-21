@@ -21,11 +21,19 @@ body {
 }
 
 #app {
+  min-height: 100vh;
   margin: 0 auto;
   background-color: white;
 }
 
+.hidden {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .header {
+  margin-bottom: 20px;
   display: grid;
   grid-template-columns: max-content 1fr;
 }
@@ -37,26 +45,26 @@ body {
   flex-wrap: nowrap;
 
   &__item {
-    width: 100px;
+    width: 120px;
   }
 
   &__link {
     @include font(
       $font-prime,
       $font-m,
-      $font-color: $clr-font-light,
+      $font-color: $clr-font-prime,
       $font-weight: $font-weight-bold
     );
+    text-transform: uppercase;
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    background-color: white;
+    cursor: pointer;
     transition: $tr_0;
-
-    &_selected {
-      color: black;
-      background-color: $clr-ctrl;
-    }
   }
 
   &__link:hover {
@@ -77,7 +85,7 @@ body {
   padding: 5px 20px;
 
   &__section-container {
-    margin: 20px 0;
+    margin-bottom: 20px;
   }
 }
 

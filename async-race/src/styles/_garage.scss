@@ -10,9 +10,96 @@
   grid-column: 2/4;
 }
 
-.controls-container {
+.list__controls {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   align-items: center;
   gap: 10px;
+}
+
+.tracks-table {
+  margin-bottom: 20px;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px;
+  }
+}
+
+.track {
+  position: relative;
+  border-bottom: 2px solid $clr-track;
+}
+
+.track-btn-container {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.car {
+  position: relative;
+  width: 100px;
+  height: 60px;
+  animation: car-movement;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-duration: 1ms;
+  animation-play-state: paused;
+}
+
+.car-body {
+  position: relative;
+  top: 5px;
+  width: 100px;
+  height: 60px;
+  -webkit-mask-image: url("./assets/city-car.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url("./assets/city-car.svg");
+  mask-repeat: no-repeat;
+  background-color: #d62525;
+}
+
+.dashboard::before {
+  content: "ENG";
+  position: absolute;
+  padding: 1px;
+  line-height: 10px;
+  top: 16px;
+  left: 72px;
+  width: 21px;
+  height: 11px;
+  color: yellow;
+  font-size: 10px;
+  border: 1px solid orange;
+  border-radius: 2px;
+
+  animation: check-engine;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  animation-play-state: running;
+  animation-iteration-count: infinite;
+}
+
+@keyframes car-movement {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(100vw - 100px);
+  }
+}
+
+@keyframes check-engine {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }

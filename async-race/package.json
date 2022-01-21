@@ -44,8 +44,6 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "@types/wnumb": "^1.2.1",
-    "nouislider": "^15.5.0",
-    "wnumb": "^1.2.0"
+    "@reduxjs/toolkit": "^1.7.1"
   }
 }

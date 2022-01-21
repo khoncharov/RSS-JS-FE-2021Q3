@@ -28,57 +28,93 @@
         </nav>
       </header>
       <main class="main">
-        <section class="main__section-container">
-          <h2 class="section-caption">Car editor</h2>
-          <div class="editor__item">
-            <h3 class="ui-caption">Create</h3>
-            <input class="ui-input" type="text" placeholder="Type name" />
-            <input class="ui-input" type="color" value="#ff0000" />
-            <button class="ui-btn" type="button">Submit</button>
-          </div>
-          <div class="editor__item">
-            <h3 class="ui-caption">Update</h3>
-            <input class="ui-input" type="text" placeholder="Change name" />
-            <input class="ui-input" type="color" value="#ff0000" />
-            <button class="ui-btn disabled" type="button" disabled>Submit</button>
-          </div>
-          <div class="editor__item">
-            <button class="ui-btn" id="btn-generate" type="button" title="Generate 100 random car">
-              Generate
-            </button>
-          </div>
-        </section>
-        <section class="main__section-container">
-          <h2 class="section-caption">Race control</h2>
-          <div class="controls-container">
-            <button class="ui-btn" type="button">Start</button>
-            <button class="ui-btn" type="button">Reset</button>
-          </div>
-        </section>
-        <section class="main__section-container">
-          <h2 class="section-caption">Garage (<span>XX</span>)</h2>
-          <div class="list__container">
-            <!-- Tracks list -->
-            <ul class="tracks-table">
-              <li class="tracks-table__container"></li>
-              <li class="tracks-table__container"></li>
-              <li class="tracks-table__container"></li>
-            </ul>
-            <!-- Winners list -->
-            <ul class="winners-table">
-              <li class="winners-table__header"></li>
-              <li class="winners-table__line"></li>
-              <li class="winners-table__line"></li>
-            </ul>
-          </div>
-          <div class="list__controls">
-            <div class="controls-container">
-              <button class="ui-btn" type="button">prev</button>
-              <button class="ui-btn" type="button">next</button>
-              <p class="ui-caption">Page X</p>
+        <section id="garage-section">
+          <section class="main__section-container">
+            <h2 class="section-caption">Car editor</h2>
+            <div class="editor__item">
+              <h3 class="ui-caption">Create</h3>
+              <input class="ui-input" type="text" placeholder="Type name" />
+              <input class="ui-input" type="color" value="#ff0000" />
+              <button class="ui-btn" type="button">Submit</button>
             </div>
-          </div>
+            <div class="editor__item">
+              <h3 class="ui-caption">Update</h3>
+              <input class="ui-input" type="text" placeholder="Change name" />
+              <input class="ui-input" type="color" value="#ff0000" />
+              <button class="ui-btn disabled" type="button" disabled>Submit</button>
+            </div>
+            <div class="editor__item">
+              <button
+                class="ui-btn"
+                id="btn-generate"
+                type="button"
+                title="Generate 100 random car"
+              >
+                Generate
+              </button>
+            </div>
+          </section>
+          <section class="main__section-container">
+            <h2 class="section-caption">Race control</h2>
+            <div class="controls-container">
+              <button class="ui-btn" type="button">Start</button>
+              <button class="ui-btn" type="button">Reset</button>
+            </div>
+          </section>
+          <section class="main__section-container">
+            <h2 class="section-caption">
+              Garage (<span class="section-caption" id="cars-list-size">XX</span>)
+            </h2>
+            <div class="list__container">
+              <ul class="tracks-table">
+                <li class="tracks-table__container">
+                  <div>
+                    <div class="track-btn-container">
+                      <button class="ui-btn" type="button">Select</button>
+                      <button class="ui-btn" type="button">Delete</button>
+                    </div>
+                    <div class="track-btn-container">
+                      <button class="ui-btn" type="button">Start</button>
+                      <button class="ui-btn" type="button">Stop</button>
+                    </div>
+                  </div>
+                  <div class="track">
+                    <h3 class="ui-caption">1. Tesla</h3>
+                    <div class="car" id="car3">
+                      <div class="car-body"></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="tracks-table__container">
+                  <div>
+                    <div class="track-btn-container">
+                      <button class="ui-btn" type="button">Select</button>
+                      <button class="ui-btn" type="button">Delete</button>
+                    </div>
+                    <div class="track-btn-container">
+                      <button class="ui-btn" type="button">Start</button>
+                      <button class="ui-btn" type="button">Stop</button>
+                    </div>
+                  </div>
+                  <div class="track">
+                    <h3 class="ui-caption">1. Tesla</h3>
+                    <div class="car" id="car3">
+                      <div class="car-body"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list__controls">
+              <div class="controls-container">
+                <button class="ui-btn" type="button">prev</button>
+                <button class="ui-btn" type="button">next</button>
+                <p class="ui-caption">page: X</p>
+              </div>
+            </div>
+          </section>
         </section>
+        <section id="winners-section"></section>
       </main>
     </div>
   </body>
