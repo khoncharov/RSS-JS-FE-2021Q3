@@ -115,6 +115,14 @@ body {
   background-color: $clr-ctrl-pressed;
 }
 
+.ui-btn:disabled,
+.ui-input:disabled {
+  color: $clr-font-disabled;
+  border: 1px solid $clr-ctrl;
+  background-color: white;
+  cursor: not-allowed;
+}
+
 .ui-input {
   padding: 3px 10px;
   @include font($font-prime, $font-s);
@@ -127,13 +135,6 @@ body {
 .ui-input:focus {
   border: 1px solid $clr-ctrl-pressed;
   background-color: white;
-}
-
-.disabled {
-  color: $clr-font-disabled;
-  border: 1px solid $clr-ctrl;
-  background-color: white;
-  cursor: not-allowed;
 }
 
 .ui-caption {

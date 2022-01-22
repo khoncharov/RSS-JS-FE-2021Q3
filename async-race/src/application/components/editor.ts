@@ -12,12 +12,12 @@ class Editor {
         </div>
         <div class="editor__item">
           <h3 class="ui-caption">Update</h3>
-          <input class="ui-input" type="text" placeholder="Change name" />
-          <input class="ui-input" type="color" value="#ff0000" />
-          <button class="ui-btn disabled" type="button" disabled>Submit</button>
+          <input class="ui-input" type="text" placeholder="Change name" disabled/>
+          <input class="ui-input" type="color" value="#ff0000" disabled/>
+          <button class="ui-btn" type="button" disabled>Submit</button>
         </div>
         <div class="editor__item">
-          <button class="ui-btn" id="btn-generate" type="button" title="Generate 100 random car">
+          <button class="ui-btn" id="generate-new-cars-btn" type="button" title="Generate 100 random car">
             Generate
           </button>
         </div>`;

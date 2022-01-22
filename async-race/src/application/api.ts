@@ -1,4 +1,6 @@
+import { updateCarsList, updateTotalCarsNumber } from './app-state/garage-list-slice';
 import { c } from './const';
+import { store } from './store';
 import { Car, CarsList } from './types';
 
 export enum APISource {
@@ -9,23 +11,22 @@ export enum APISource {
 
 const ORIGIN = 'http://127.0.0.1:3000';
 
-export const getCarsList = async (
-  page: number,
-  limit: number = c.CARS_PER_PAGE_LIMIT
-): Promise<CarsList> => {
+export const getCarsList = async (): Promise<void> => {
   const options = {
     method: 'GET',
   };
   try {
+    const currentPage = store.getState().garage.currentPage;
     const url = new URL(ORIGIN);
     url.pathname = APISource.Garage;
-    url.search = `_page=${page}&_limit=${limit}`;
+    url.search = `_page=${currentPage}&_limit=${c.CARS_PER_PAGE_LIMIT}`;
     const response = await fetch(url.href, options);
-    const data = await response.json();
-    return data;
+    const carsList = (await response.json()) as CarsList;
+    const totalCount = response.headers.get('X-Total-Count') as string;
+    store.dispatch(updateCarsList(carsList));
+    store.dispatch(updateTotalCarsNumber(+totalCount));
   } catch (err) {
     console.log('Error getting cars list', err);
-    return [];
   }
 };
 

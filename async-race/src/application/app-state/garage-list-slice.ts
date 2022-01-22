@@ -9,12 +9,8 @@ interface GarageListState {
 
 const initialState: GarageListState = {
   currentPage: 1,
-  carsList: [
-    { id: 22, name: 'MAZ', color: '#ff00ff' },
-    { id: 24, name: 'ZAZ', color: '#0000ff' },
-    { id: 25, name: 'PAZ', color: '#ff0000' },
-  ],
-  totalCarsNumber: 3, // ----------------------------------
+  carsList: [],
+  totalCarsNumber: 0,
 };
 
 const garageListSlice = createSlice({
