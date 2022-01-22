@@ -5,8 +5,8 @@ class CarItem {
     node.innerHTML = `    
       <div>
         <div class="track-btn-container">
-          <button class="ui-btn" type="button">Select</button>
-          <button class="ui-btn" type="button">Delete</button>
+          <button class="ui-btn" id="select-btn-${id}" type="button">Select</button>
+          <button class="ui-btn" id="delete-btn-${id}" type="button">Delete</button>
         </div>
         <div class="track-btn-container">
           <button class="ui-btn" type="button">Start</button>
