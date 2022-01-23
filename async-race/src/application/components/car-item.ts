@@ -9,14 +9,15 @@ class CarItem {
           <button class="ui-btn" id="delete-btn-${id}" type="button">Delete</button>
         </div>
         <div class="track-btn-container">
-          <button class="ui-btn" type="button">Start</button>
-          <button class="ui-btn" type="button">Stop</button>
+          <button class="ui-btn" type="button" id="start-engine-btn-${id}">Start</button>
+          <button class="ui-btn" type="button" id="stop-engine-btn-${id}" disabled>Stop</button>
         </div>
       </div>
       <div class="track">
         <h3 class="ui-caption">${id}. ${name}</h3>
-        <div class="car" id="car3">
+        <div class="car" id="car${id}">
           <div class="car-body" style="background-color: ${color};"></div>
+          <div class="dashboard"></div>
         </div>
       </div>`;
     return node;

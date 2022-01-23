@@ -5,8 +5,8 @@ class RaceControl {
     node.innerHTML = `    
       <h2 class="section-caption">Race control</h2>
       <div class="list__controls">
-        <button class="ui-btn" type="button">Start</button>
-        <button class="ui-btn" type="button">Reset</button>
+        <button class="ui-btn" type="button" id="start-race-btn">Start</button>
+        <button class="ui-btn" type="button" id="reset-race-btn" disabled>Reset</button>
       </div>`;
     return node;
   }

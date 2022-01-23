@@ -28,6 +28,32 @@ export function eventsHandler(e: Event): void {
     getPrevGaragePageHandler(sender);
   } else if (isBtnOfType('garage-next', sender.id)) {
     getNextGaragePageHandler(sender);
+  } else if (isBtnOfType('start-engine', sender.id)) {
+    // -----------------------------------------------------------------------------------
+    console.log(sender.id);
+    const carId = sender.id.split('-btn-')[1];
+    (document.querySelector(`#stop-engine-btn-${carId}`) as HTMLButtonElement).disabled = false;
+    const car = document.querySelector(`#car${carId}`) as HTMLDivElement;
+    console.log(carId);
+    car.style.animationName = 'car-movement';
+    car.style.animationFillMode = 'both';
+    car.style.animationTimingFunction = 'linear';
+    car.style.animationDuration = '5s';
+    car.style.animationPlayState = 'running';
+    // -----------------------------------------------------------------------------------
+  } else if (isBtnOfType('stop-engine', sender.id)) {
+    // -----------------------------------------------------------------------------------
+    console.log(sender.id);
+    const carId = sender.id.split('-btn-')[1];
+    const car = document.querySelector(`#car${carId}`) as HTMLDivElement;
+    car.style.animation = 'none';
+    // car.offsetHeight; /* trigger reflow */
+
+    // -----------------------------------------------------------------------------------
+  } else if (isBtnOfType('start-race', sender.id)) {
+    console.log(sender.id);
+  } else if (isBtnOfType('reset-race', sender.id)) {
+    console.log(sender.id);
   }
 }
 
@@ -107,7 +133,6 @@ async function getPrevGaragePageHandler(sender: HTMLButtonElement): Promise<void
     store.dispatch(updateCurrentPage(page - 1));
     await getCarsList();
     garageList.update();
-    garageList.update();
   }
   sender.disabled = false;
 }
@@ -119,7 +144,6 @@ async function getNextGaragePageHandler(sender: HTMLButtonElement): Promise<void
   if (page < pageCount) {
     store.dispatch(updateCurrentPage(page + 1));
     await getCarsList();
-    garageList.update();
     garageList.update();
   }
   sender.disabled = false;
