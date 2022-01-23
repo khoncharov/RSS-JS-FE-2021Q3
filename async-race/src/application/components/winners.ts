@@ -1,7 +1,7 @@
 import { winnersList } from './winners-list';
 
 class Winners {
-  async build(): Promise<HTMLElement> {
+  build(): HTMLElement {
     const node = document.createElement('section');
     node.id = 'winners-section';
     node.className = 'hidden';

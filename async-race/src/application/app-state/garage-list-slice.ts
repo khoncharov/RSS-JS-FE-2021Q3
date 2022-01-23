@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CarsList } from '../types';
+import { TCarsList } from '../types';
 
 interface GarageListState {
   currentPage: number;
   totalCarsNumber: number;
-  carsList: CarsList;
+  carsList: TCarsList;
 }
 
 const initialState: GarageListState = {
@@ -23,7 +23,7 @@ const garageListSlice = createSlice({
     updateTotalCarsNumber(state, action: PayloadAction<number>) {
       state.totalCarsNumber = action.payload;
     },
-    updateCarsList(state, action: PayloadAction<CarsList>) {
+    updateCarsList(state, action: PayloadAction<TCarsList>) {
       state.carsList = action.payload;
     },
   },

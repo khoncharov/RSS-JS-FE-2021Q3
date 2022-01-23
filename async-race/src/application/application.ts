@@ -3,16 +3,17 @@ import { garage } from './components/garage';
 import { garageList } from './components/garage-list';
 import { navbar } from './components/navigation';
 import { winners } from './components/winners';
+import { winnersList } from './components/winners-list';
 import { eventsHandler } from './events';
 
 class Application {
   protected page = document.querySelector('#app') as HTMLDivElement;
 
-  async init(): Promise<void> {
-    await this.createPage();
+  init(): void {
+    this.createPage();
   }
 
-  async createPage(): Promise<void> {
+  createPage(): void {
     this.page.innerHTML = '';
 
     const header = document.createElement('header');
@@ -21,7 +22,7 @@ class Application {
 
     const main = document.createElement('main');
     main.className = 'main';
-    main.append(await garage.build(), await winners.build());
+    main.append(garage.build(), winners.build());
 
     this.page.append(header, main);
 
@@ -31,6 +32,7 @@ class Application {
     window.addEventListener('load', async () => {
       await getCarsList();
       garageList.update();
+      winnersList.update();
     });
   }
 }

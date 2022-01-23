@@ -1,4 +1,4 @@
-import { Car } from '../types';
+import { ICar } from '../types';
 
 class Editor {
   build(): HTMLElement {
@@ -27,9 +27,9 @@ class Editor {
     return node;
   }
 
-  updateCarChangeForm(car: Car): void {
+  updateCarChangeForm(car: ICar): void {
     if (Object.keys(car).length > 0) {
-      const selected = car as Car;
+      const selected = car as ICar;
       const node = document.querySelector('#editor-update-car-form') as HTMLDivElement;
       node.innerHTML = '';
       node.innerHTML = `

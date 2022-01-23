@@ -1,8 +1,8 @@
-import { Car } from '../types';
+import { ICar } from '../types';
 import { carsBrands } from './cars-brands';
 import { carsModels } from './cars-models';
 
-type NewCar = Omit<Car, 'id'>;
+type NewCar = Omit<ICar, 'id'>;
 type NewCarsList = NewCar[];
 
 const randomIndex = (arr: Array<string>): number => Math.floor(Math.random() * arr.length);

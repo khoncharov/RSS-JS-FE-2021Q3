@@ -1,7 +1,7 @@
 import { updateCarsList, updateTotalCarsNumber } from './app-state/garage-list-slice';
 import { c } from './const';
 import { store } from './store';
-import { Car, CarsList } from './types';
+import { ICar, TCarsList } from './types';
 
 enum APISource {
   Garage = 'garage',
@@ -9,7 +9,7 @@ enum APISource {
   Engine = 'engine',
 }
 
-type TCarProp = Omit<Car, 'id'>;
+type TCarProp = Omit<ICar, 'id'>;
 
 const ORIGIN = 'http://127.0.0.1:3000';
 
@@ -23,7 +23,7 @@ export const getCarsList = async (): Promise<void> => {
     url.pathname = APISource.Garage;
     url.search = `_page=${currentPage}&_limit=${c.CARS_PER_PAGE_LIMIT}`;
     const response = await fetch(url.href, options);
-    const carsList = (await response.json()) as CarsList;
+    const carsList = (await response.json()) as TCarsList;
     const totalCount = response.headers.get('X-Total-Count') as string;
     store.dispatch(updateCarsList(carsList));
     store.dispatch(updateTotalCarsNumber(+totalCount));
@@ -32,7 +32,7 @@ export const getCarsList = async (): Promise<void> => {
   }
 };
 
-export const getCar = async (id: number): Promise<CarsList> => {
+export const getCar = async (id: number): Promise<TCarsList> => {
   const options = {
     method: 'GET',
   };
@@ -41,7 +41,7 @@ export const getCar = async (id: number): Promise<CarsList> => {
     url.pathname = APISource.Garage;
     url.search = `id=${id}`;
     const response = await fetch(url.href, options);
-    const data = (await response.json()) as CarsList;
+    const data = (await response.json()) as TCarsList;
     return data;
   } catch (err) {
     console.log('Error getting car', err);
@@ -49,7 +49,7 @@ export const getCar = async (id: number): Promise<CarsList> => {
   }
 };
 
-export const createCar = async (name: string, color: string): Promise<Car | object> => {
+export const createCar = async (name: string, color: string): Promise<ICar | object> => {
   const newCar: TCarProp = {
     name,
     color,
@@ -65,7 +65,7 @@ export const createCar = async (name: string, color: string): Promise<Car | obje
     const url = new URL(ORIGIN);
     url.pathname = APISource.Garage;
     const response = await fetch(url.href, options);
-    const data = (await response.json()) as Car;
+    const data = (await response.json()) as ICar;
     return data;
   } catch (err) {
     console.log('Error creating new car', err);
@@ -86,7 +86,7 @@ export const deleteCar = async (id: number): Promise<void> => {
   }
 };
 
-export const updateCar = async (id: number, name: string, color: string): Promise<CarsList> => {
+export const updateCar = async (id: number, name: string, color: string): Promise<TCarsList> => {
   const updatedCar: TCarProp = {
     name,
     color,
@@ -102,7 +102,7 @@ export const updateCar = async (id: number, name: string, color: string): Promis
     const url = new URL(ORIGIN);
     url.pathname = APISource.Garage + `\\${id}`;
     const response = await fetch(url.href, options);
-    const data = (await response.json()) as Car;
+    const data = (await response.json()) as ICar;
     return [data];
   } catch (err) {
     console.log('Error updating car', err);
