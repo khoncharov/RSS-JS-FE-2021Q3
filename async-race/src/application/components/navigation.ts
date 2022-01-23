@@ -36,11 +36,9 @@ class Navigation {
     const winners = document.querySelector('#winners-section') as HTMLElement;
 
     if (isToGarageBtn && isHiddenSection(garage)) {
-      console.log('G'); // --------------------------------------------------------------------------
       garage.classList.remove('hidden');
       winners.classList.add('hidden');
     } else if (isToWinnersBtn && isHiddenSection(winners)) {
-      console.log('W'); // --------------------------------------------------------------------------
       winners.classList.remove('hidden');
       garage.classList.add('hidden');
     }
