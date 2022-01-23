@@ -25,11 +25,7 @@ const initialState: IWinnersListState = {
   totalWinnersNumber: 1,
   sort: SortBy.Id,
   order: SortOrder.Asc,
-  winnersList: [
-    { id: 1, wins: 5, time: 1.11 },
-    { id: 2, wins: 3, time: 3.14 },
-    { id: 3, wins: 1, time: 4.51 },
-  ],
+  winnersList: [],
 };
 
 const winnersListSlice = createSlice({
