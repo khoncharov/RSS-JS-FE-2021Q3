@@ -22,6 +22,7 @@ class GarageList {
 
     const listContainer = document.createElement('div');
     listContainer.className = 'list__container';
+
     const list = document.createElement('ul');
     list.className = 'tracks-table';
 
@@ -35,7 +36,7 @@ class GarageList {
     node.append(
       listHeader,
       listContainer,
-      listControls.build(listName.toLocaleLowerCase(), currentPage)
+      listControls.build(listName.toLocaleLowerCase(), currentPage, totalCarsNumber)
     );
   }
 }

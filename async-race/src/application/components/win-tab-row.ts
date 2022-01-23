@@ -1,9 +1,8 @@
-import { ICar, IWinner } from '../types';
+import { IWinner } from '../types';
 
 class WinnerTabRow {
-  build(winner: IWinner, car: ICar): HTMLElement {
-    const { id, winsCount, bestTime } = winner;
-    const { name, color } = car;
+  build(winner: IWinner): HTMLElement {
+    const { id, winsCount, bestTime, name, color } = winner;
     const node = document.createElement('tr');
     node.innerHTML = `
       <tr>
