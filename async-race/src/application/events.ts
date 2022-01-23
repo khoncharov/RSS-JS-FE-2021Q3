@@ -1,7 +1,9 @@
-import { createCar, deleteCar, getCar, getCarsList, updateCar } from './api';
+import { createCar, deleteCar, getCar, getCarsList, getWinnersList, updateCar } from './api';
 import { updateCurrentPage } from './app-state/garage-list-slice';
+import { updateCurrentTab } from './app-state/winners-list-slice';
 import { editor } from './components/editor';
 import { garageList } from './components/garage-list';
+import { winnersList } from './components/winners-list';
 import { c } from './const';
 import { store } from './store';
 import { utils } from './utils/utils';
@@ -30,6 +32,13 @@ export function eventsHandler(e: Event): void {
     getNextGaragePageHandler(sender);
   } else if (isBtnOfType('start-engine', sender.id)) {
     // -----------------------------------------------------------------------------------
+    // const res = await changeEngineStatus(1, EngineStatus.Started);
+    // console.log(res instanceof Response);
+    // if (res instanceof Response && res.status === 200) {
+    //   console.log('data >', await res.json());
+    // } else if (res instanceof Response && res.status === 500) {
+    //   console.log('data >', await res.json());
+    // }
     console.log(sender.id);
     const carId = sender.id.split('-btn-')[1];
     (document.querySelector(`#stop-engine-btn-${carId}`) as HTMLButtonElement).disabled = false;
@@ -43,17 +52,27 @@ export function eventsHandler(e: Event): void {
     // -----------------------------------------------------------------------------------
   } else if (isBtnOfType('stop-engine', sender.id)) {
     // -----------------------------------------------------------------------------------
+    // const res = await changeEngineStatus(1, EngineStatus.Drive);
+    // if (res instanceof Response && res.status === 200) {
+    //   console.log('data >', await res.json());
+    // } else if (res instanceof Response && res.status === 500) {
+    //   console.log('data>', res);
+    //   console.log('data 500 >', await res.json());
+    // }
     console.log(sender.id);
     const carId = sender.id.split('-btn-')[1];
     const car = document.querySelector(`#car${carId}`) as HTMLDivElement;
     car.style.animation = 'none';
-    // car.offsetHeight; /* trigger reflow */
 
     // -----------------------------------------------------------------------------------
   } else if (isBtnOfType('start-race', sender.id)) {
     console.log(sender.id);
   } else if (isBtnOfType('reset-race', sender.id)) {
     console.log(sender.id);
+  } else if (isBtnOfType('winners-prev', sender.id)) {
+    getPrevWinnersTabHandler(sender);
+  } else if (isBtnOfType('winners-next', sender.id)) {
+    getNextWinnersTabHandler(sender);
   }
 }
 
@@ -121,7 +140,9 @@ async function selectCarHandler(sender: HTMLButtonElement): Promise<void> {
   const carId = +sender.id.split('-')[2];
   sender.disabled = true;
   const carList = await getCar(carId);
-  editor.updateCarChangeForm(carList[0]);
+  if (carList) {
+    editor.updateCarChangeForm(carList[0]);
+  }
   sender.disabled = false;
   garageList.update();
 }
@@ -145,6 +166,33 @@ async function getNextGaragePageHandler(sender: HTMLButtonElement): Promise<void
     store.dispatch(updateCurrentPage(page + 1));
     await getCarsList();
     garageList.update();
+  }
+  sender.disabled = false;
+}
+
+/* Winners */
+
+async function getPrevWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
+  sender.disabled = true;
+  const page = store.getState().winners.currentTab;
+  if (page > 1) {
+    store.dispatch(updateCurrentTab(page - 1));
+    await getWinnersList();
+    winnersList.update();
+  }
+  sender.disabled = false;
+}
+
+async function getNextWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
+  sender.disabled = true;
+  const page = store.getState().winners.currentTab;
+  const pageCount = Math.ceil(
+    store.getState().winners.totalWinnersNumber / c.WINNERS_PER_PAGE_LIMIT
+  );
+  if (page < pageCount) {
+    store.dispatch(updateCurrentTab(page + 1));
+    await getWinnersList();
+    winnersList.update();
   }
   sender.disabled = false;
 }

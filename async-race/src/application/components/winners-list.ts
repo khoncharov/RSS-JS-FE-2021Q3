@@ -11,7 +11,7 @@ class WinnersList {
   }
 
   async update(): Promise<void> {
-    const { currentPage, totalWinnersNumber, winnersList } = store.getState().winners;
+    const { currentTab, totalWinnersNumber, winnersList } = store.getState().winners;
     const tabName = 'Winners';
     const node = document.querySelector('#winners-tab-section') as HTMLElement;
     node.innerHTML = '';
@@ -27,8 +27,8 @@ class WinnersList {
     tab.innerHTML = `
       <thead id="winners-tabhead">
         <tr>
-          <th>Id</th>
-          <th>Name</th>
+          <th id="winner-id-col-tabhead">Id</th>
+          <th class="winner-name-col-tabhead">Name</th>
           <th>Color</th>
           <th id="wins-col-tabhead">Wins</th>
           <th id="time-col-tabhead">Best time, (s)</th>
@@ -49,7 +49,7 @@ class WinnersList {
     node.append(
       tabHeader,
       tabContainer,
-      listControls.build(tabName.toLocaleLowerCase(), currentPage, totalWinnersNumber)
+      listControls.build(tabName.toLocaleLowerCase(), currentTab, totalWinnersNumber)
     );
   }
 }

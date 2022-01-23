@@ -24,17 +24,20 @@ td {
   padding: 2px 5px;
 }
 
+#winner-id-col-tabhead,
 #wins-col-tabhead,
 #time-col-tabhead {
   cursor: pointer;
   transition: 0.4s;
 }
 
+#winner-id-col-tabhead:hover,
 #wins-col-tabhead:hover,
 #time-col-tabhead:hover {
   background-color: $clr-ctrl-hover;
 }
 
+#winner-id-col-tabhead:active,
 #wins-col-tabhead:active,
 #time-col-tabhead:active {
   background-color: $clr-ctrl-pressed;
@@ -45,4 +48,8 @@ td {
   background-color: white;
   width: 36px;
   height: 22px;
+}
+
+.winner-name-col-tabhead {
+  min-width: 200px;
 }

@@ -13,7 +13,7 @@ enum SortOrder {
 }
 
 interface IWinnersListState {
-  currentPage: number;
+  currentTab: number;
   totalWinnersNumber: number;
   winnersList: TWinnersList;
   sort: SortBy;
@@ -21,7 +21,7 @@ interface IWinnersListState {
 }
 
 const initialState: IWinnersListState = {
-  currentPage: 1,
+  currentTab: 1,
   totalWinnersNumber: 1,
   sort: SortBy.Id,
   order: SortOrder.Asc,
@@ -36,8 +36,8 @@ const winnersListSlice = createSlice({
   name: 'winners',
   initialState,
   reducers: {
-    updateCurrentPage(state, action: PayloadAction<number>) {
-      state.currentPage = action.payload;
+    updateCurrentTab(state, action: PayloadAction<number>) {
+      state.currentTab = action.payload;
     },
     updateTotalWinnersNumber(state, action: PayloadAction<number>) {
       state.totalWinnersNumber = action.payload;
@@ -56,7 +56,7 @@ const winnersListSlice = createSlice({
 });
 
 export const {
-  updateCurrentPage,
+  updateCurrentTab,
   updateTotalWinnersNumber,
   updateSortType,
   updateOrder,

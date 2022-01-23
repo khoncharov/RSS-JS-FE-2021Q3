@@ -4,16 +4,20 @@ import { IWinner } from '../types';
 class WinnerTabRow {
   async build(winner: IWinner): Promise<HTMLElement> {
     const { id, wins, time } = winner;
-    const carInfo = await getCar(id);
     const node = document.createElement('tr');
-    node.innerHTML = `
+    const data = await getCar(id);
+    if (data) {
+      const carInfo = data[0];
+
+      node.innerHTML = `
       <tr>
         <td>${id}</td>
-        <td>${carInfo[0].name}</td>
-        <td><input class="car-color" type="color" value="${carInfo[0].color}" disabled /></td>
+        <td>${carInfo.name}</td>
+        <td><input class="car-color" type="color" value="${carInfo.color}" disabled /></td>
         <td>${wins}</td>
         <td>${time}</td>
       </tr>`;
+    }
 
     return node;
   }

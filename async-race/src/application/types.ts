@@ -6,9 +6,9 @@ export interface ICar {
 
 export type TCarsList = ICar[];
 
-export enum EngineMode {
+export enum EngineStatus {
   Started = 'started',
-  Stop = 'stop',
+  Stop = 'stopped',
   Drive = 'drive',
 }
 
