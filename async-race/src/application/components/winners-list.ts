@@ -10,7 +10,7 @@ class WinnersList {
     return node;
   }
 
-  update(): void {
+  async update(): Promise<void> {
     const { currentPage, totalWinnersNumber, winnersList } = store.getState().winners;
     const tabName = 'Winners';
     const node = document.querySelector('#winners-tab-section') as HTMLElement;
@@ -38,9 +38,10 @@ class WinnersList {
     const tabBoby = document.createElement('tbody');
 
     if (winnersList.length) {
-      winnersList.forEach((winner) => {
-        tabBoby.append(winnerTabRow.build(winner));
-      });
+      for (const winner of winnersList) {
+        const tabRowNode = await winnerTabRow.build(winner);
+        tabBoby.append(tabRowNode);
+      }
     }
 
     tab.append(tabBoby);

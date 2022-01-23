@@ -8,6 +8,3 @@ export const store = configureStore({
     winners: winnersReducer,
   },
 });
-
-// logging -----------------------------------------------------------------------------------
-store.subscribe(() => console.log(store.getState()));
