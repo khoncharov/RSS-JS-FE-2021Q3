@@ -2,7 +2,7 @@ import { updateCarsList, updateTotalCarsNumber } from './app-state/garage-list-s
 import { updateTotalWinnersNumber, updateWinnersList } from './app-state/winners-list-slice';
 import { c } from './const';
 import { store } from './store';
-import { ICar, TCarsList, TWinnersList } from './types';
+import { ICar, IWinner, TCarsList, TWinnersList } from './types';
 
 enum APISource {
   Garage = 'garage',
@@ -136,80 +136,91 @@ export const getWinnersList = async (): Promise<void> => {
   }
 };
 
-// export const getWinner = async (id: number): Promise<TCarsList> => {
-//   const options = {
-//     method: 'GET',
-//   };
-//   try {
-//     const url = new URL(ORIGIN);
-//     url.pathname = APISource.Garage;
-//     url.search = `id=${id}`;
-//     const response = await fetch(url.href, options);
-//     const data = (await response.json()) as TCarsList;
-//     return data;
-//   } catch (err) {
-//     console.log('Error getting car', err);
-//     return [];
-//   }
-// };
+export const getWinner = async (id: number): Promise<TWinnersList> => {
+  const options = {
+    method: 'GET',
+  };
+  try {
+    const url = new URL(ORIGIN);
+    url.pathname = APISource.Winners + `\\${id}`;
+    const response = await fetch(url.href, options);
+    const data = (await response.json()) as IWinner;
+    return [data];
+  } catch (err) {
+    console.log('Error getting car', err);
+    return [];
+  }
+};
 
-// export const createWinner = async (name: string, color: string): Promise<TCarsList> => {
-//   const newCar: TCarProp = {
-//     name,
-//     color,
-//   };
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(newCar),
-//   };
-//   try {
-//     const url = new URL(ORIGIN);
-//     url.pathname = APISource.Garage;
-//     const response = await fetch(url.href, options);
-//     const data = (await response.json()) as ICar;
-//     return [data];
-//   } catch (err) {
-//     console.log('Error creating new car', err);
-//     return [];
-//   }
-// };
+export const createWinner = async (
+  id: number,
+  wins: number,
+  time: number
+): Promise<TWinnersList> => {
+  const newWinner: IWinner = {
+    id,
+    wins,
+    time,
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newWinner),
+  };
+  try {
+    const url = new URL(ORIGIN);
+    url.pathname = APISource.Winners;
+    const response = await fetch(url.href, options);
+    const data = (await response.json()) as IWinner;
+    return [data];
+  } catch (err) {
+    console.log('Error creating new car', err);
+    return [];
+  }
+};
 
-// export const deleteWinner = async (id: number): Promise<void> => {
-//   const options = {
-//     method: 'DELETE',
-//   };
-//   try {
-//     const url = new URL(ORIGIN);
-//     url.pathname = APISource.Garage + `\\${id}`;
-//     await fetch(url.href, options);
-//   } catch (err) {
-//     console.log('Error deleting car', err);
-//   }
-// };
+export const deleteWinner = async (id: number): Promise<void> => {
+  const options = {
+    method: 'DELETE',
+  };
+  try {
+    const url = new URL(ORIGIN);
+    url.pathname = APISource.Winners + `\\${id}`;
+    const response = await fetch(url.href, options);
+    console.log(response);
+  } catch (err) {
+    console.log('Error deleting car', err);
+  }
+};
 
-// export const updateWinner = async (id: number, name: string, color: string): Promise<TCarsList> => {
-//   const updatedCar: TCarProp = {
-//     name,
-//     color,
-//   };
-//   const options = {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(updatedCar),
-//   };
-//   try {
-//     const url = new URL(ORIGIN);
-//     url.pathname = APISource.Garage + `\\${id}`;
-//     const response = await fetch(url.href, options);
-//     const data = (await response.json()) as ICar;
-//     return [data];
-//   } catch (err) {
-//     console.log('Error updating car', err);
-//     return [];
-//   }
-// };
+export const updateWinner = async (
+  id: number,
+  wins: number,
+  time: number
+): Promise<TWinnersList> => {
+  const updatedWinner: Omit<IWinner, 'id'> = {
+    wins,
+    time,
+  };
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedWinner),
+  };
+  try {
+    const url = new URL(ORIGIN);
+    url.pathname = APISource.Winners + `\\${id}`;
+    const response = await fetch(url.href, options);
+    const data = (await response.json()) as IWinner;
+    return [data];
+  } catch (err) {
+    console.log('Error updating winner', err);
+    return [];
+  }
+};
+
+/* Engine */
