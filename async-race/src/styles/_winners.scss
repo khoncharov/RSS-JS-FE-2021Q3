@@ -1,0 +1,48 @@
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid $clr-ctrl-hover;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+th {
+  @include font($font-prime, $font-m, $font-weight: $font-weight-bold);
+  padding: 2px 10px;
+}
+
+td {
+  @include font($font-prime, $font-m);
+  padding: 2px 5px;
+}
+
+#wins-col-tabhead,
+#time-col-tabhead {
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#wins-col-tabhead:hover,
+#time-col-tabhead:hover {
+  background-color: $clr-ctrl-hover;
+}
+
+#wins-col-tabhead:active,
+#time-col-tabhead:active {
+  background-color: $clr-ctrl-pressed;
+}
+
+.car-color {
+  border: none;
+  background-color: white;
+  width: 36px;
+  height: 22px;
+}
