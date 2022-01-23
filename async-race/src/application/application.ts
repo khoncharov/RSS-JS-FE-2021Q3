@@ -1,4 +1,4 @@
-import { getCarsList } from './api';
+import { getCarsList, getWinnersList } from './api';
 import { garage } from './components/garage';
 import { garageList } from './components/garage-list';
 import { navbar } from './components/navigation';
@@ -31,6 +31,7 @@ class Application {
     window.addEventListener('click', eventsHandler);
     window.addEventListener('load', async () => {
       await getCarsList();
+      await getWinnersList();
       garageList.update();
       winnersList.update();
     });

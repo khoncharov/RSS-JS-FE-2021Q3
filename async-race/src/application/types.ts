@@ -14,8 +14,8 @@ export enum EngineMode {
 
 export interface IWinner {
   id: number;
-  winsCount: number;
-  bestTime: number;
+  wins: number;
+  time: number;
 }
 
 export type TWinnersList = IWinner[];

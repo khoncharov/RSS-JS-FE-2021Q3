@@ -26,9 +26,9 @@ const initialState: IWinnersListState = {
   sort: SortBy.Id,
   order: SortOrder.Asc,
   winnersList: [
-    { id: 1, winsCount: 5, bestTime: 1.11 },
-    { id: 2, winsCount: 3, bestTime: 3.14 },
-    { id: 3, winsCount: 1, bestTime: 4.51 },
+    { id: 1, wins: 5, time: 1.11 },
+    { id: 2, wins: 3, time: 3.14 },
+    { id: 3, wins: 1, time: 4.51 },
   ],
 };
 

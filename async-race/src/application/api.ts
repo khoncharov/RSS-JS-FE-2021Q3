@@ -127,6 +127,7 @@ export const getWinnersList = async (): Promise<void> => {
     const response = await fetch(url.href, options);
     const data = (await response.json()) as Omit<TWinnersList, 'name' | 'color'>;
     const totalCount = response.headers.get('X-Total-Count') as string;
+    console.log(data);
 
     store.dispatch(updateWinnersList(data));
     store.dispatch(updateTotalWinnersNumber(+totalCount));
