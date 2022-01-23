@@ -12,8 +12,7 @@ export enum EngineMode {
   Drive = 'drive',
 }
 
-export interface IWinner {
-  id: number;
+export interface IWinner extends ICar {
   winsCount: number;
   bestTime: number;
 }

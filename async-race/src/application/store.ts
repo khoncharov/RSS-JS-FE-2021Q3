@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import garageReducer from './app-state/garage-list-slice';
+import winnersReducer from './app-state/winners-list-slice';
 
 export const store = configureStore({
-  reducer: { garage: garageReducer },
+  reducer: {
+    garage: garageReducer,
+    winners: winnersReducer,
+  },
 });
 
 // logging -----------------------------------------------------------------------------------
