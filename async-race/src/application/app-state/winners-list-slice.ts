@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TWinnersList } from '../types';
 
-enum SortBy {
+export enum SortBy {
   Id = 'id',
   Wins = 'wins',
   Time = 'time',
 }
 
-enum SortOrder {
+export enum SortOrder {
   Asc = 'ASC',
   Desc = 'DESC',
 }

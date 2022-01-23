@@ -126,7 +126,6 @@ export const getWinnersList = async (): Promise<void> => {
     const response = await fetch(url.href, options);
     const data = (await response.json()) as Omit<TWinnersList, 'name' | 'color'>;
     const totalCount = response.headers.get('X-Total-Count') as string;
-    console.log(data);
 
     store.dispatch(updateWinnersList(data));
     store.dispatch(updateTotalWinnersNumber(+totalCount));
@@ -185,8 +184,7 @@ export const deleteWinner = async (id: number): Promise<void> => {
   try {
     const url = new URL(ORIGIN);
     url.pathname = APISource.Winners + `\\${id}`;
-    const response = await fetch(url.href, options);
-    console.log(response);
+    await fetch(url.href, options);
   } catch (err) {
     console.log('Error deleting car', err);
   }

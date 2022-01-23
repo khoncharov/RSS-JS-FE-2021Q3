@@ -1,6 +1,12 @@
 import { createCar, deleteCar, getCar, getCarsList, getWinnersList, updateCar } from './api';
 import { updateCurrentPage } from './app-state/garage-list-slice';
-import { updateCurrentTab } from './app-state/winners-list-slice';
+import {
+  SortBy,
+  SortOrder,
+  updateCurrentTab,
+  updateOrder,
+  updateSortType,
+} from './app-state/winners-list-slice';
 import { editor } from './components/editor';
 import { garageList } from './components/garage-list';
 import { winnersList } from './components/winners-list';
@@ -8,29 +14,24 @@ import { c } from './const';
 import { store } from './store';
 import { utils } from './utils/utils';
 
-const isBtnOfType = (type: string, idStr: string): boolean => {
-  const btnType = `${idStr.split('-btn')[0]}`;
-  return btnType === type;
-};
-
 export function eventsHandler(e: Event): void {
   const sender = e.target as HTMLButtonElement;
 
-  if (isBtnOfType('new-car-submit', sender.id)) {
+  if (utils.isBtnOfType('new-car-submit', sender.id)) {
     createCarHandler(sender);
-  } else if (isBtnOfType('update-car-submit', sender.id)) {
+  } else if (utils.isBtnOfType('update-car-submit', sender.id)) {
     updateCarHandler(sender);
-  } else if (isBtnOfType('generate-new-cars', sender.id)) {
+  } else if (utils.isBtnOfType('generate-new-cars', sender.id)) {
     genarateCarsHandler(sender);
-  } else if (isBtnOfType('delete', sender.id)) {
+  } else if (utils.isBtnOfType('delete', sender.id)) {
     deleteCarHandler(sender);
-  } else if (isBtnOfType('select', sender.id)) {
+  } else if (utils.isBtnOfType('select', sender.id)) {
     selectCarHandler(sender);
-  } else if (isBtnOfType('garage-prev', sender.id)) {
+  } else if (utils.isBtnOfType('garage-prev', sender.id)) {
     getPrevGaragePageHandler(sender);
-  } else if (isBtnOfType('garage-next', sender.id)) {
+  } else if (utils.isBtnOfType('garage-next', sender.id)) {
     getNextGaragePageHandler(sender);
-  } else if (isBtnOfType('start-engine', sender.id)) {
+  } else if (utils.isBtnOfType('start-engine', sender.id)) {
     // -----------------------------------------------------------------------------------
     // const res = await changeEngineStatus(1, EngineStatus.Started);
     // console.log(res instanceof Response);
@@ -50,7 +51,7 @@ export function eventsHandler(e: Event): void {
     car.style.animationDuration = '5s';
     car.style.animationPlayState = 'running';
     // -----------------------------------------------------------------------------------
-  } else if (isBtnOfType('stop-engine', sender.id)) {
+  } else if (utils.isBtnOfType('stop-engine', sender.id)) {
     // -----------------------------------------------------------------------------------
     // const res = await changeEngineStatus(1, EngineStatus.Drive);
     // if (res instanceof Response && res.status === 200) {
@@ -65,14 +66,20 @@ export function eventsHandler(e: Event): void {
     car.style.animation = 'none';
 
     // -----------------------------------------------------------------------------------
-  } else if (isBtnOfType('start-race', sender.id)) {
+  } else if (utils.isBtnOfType('start-race', sender.id)) {
     console.log(sender.id);
-  } else if (isBtnOfType('reset-race', sender.id)) {
+  } else if (utils.isBtnOfType('reset-race', sender.id)) {
     console.log(sender.id);
-  } else if (isBtnOfType('winners-prev', sender.id)) {
+  } else if (utils.isBtnOfType('winners-prev', sender.id)) {
     getPrevWinnersTabHandler(sender);
-  } else if (isBtnOfType('winners-next', sender.id)) {
+  } else if (utils.isBtnOfType('winners-next', sender.id)) {
     getNextWinnersTabHandler(sender);
+  } else if (sender.id === 'winner-id-col-tabhead') {
+    sortTableBy(SortBy.Id);
+  } else if (sender.id === 'wins-col-tabhead') {
+    sortTableBy(SortBy.Wins);
+  } else if (sender.id === 'time-col-tabhead') {
+    sortTableBy(SortBy.Time);
   }
 }
 
@@ -195,4 +202,21 @@ async function getNextWinnersTabHandler(sender: HTMLButtonElement): Promise<void
     winnersList.update();
   }
   sender.disabled = false;
+}
+
+async function sortTableBy(newSortType: SortBy): Promise<void> {
+  const currentSort = store.getState().winners.sort;
+  const currentOrder = store.getState().winners.order;
+  if (currentSort === newSortType) {
+    if (currentOrder === SortOrder.Asc) {
+      store.dispatch(updateOrder(SortOrder.Desc));
+    } else {
+      store.dispatch(updateOrder(SortOrder.Asc));
+    }
+  } else {
+    store.dispatch(updateSortType(newSortType));
+    store.dispatch(updateOrder(SortOrder.Asc));
+  }
+  await getWinnersList();
+  winnersList.update();
 }
