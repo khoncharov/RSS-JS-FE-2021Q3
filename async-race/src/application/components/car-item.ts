@@ -22,6 +22,24 @@ class CarItem {
       </div>`;
     return node;
   }
+
+  setRaceMode(isStarted: boolean, carId: number): void {
+    const btnSelect = document.querySelector(`#select-btn-${carId}`) as HTMLButtonElement;
+    const btnDelete = document.querySelector(`#delete-btn-${carId}`) as HTMLButtonElement;
+    const btnStart = document.querySelector(`#start-engine-btn-${carId}`) as HTMLButtonElement;
+    const btnStop = document.querySelector(`#stop-engine-btn-${carId}`) as HTMLButtonElement;
+    if (isStarted) {
+      btnSelect.disabled = true;
+      btnDelete.disabled = true;
+      btnStart.disabled = true;
+      btnStop.disabled = false;
+    } else {
+      btnSelect.disabled = false;
+      btnDelete.disabled = false;
+      btnStart.disabled = false;
+      btnStop.disabled = true;
+    }
+  }
 }
 
 export const carItem = new CarItem();
