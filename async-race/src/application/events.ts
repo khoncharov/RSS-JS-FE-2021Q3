@@ -1,24 +1,15 @@
+import { SortBy } from './app-state/winners-list-slice';
+import { raceCar } from './components/car';
 import {
-  createCar,
-  deleteCar,
-  deleteWinner,
-  getCar,
-  getCarsList,
-  getWinnersList,
-  updateCar,
-} from './api';
-import { updateCurrentPage } from './app-state/garage-list-slice';
-import {
-  SortBy,
-  SortOrder,
-  updateCurrentTab,
-  updateOrder,
-  updateSortType,
-} from './app-state/winners-list-slice';
-import { editor } from './components/editor';
-import { garageList } from './components/garage-list';
-import { winnersList } from './components/winners-list';
-import { c } from './const';
+  createCarHandler,
+  deleteCarHandler,
+  genarateCarsHandler,
+  getNextGaragePageHandler,
+  getPrevGaragePageHandler,
+  selectCarHandler,
+  updateCarHandler,
+} from './events/garage';
+import { getNextWinnersTabHandler, getPrevWinnersTabHandler, sortTableBy } from './events/winners';
 import { store } from './store';
 import { utils } from './utils/utils';
 
@@ -40,6 +31,7 @@ export function eventsHandler(e: Event): void {
   } else if (utils.isBtnOfType('garage-next', sender.id)) {
     getNextGaragePageHandler(sender);
   } else if (utils.isBtnOfType('start-engine', sender.id)) {
+    console.log('Individual RACE start', sender.id);
     // -----------------------------------------------------------------------------------
     // const res = await changeEngineStatus(1, EngineStatus.Started);
     // console.log(res instanceof Response);
@@ -48,18 +40,10 @@ export function eventsHandler(e: Event): void {
     // } else if (res instanceof Response && res.status === 500) {
     //   console.log('data >', await res.json());
     // }
-    console.log(sender.id);
-    const carId = sender.id.split('-btn-')[1];
-    (document.querySelector(`#stop-engine-btn-${carId}`) as HTMLButtonElement).disabled = false;
-    const car = document.querySelector(`#car${carId}`) as HTMLDivElement;
-    console.log(carId);
-    car.style.animationName = 'car-movement';
-    car.style.animationFillMode = 'both';
-    car.style.animationTimingFunction = 'linear';
-    car.style.animationDuration = '5s';
-    car.style.animationPlayState = 'running';
-    // -----------------------------------------------------------------------------------
+    const carId = +sender.id.split('-btn-')[1];
+    raceCar.start(carId, 5);
   } else if (utils.isBtnOfType('stop-engine', sender.id)) {
+    console.log('Individual RACE stop', sender.id);
     // -----------------------------------------------------------------------------------
     // const res = await changeEngineStatus(1, EngineStatus.Drive);
     // if (res instanceof Response && res.status === 200) {
@@ -68,16 +52,16 @@ export function eventsHandler(e: Event): void {
     //   console.log('data>', res);
     //   console.log('data 500 >', await res.json());
     // }
-    console.log(sender.id);
-    const carId = sender.id.split('-btn-')[1];
-    const car = document.querySelector(`#car${carId}`) as HTMLDivElement;
-    car.style.animation = 'none';
-
-    // -----------------------------------------------------------------------------------
+    const carId = +sender.id.split('-btn-')[1];
+    raceCar.stop(carId);
   } else if (utils.isBtnOfType('start-race', sender.id)) {
-    console.log(sender.id);
+    console.log('RACE start', sender.id);
+    const raceCarsList = store.getState().garage.carsList;
+    for (const car of raceCarsList) {
+      raceCar.start(car.id, +(Math.random() * 5).toPrecision(2));
+    }
   } else if (utils.isBtnOfType('reset-race', sender.id)) {
-    console.log(sender.id);
+    console.log('RACE stop', sender.id);
   } else if (utils.isBtnOfType('winners-prev', sender.id)) {
     getPrevWinnersTabHandler(sender);
   } else if (utils.isBtnOfType('winners-next', sender.id)) {
@@ -89,143 +73,4 @@ export function eventsHandler(e: Event): void {
   } else if (sender.id === 'time-col-tabhead') {
     sortTableBy(SortBy.Time);
   }
-}
-
-async function createCarHandler(sender: HTMLButtonElement): Promise<void> {
-  const inputName = document.querySelector('#new-car-name-input') as HTMLInputElement;
-  const newCarName = inputName.value;
-  if (newCarName) {
-    sender.disabled = true;
-    const inputColor = document.querySelector('#new-car-color-input') as HTMLInputElement;
-    const newCarColor = inputColor.value;
-    await createCar(newCarName, newCarColor);
-    inputName.value = '';
-    inputColor.value = '#ff0000';
-    await getCarsList();
-    garageList.update();
-    sender.disabled = false;
-  }
-}
-
-async function updateCarHandler(sender: HTMLButtonElement): Promise<void> {
-  const inputName = document.querySelector('#update-car-name-input') as HTMLInputElement;
-  const newCarName = inputName.value;
-  if (newCarName) {
-    sender.disabled = true;
-    const carId: number = +(sender.getAttribute('data-car-id') as string);
-    const inputColor = document.querySelector('#update-car-color-input') as HTMLInputElement;
-    const newCarColor = inputColor.value;
-    await updateCar(carId, newCarName, newCarColor);
-    await getCarsList();
-    garageList.update();
-    sender.disabled = false;
-    editor.disableCarChangeForm();
-  }
-}
-
-async function genarateCarsHandler(sender: HTMLButtonElement): Promise<void> {
-  const newCarsList = utils.getRandomCars(c.GENERATE_RANDOM_CARS_NUMBER);
-  sender.disabled = true;
-  await Promise.all(newCarsList.map((car) => createCar(car.name, car.color)));
-  await getCarsList();
-  garageList.update();
-  sender.disabled = false;
-}
-
-async function deleteCarHandler(sender: HTMLButtonElement): Promise<void> {
-  const carId = +sender.id.split('-')[2];
-  sender.disabled = true;
-  await deleteCar(carId);
-  await deleteWinner(carId);
-  await getCarsList();
-
-  const page = store.getState().garage.currentPage;
-  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / c.CARS_PER_PAGE_LIMIT);
-
-  if (page > pageCount) {
-    const newPage = page - 1 ? page - 1 : 1;
-    store.dispatch(updateCurrentPage(newPage));
-    await getCarsList();
-  }
-  garageList.update();
-
-  winnersList.update();
-}
-
-async function selectCarHandler(sender: HTMLButtonElement): Promise<void> {
-  const carId = +sender.id.split('-')[2];
-  sender.disabled = true;
-  const carList = await getCar(carId);
-  if (carList) {
-    editor.updateCarChangeForm(carList[0]);
-  }
-  sender.disabled = false;
-  garageList.update();
-}
-
-async function getPrevGaragePageHandler(sender: HTMLButtonElement): Promise<void> {
-  sender.disabled = true;
-  const page = store.getState().garage.currentPage;
-  if (page > 1) {
-    store.dispatch(updateCurrentPage(page - 1));
-    await getCarsList();
-    garageList.update();
-  }
-  sender.disabled = false;
-}
-
-async function getNextGaragePageHandler(sender: HTMLButtonElement): Promise<void> {
-  sender.disabled = true;
-  const page = store.getState().garage.currentPage;
-  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / c.CARS_PER_PAGE_LIMIT);
-  if (page < pageCount) {
-    store.dispatch(updateCurrentPage(page + 1));
-    await getCarsList();
-    garageList.update();
-  }
-  sender.disabled = false;
-}
-
-/* Winners */
-
-async function getPrevWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
-  sender.disabled = true;
-  const page = store.getState().winners.currentTab;
-  if (page > 1) {
-    store.dispatch(updateCurrentTab(page - 1));
-    await getWinnersList();
-    winnersList.update();
-  }
-  sender.disabled = false;
-}
-
-async function getNextWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
-  sender.disabled = true;
-  const page = store.getState().winners.currentTab;
-  const pageCount = Math.ceil(
-    store.getState().winners.totalWinnersNumber / c.WINNERS_PER_PAGE_LIMIT
-  );
-  if (page < pageCount) {
-    store.dispatch(updateCurrentTab(page + 1));
-    await getWinnersList();
-    winnersList.update();
-  }
-  sender.disabled = false;
-}
-
-async function sortTableBy(newSortType: SortBy): Promise<void> {
-  const currentSort = store.getState().winners.sort;
-  const currentOrder = store.getState().winners.order;
-  if (currentSort === newSortType) {
-    if (currentOrder === SortOrder.Asc) {
-      store.dispatch(updateOrder(SortOrder.Desc));
-    } else {
-      store.dispatch(updateOrder(SortOrder.Asc));
-    }
-  } else {
-    store.dispatch(updateSortType(newSortType));
-    store.dispatch(updateOrder(SortOrder.Asc));
-  }
-  await getWinnersList();
-  winnersList.update();
 }
