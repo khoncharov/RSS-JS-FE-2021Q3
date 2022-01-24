@@ -1,4 +1,12 @@
-import { createCar, deleteCar, deleteWinner, getCar, getCarsList, updateCar } from '../api';
+import {
+  createCar,
+  deleteCar,
+  deleteWinner,
+  getCar,
+  getCarsList,
+  getWinnersList,
+  updateCar,
+} from '../api';
 import { updateCurrentPage } from '../app-state/garage-list-slice';
 import { editor } from '../components/editor';
 import { garageList } from '../components/garage-list';
@@ -65,6 +73,7 @@ export async function deleteCarHandler(sender: HTMLButtonElement): Promise<void>
   }
   garageList.update();
 
+  await getWinnersList();
   winnersList.update();
 }
 

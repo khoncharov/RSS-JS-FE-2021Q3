@@ -134,7 +134,7 @@ export const getWinnersList = async (): Promise<void> => {
   }
 };
 
-export const getWinner = async (id: number): Promise<TWinnersList | void> => {
+export const getWinner = async (id: number): Promise<Response | void> => {
   const options = {
     method: 'GET',
   };
@@ -142,21 +142,16 @@ export const getWinner = async (id: number): Promise<TWinnersList | void> => {
     const url = new URL(ORIGIN);
     url.pathname = APISource.Winners + `\\${id}`;
     const response = await fetch(url.href, options);
-    const data = (await response.json()) as IWinner;
-    return [data];
+    return response;
   } catch (err) {
     console.log('Error getting car', err);
   }
 };
 
-export const createWinner = async (
-  id: number,
-  wins: number,
-  time: number
-): Promise<TWinnersList | void> => {
+export const createWinner = async (id: number, time: number): Promise<TWinnersList | void> => {
   const newWinner: IWinner = {
     id,
-    wins,
+    wins: 1,
     time,
   };
   const options = {
