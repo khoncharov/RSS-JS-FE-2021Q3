@@ -93,6 +93,7 @@ body {
 }
 
 .section-caption {
+  margin-bottom: 10px;
   @include font($font-prime, $font-m, $font-weight: $font-weight-bold);
 }
 
