@@ -7,7 +7,7 @@ interface ListControlsState {
 
 class ListControls {
   build(name: string, page: number, totalNumber: number): HTMLElement {
-    const { isDisabledPrevBtn, isDisabledNextBtn } = this.getControlsState(name, page, totalNumber);
+    const { isDisabledPrevBtn, isDisabledNextBtn } = this.evaluateState(name, page, totalNumber);
     const node = document.createElement('div');
     node.className = 'list__controls';
     node.innerHTML = `
@@ -33,7 +33,7 @@ class ListControls {
     return node;
   }
 
-  getControlsState(name: string, page: number, totalNumber: number): ListControlsState {
+  evaluateState(name: string, page: number, totalNumber: number): ListControlsState {
     let pageLimit = 1;
     if (name === 'garage') {
       pageLimit = c.CARS_PER_PAGE_LIMIT;
@@ -47,6 +47,14 @@ class ListControls {
       isDisabledPrevBtn,
       isDisabledNextBtn,
     };
+  }
+
+  setDisabled(prevState: boolean, nextState: boolean): void {
+    const prevBtn = document.querySelector('#garage-prev-btn') as HTMLButtonElement;
+    const nextBtn = document.querySelector('#garage-next-btn') as HTMLButtonElement;
+
+    prevBtn.disabled = prevState;
+    nextBtn.disabled = nextState;
   }
 }
 

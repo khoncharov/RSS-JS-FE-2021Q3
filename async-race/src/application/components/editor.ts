@@ -14,9 +14,9 @@ class Editor {
         </div>
         <div class="editor__item" id="editor-update-car-form">
           <h3 class="ui-caption">Update</h3>
-          <input class="ui-input" type="text" placeholder="Change name" disabled/>
-          <input class="ui-input" type="color" value="#ff0000" disabled/>
-          <button class="ui-btn" type="button" disabled>Submit</button>
+          <input class="ui-input" id="update-car-name-input" type="text" placeholder="Change name" disabled/>
+          <input class="ui-input" id="update-car-color-input" type="color" value="#ff0000" disabled/>
+          <button class="ui-btn" id="update-car-submit-btn" type="button" disabled>Submit</button>
         </div>
         <div class="editor__item">
           <button class="ui-btn" id="generate-new-cars-btn" type="button" title="Generate 100 random car">
@@ -41,13 +41,41 @@ class Editor {
   }
 
   disableCarChangeForm(): void {
-    const node = document.querySelector('#editor-update-car-form') as HTMLDivElement;
-    node.innerHTML = '';
-    node.innerHTML = `
-      <h3 class="ui-caption">Update</h3>
-      <input class="ui-input" type="text" placeholder="Change name" disabled/>
-      <input class="ui-input" type="color" value="#ff0000" disabled/>
-      <button class="ui-btn" type="button" disabled>Submit</button>`;
+    const inputEditName = document.querySelector('#update-car-name-input') as HTMLInputElement;
+    const inputEditColor = document.querySelector('#update-car-color-input') as HTMLInputElement;
+    const btnEditCarSubmit = document.querySelector(`#update-car-submit-btn`) as HTMLButtonElement;
+    inputEditName.value = '';
+    inputEditColor.value = '#ff0000';
+    inputEditName.disabled = true;
+    inputEditColor.disabled = true;
+    btnEditCarSubmit.disabled = true;
+  }
+
+  isDisabled(value: boolean): void {
+    const inputNewName = document.querySelector('#new-car-name-input') as HTMLInputElement;
+    const inputNewColor = document.querySelector('#new-car-color-input') as HTMLInputElement;
+    const btnNewCarSubmit = document.querySelector(`#new-car-submit-btn`) as HTMLButtonElement;
+    const inputEditName = document.querySelector('#update-car-name-input') as HTMLInputElement;
+    const inputEditColor = document.querySelector('#update-car-color-input') as HTMLInputElement;
+    const btnEditCarSubmit = document.querySelector(`#update-car-submit-btn`) as HTMLButtonElement;
+    const btnGenerate = document.querySelector(`#generate-new-cars-btn`) as HTMLButtonElement;
+    if (value) {
+      inputNewName.disabled = value;
+      inputNewColor.disabled = value;
+      btnNewCarSubmit.disabled = value;
+      inputEditName.disabled = value;
+      inputEditColor.disabled = value;
+      btnEditCarSubmit.disabled = value;
+      btnGenerate.disabled = value;
+    } else {
+      inputNewName.disabled = value;
+      inputNewColor.disabled = value;
+      btnNewCarSubmit.disabled = value;
+      inputEditName.disabled = !value;
+      inputEditColor.disabled = !value;
+      btnEditCarSubmit.disabled = !value;
+      btnGenerate.disabled = value;
+    }
   }
 }
 

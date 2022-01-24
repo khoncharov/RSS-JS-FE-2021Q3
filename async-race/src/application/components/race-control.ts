@@ -22,6 +22,13 @@ class RaceControl {
       btnStop.disabled = true;
     }
   }
+
+  setDisabled(): void {
+    const btnStart = document.querySelector(`#start-race-btn`) as HTMLButtonElement;
+    const btnStop = document.querySelector(`#reset-race-btn`) as HTMLButtonElement;
+    btnStart.disabled = true;
+    btnStop.disabled = true;
+  }
 }
 
 export const raceControl = new RaceControl();

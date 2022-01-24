@@ -2,6 +2,8 @@ import { changeEngineStatus, createWinner, getWinner, getWinnersList, updateWinn
 import { updateRaceWinner } from '../app-state/race-slice';
 import { raceCar } from '../components/car';
 import { carItem } from '../components/car-item';
+import { editor } from '../components/editor';
+import { listControls } from '../components/list-controls';
 import { raceControl } from '../components/race-control';
 import { winnersList } from '../components/winners-list';
 import { store } from '../store';
@@ -49,9 +51,11 @@ export async function resetIndividualRaceHandler(sender: HTMLButtonElement): Pro
 export async function startRaceHandler(): Promise<void> {
   const raceCarsList = store.getState().garage.carsList;
   if (raceCarsList.length > 0) {
-    raceControl.setRaceMode(true);
-
+    raceControl.setDisabled();
+    editor.isDisabled(true);
+    listControls.setDisabled(true, true);
     await Promise.all(raceCarsList.map((car) => startCar(car.id)));
+    raceControl.setRaceMode(true);
   }
 }
 
@@ -79,6 +83,21 @@ export async function resetRaceHandler(): Promise<void> {
 
   const raceCarsList = store.getState().garage.carsList;
   raceCarsList.map((car) => resetCar(car.id));
+
+  const winnerId = store.getState().winner.car.id;
+  if (winnerId !== -1) {
+    carItem.hideWinnerResult();
+  }
+  store.dispatch(updateRaceWinner({ id: -1, time: -1 }));
+  editor.isDisabled(false);
+
+  const { currentPage, totalCarsNumber } = store.getState().garage;
+  const { isDisabledPrevBtn, isDisabledNextBtn } = listControls.evaluateState(
+    'garage',
+    currentPage,
+    totalCarsNumber
+  );
+  listControls.setDisabled(isDisabledPrevBtn, isDisabledNextBtn);
 }
 
 async function startCar(id: number): Promise<void> {
@@ -108,11 +127,5 @@ async function resetCar(id: number): Promise<void> {
 
   if (res && res.status === 200) {
     raceCar.reset(id);
-  }
-
-  const winnerId = store.getState().winner.car.id;
-  if (winnerId !== -1) {
-    carItem.hideWinnerResult();
-    store.dispatch(updateRaceWinner({ id: -1, time: -1 }));
   }
 }

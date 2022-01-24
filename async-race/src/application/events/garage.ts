@@ -44,6 +44,9 @@ export async function updateCarHandler(sender: HTMLButtonElement): Promise<void>
     garageList.update();
     sender.disabled = false;
     editor.disableCarChangeForm();
+
+    await getWinnersList();
+    winnersList.update();
   }
 }
 
