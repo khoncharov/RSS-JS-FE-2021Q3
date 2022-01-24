@@ -9,10 +9,10 @@ import {
   updateCarHandler,
 } from './events/garage';
 import {
+  resetIndividualRaceHandler,
+  resetRaceHandler,
   startIndividualRaceHandler,
   startRaceHandler,
-  stopIndividualRaceHandler,
-  stopRaceHandler,
 } from './events/race';
 import { getNextWinnersTabHandler, getPrevWinnersTabHandler, sortTableBy } from './events/winners';
 import { utils } from './utils/utils';
@@ -37,11 +37,11 @@ export function eventsHandler(e: Event): void {
   } else if (utils.isBtnOfType('start-engine', sender.id)) {
     startIndividualRaceHandler(sender);
   } else if (utils.isBtnOfType('stop-engine', sender.id)) {
-    stopIndividualRaceHandler(sender);
+    resetIndividualRaceHandler(sender);
   } else if (utils.isBtnOfType('start-race', sender.id)) {
     startRaceHandler(sender);
   } else if (utils.isBtnOfType('reset-race', sender.id)) {
-    stopRaceHandler(sender);
+    resetRaceHandler(sender);
   } else if (utils.isBtnOfType('winners-prev', sender.id)) {
     getPrevWinnersTabHandler(sender);
   } else if (utils.isBtnOfType('winners-next', sender.id)) {

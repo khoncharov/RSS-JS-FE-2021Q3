@@ -1,32 +1,52 @@
+import { changeEngineStatus } from '../api';
 import { raceCar } from '../components/car';
 import { store } from '../store';
+import { EngineStatus } from '../types';
 
-export async function startIndividualRaceHandler(sender: HTMLButtonElement): Promise<void> {
-  console.log('Individual RACE start', sender.id);
-  // -----------------------------------------------------------------------------------
-  // const res = await changeEngineStatus(1, EngineStatus.Started);
-  // console.log(res instanceof Response);
-  // if (res instanceof Response && res.status === 200) {
-  //   console.log('data >', await res.json());
-  // } else if (res instanceof Response && res.status === 500) {
-  //   console.log('data >', await res.json());
-  // }
-  const carId = +sender.id.split('-btn-')[1];
-  raceCar.start(carId, 5);
+interface RaceParams {
+  velocity: number;
+  distance: number;
 }
 
-export async function stopIndividualRaceHandler(sender: HTMLButtonElement): Promise<void> {
-  console.log('Individual RACE stop', sender.id);
-  // -----------------------------------------------------------------------------------
-  // const res = await changeEngineStatus(1, EngineStatus.Drive);
-  // if (res instanceof Response && res.status === 200) {
-  //   console.log('data >', await res.json());
-  // } else if (res instanceof Response && res.status === 500) {
-  //   console.log('data>', res);
-  //   console.log('data 500 >', await res.json());
-  // }
+export async function startIndividualRaceHandler(sender: HTMLButtonElement): Promise<void> {
+  sender.disabled = true;
   const carId = +sender.id.split('-btn-')[1];
-  raceCar.stop(carId);
+
+  const res = await changeEngineStatus(carId, EngineStatus.Started);
+  console.log(res); // -----------------------------------------------------------
+
+  if (res && res.status === 200) {
+    const race = (await res.json()) as RaceParams;
+    const duration = race.distance / (race.velocity * 1000);
+    console.log('duration >', duration, ' => ', duration.toFixed(2)); // -----------------------------------------------------------
+
+    raceCar.start(carId, duration);
+
+    const driveRes = await changeEngineStatus(carId, EngineStatus.Drive);
+    if (driveRes && driveRes.status === 500) {
+      raceCar.stop(carId);
+    } else if (driveRes && driveRes.status === 200) {
+      console.log(await driveRes.json()); //--------------------------------------------------------------
+    }
+  } else {
+    sender.disabled = false;
+  }
+}
+
+export async function resetIndividualRaceHandler(sender: HTMLButtonElement): Promise<void> {
+  sender.disabled = true;
+  const carId = +sender.id.split('-btn-')[1];
+
+  const res = await changeEngineStatus(carId, EngineStatus.Stopped);
+  console.log(res); // -----------------------------------------------------------
+
+  if (res && res.status === 200) {
+    console.log(await res.json()); // -----------------------------------------------------------
+
+    raceCar.reset(carId);
+  } else {
+    sender.disabled = false;
+  }
 }
 
 export async function startRaceHandler(sender: HTMLButtonElement): Promise<void> {
@@ -37,6 +57,6 @@ export async function startRaceHandler(sender: HTMLButtonElement): Promise<void>
   }
 }
 
-export async function stopRaceHandler(sender: HTMLButtonElement): Promise<void> {
+export async function resetRaceHandler(sender: HTMLButtonElement): Promise<void> {
   console.log('RACE stop', sender.id);
 }

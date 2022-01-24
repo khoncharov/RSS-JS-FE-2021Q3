@@ -43,11 +43,6 @@
   position: relative;
   width: 100px;
   height: 60px;
-  animation: car-movement;
-  animation-timing-function: linear;
-  animation-fill-mode: both;
-  animation-duration: 1ms;
-  animation-play-state: paused;
 }
 
 .car-body {
@@ -66,14 +61,20 @@
   position: absolute;
   padding: 2px;
   line-height: 10px;
-  top: 16px;
+  top: 11px;
   left: 72px;
-  width: 20px;
-  height: 11px;
+  width: 27px;
+  height: 16px;
   color: #e74b4b;
   font-size: 10px;
   border: 1px solid #e74b4b;
   border-radius: 2px;
+
+  animation: check-engine;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  animation-play-state: running;
+  animation-iteration-count: infinite;
 }
 
 @keyframes car-movement {

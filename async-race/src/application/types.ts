@@ -8,7 +8,7 @@ export type TCarsList = ICar[];
 
 export enum EngineStatus {
   Started = 'started',
-  Stop = 'stopped',
+  Stopped = 'stopped',
   Drive = 'drive',
 }
 
