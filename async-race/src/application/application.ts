@@ -35,7 +35,6 @@ class Application {
       garageList.update();
       winnersList.update();
     });
-    window.addEventListener('animationend', (e) => console.log('animation ended by >', e.target));
   }
 }
 

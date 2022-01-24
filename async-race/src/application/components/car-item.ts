@@ -1,3 +1,5 @@
+import { store } from '../store';
+
 class CarItem {
   build(id: number, name: string, color: string): HTMLElement {
     const node = document.createElement('li');
@@ -19,6 +21,7 @@ class CarItem {
           <div class="car-body" style="background-color: ${color};"></div>
           <div class="dashboard"></div>
         </div>
+        <div class="winner-board" id="winner-board-${id}"></div>
       </div>`;
     return node;
   }
@@ -39,6 +42,22 @@ class CarItem {
       btnStart.disabled = false;
       btnStop.disabled = true;
     }
+  }
+
+  showWinnerResult(): void {
+    const { id, time } = store.getState().winner.car;
+    const board = document.querySelector(`#winner-board-${id}`) as HTMLDivElement;
+
+    board.textContent = `Winner! Time ${time} s`;
+    board.classList.add('winner-board_show');
+  }
+
+  hideWinnerResult(): void {
+    const { id } = store.getState().winner.car;
+    const board = document.querySelector(`#winner-board-${id}`) as HTMLDivElement;
+
+    board.textContent = ``;
+    board.classList.remove('winner-board_show');
   }
 }
 

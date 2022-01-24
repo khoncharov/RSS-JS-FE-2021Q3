@@ -97,3 +97,18 @@
     opacity: 0.3;
   }
 }
+
+.winner-board {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  @include font($font-additional, $font-l, $font-color: tomato, $font-weight: $font-weight-bold);
+  transform: translateX(300%);
+  opacity: 0;
+  transition: 0.2s ease-out;
+
+  &_show {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

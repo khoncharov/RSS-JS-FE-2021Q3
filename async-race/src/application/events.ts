@@ -39,9 +39,9 @@ export function eventsHandler(e: Event): void {
   } else if (utils.isBtnOfType('stop-engine', sender.id)) {
     resetIndividualRaceHandler(sender);
   } else if (utils.isBtnOfType('start-race', sender.id)) {
-    startRaceHandler(sender);
+    startRaceHandler();
   } else if (utils.isBtnOfType('reset-race', sender.id)) {
-    resetRaceHandler(sender);
+    resetRaceHandler();
   } else if (utils.isBtnOfType('winners-prev', sender.id)) {
     getPrevWinnersTabHandler(sender);
   } else if (utils.isBtnOfType('winners-next', sender.id)) {

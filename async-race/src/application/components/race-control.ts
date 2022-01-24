@@ -10,6 +10,18 @@ class RaceControl {
       </div>`;
     return node;
   }
+
+  setRaceMode(isStarted: boolean): void {
+    const btnStart = document.querySelector(`#start-race-btn`) as HTMLButtonElement;
+    const btnStop = document.querySelector(`#reset-race-btn`) as HTMLButtonElement;
+    if (isStarted) {
+      btnStart.disabled = true;
+      btnStop.disabled = false;
+    } else {
+      btnStart.disabled = false;
+      btnStop.disabled = true;
+    }
+  }
 }
 
 export const raceControl = new RaceControl();
