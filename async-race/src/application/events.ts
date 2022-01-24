@@ -1,4 +1,12 @@
-import { createCar, deleteCar, getCar, getCarsList, getWinnersList, updateCar } from './api';
+import {
+  createCar,
+  deleteCar,
+  deleteWinner,
+  getCar,
+  getCarsList,
+  getWinnersList,
+  updateCar,
+} from './api';
 import { updateCurrentPage } from './app-state/garage-list-slice';
 import {
   SortBy,
@@ -128,19 +136,20 @@ async function deleteCarHandler(sender: HTMLButtonElement): Promise<void> {
   const carId = +sender.id.split('-')[2];
   sender.disabled = true;
   await deleteCar(carId);
+  await deleteWinner(carId);
   await getCarsList();
 
   const page = store.getState().garage.currentPage;
   const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / c.CARS_PER_PAGE_LIMIT);
-  console.log(page, pageCount);
 
   if (page > pageCount) {
     const newPage = page - 1 ? page - 1 : 1;
     store.dispatch(updateCurrentPage(newPage));
     await getCarsList();
   }
-
   garageList.update();
+
+  winnersList.update();
 }
 
 async function selectCarHandler(sender: HTMLButtonElement): Promise<void> {

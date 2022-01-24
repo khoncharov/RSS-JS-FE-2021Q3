@@ -11,12 +11,22 @@ class ListControls {
     const node = document.createElement('div');
     node.className = 'list__controls';
     node.innerHTML = `
-      <button class="ui-btn" id="${name}-prev-btn" type="button" ${
-      isDisabledPrevBtn ? 'disabled' : ''
-    }>prev</button>
-      <button class="ui-btn" id="${name}-next-btn" type="button"  ${
-      isDisabledNextBtn ? 'disabled' : ''
-    }>next</button>
+      <button 
+        class="ui-btn"
+        id="${name}-prev-btn"
+        type="button" 
+        ${isDisabledPrevBtn ? 'disabled' : ''}
+      >
+        prev
+      </button>
+      <button 
+        class="ui-btn" 
+        id="${name}-next-btn" 
+        type="button"  
+        ${isDisabledNextBtn ? 'disabled' : ''}
+      >
+        next
+      </button>
       <p class="ui-caption">page: ${page}</p>`;
 
     node.append();
