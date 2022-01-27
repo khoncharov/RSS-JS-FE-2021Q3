@@ -22,7 +22,7 @@ interface IWinnersListState {
 
 const initialState: IWinnersListState = {
   currentTab: 1,
-  totalWinnersNumber: 1,
+  totalWinnersNumber: 0,
   sort: SortBy.Id,
   order: SortOrder.Asc,
   winnersList: [],
@@ -59,4 +59,3 @@ export const {
   updateWinnersList,
 } = winnersListSlice.actions;
 export default winnersListSlice.reducer;
-// ^^^ This way of exporting reducer doesn't provide autocomplite in vscode
