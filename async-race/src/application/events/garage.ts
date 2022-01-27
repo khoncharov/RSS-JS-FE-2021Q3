@@ -24,7 +24,7 @@ export async function createCarHandler(sender: HTMLButtonElement): Promise<void>
     const newCarColor = inputColor.value;
     await createCar(newCarName, newCarColor);
     inputName.value = '';
-    inputColor.value = '#ff0000';
+    inputColor.value = c.DEFAULT_COLOR;
     await getCarsList();
     garageList.update();
     sender.disabled = false;
