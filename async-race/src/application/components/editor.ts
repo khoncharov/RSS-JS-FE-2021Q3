@@ -60,23 +60,14 @@ class Editor {
     const inputEditColor = document.querySelector('#update-car-color-input') as HTMLInputElement;
     const btnEditCarSubmit = document.querySelector(`#update-car-submit-btn`) as HTMLButtonElement;
     const btnGenerate = document.querySelector(`#generate-new-cars-btn`) as HTMLButtonElement;
-    if (value) {
-      inputNewName.disabled = value;
-      inputNewColor.disabled = value;
-      btnNewCarSubmit.disabled = value;
-      inputEditName.disabled = value;
-      inputEditColor.disabled = value;
-      btnEditCarSubmit.disabled = value;
-      btnGenerate.disabled = value;
-    } else {
-      inputNewName.disabled = value;
-      inputNewColor.disabled = value;
-      btnNewCarSubmit.disabled = value;
-      inputEditName.disabled = !value;
-      inputEditColor.disabled = !value;
-      btnEditCarSubmit.disabled = !value;
-      btnGenerate.disabled = value;
-    }
+
+    inputNewName.disabled = value;
+    inputNewColor.disabled = value;
+    btnNewCarSubmit.disabled = value;
+    inputEditName.disabled = !value;
+    inputEditColor.disabled = !value;
+    btnEditCarSubmit.disabled = !value;
+    btnGenerate.disabled = value;
   }
 }
 
