@@ -19,44 +19,48 @@ import { getNextWinnersTabHandler, getPrevWinnersTabHandler, sortTableBy } from 
 export function eventsHandler(e: Event): void {
   const sender = e.target as HTMLButtonElement;
 
-  switch (sender.id) {
-    case 'new-car-submit-btn':
+  const key = sender.id.split('-btn')[0];
+
+  switch (key) {
+    case 'new-car-submit':
       createCarHandler(sender);
       break;
-    case 'update-car-submit-btn':
+    case 'update-car-submit':
       updateCarHandler(sender);
       break;
-    case 'generate-new-cars-btn':
+    case 'generate-new-cars':
       genarateCarsHandler(sender);
       break;
-    case 'delete-btn':
+    case 'delete':
+      console.log('> del');
+
       deleteCarHandler(sender);
       break;
-    case 'select-btn':
+    case 'select':
       selectCarHandler(sender);
       break;
-    case 'garage-prev-btn':
+    case 'garage-prev':
       getPrevGaragePageHandler(sender);
       break;
-    case 'garage-next-btn':
+    case 'garage-next':
       getNextGaragePageHandler(sender);
       break;
-    case 'start-engine-btn':
+    case 'start-engine':
       startIndividualRaceHandler(sender);
       break;
-    case 'stop-engine-btn':
+    case 'stop-engine':
       resetIndividualRaceHandler(sender);
       break;
-    case 'start-race-btn':
+    case 'start-race':
       startRaceHandler();
       break;
-    case 'reset-race-btn':
+    case 'reset-race':
       resetRaceHandler();
       break;
-    case 'winners-prev-btn':
+    case 'winners-prev':
       getPrevWinnersTabHandler(sender);
       break;
-    case 'winners-next-btn':
+    case 'winners-next':
       getNextWinnersTabHandler(sender);
       break;
     case 'winner-id-col-tabhead':
