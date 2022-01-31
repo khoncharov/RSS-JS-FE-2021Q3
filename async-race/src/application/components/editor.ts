@@ -29,16 +29,13 @@ class Editor {
   }
 
   updateCarChangeForm(car: ICar): void {
-    if (Object.keys(car).length > 0) {
-      const selected = car as ICar;
-      const node = document.querySelector('#editor-update-car-form') as HTMLDivElement;
-      node.innerHTML = '';
-      node.innerHTML = `
+    const node = document.querySelector('#editor-update-car-form') as HTMLDivElement;
+    node.innerHTML = '';
+    node.innerHTML = `
         <h3 class="ui-caption">Update</h3>
-        <input class="ui-input" id="update-car-name-input" type="text" placeholder="Change name" value="${selected.name}"/>
-        <input class="ui-input" id="update-car-color-input" type="color" value="${selected.color}"/>
-        <button class="ui-btn" type="button" id="update-car-submit-btn" data-car-id=${selected.id}>Submit</button>`;
-    }
+        <input class="ui-input" id="update-car-name-input" type="text" placeholder="Change name" value="${car.name}"/>
+        <input class="ui-input" id="update-car-color-input" type="color" value="${car.color}"/>
+        <button class="ui-btn" type="button" id="update-car-submit-btn" data-car-id=${car.id}>Submit</button>`;
   }
 
   disableCarChangeForm(): void {
