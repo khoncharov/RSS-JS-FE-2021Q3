@@ -1,5 +1,5 @@
 import { updateTotalWinnersNumber, updateWinnersList } from '../app-state/winners-list-slice';
-import { c, ORIGIN } from '../const';
+import { ORIGIN, WINNERS_PER_PAGE_LIMIT } from '../const';
 import { store } from '../store';
 import { APISource, IWinner, TWinnersList } from '../types';
 
@@ -11,7 +11,7 @@ export const getWinnersList = async (): Promise<void> => {
     const { currentTab, sort, order } = store.getState().winners;
     const url = new URL(ORIGIN);
     url.pathname = APISource.Winners;
-    url.search = `_page=${currentTab}&_limit=${c.WINNERS_PER_PAGE_LIMIT}&_sort=${sort}&_order=${order}`;
+    url.search = `_page=${currentTab}&_limit=${WINNERS_PER_PAGE_LIMIT}&_sort=${sort}&_order=${order}`;
     const response = await fetch(url.href, options);
     const data = (await response.json()) as Omit<TWinnersList, 'name' | 'color'>;
     const totalCount = response.headers.get('X-Total-Count') as string;

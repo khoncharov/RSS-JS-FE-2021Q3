@@ -7,7 +7,7 @@ import {
   updateSortType,
 } from '../app-state/winners-list-slice';
 import { winnersList } from '../components/winners-list';
-import { c } from '../const';
+import { WINNERS_PER_PAGE_LIMIT } from '../const';
 import { store } from '../store';
 
 export async function getPrevWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
@@ -24,9 +24,7 @@ export async function getPrevWinnersTabHandler(sender: HTMLButtonElement): Promi
 export async function getNextWinnersTabHandler(sender: HTMLButtonElement): Promise<void> {
   sender.disabled = true;
   const page = store.getState().winners.currentTab;
-  const pageCount = Math.ceil(
-    store.getState().winners.totalWinnersNumber / c.WINNERS_PER_PAGE_LIMIT
-  );
+  const pageCount = Math.ceil(store.getState().winners.totalWinnersNumber / WINNERS_PER_PAGE_LIMIT);
   if (page < pageCount) {
     store.dispatch(updateCurrentTab(page + 1));
     await getWinnersList();

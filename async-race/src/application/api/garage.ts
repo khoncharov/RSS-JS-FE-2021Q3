@@ -1,5 +1,5 @@
 import { updateCarsList, updateTotalCarsNumber } from '../app-state/garage-list-slice';
-import { c, ORIGIN } from '../const';
+import { CARS_PER_PAGE_LIMIT, ORIGIN } from '../const';
 import { store } from '../store';
 import { APISource, ICar, TCarsList } from '../types';
 
@@ -11,7 +11,7 @@ export const getCarsList = async (): Promise<void> => {
     const currentPage = store.getState().garage.currentPage;
     const url = new URL(ORIGIN);
     url.pathname = APISource.Garage;
-    url.search = `_page=${currentPage}&_limit=${c.CARS_PER_PAGE_LIMIT}`;
+    url.search = `_page=${currentPage}&_limit=${CARS_PER_PAGE_LIMIT}`;
     const response = await fetch(url.href, options);
     const carsList = (await response.json()) as TCarsList;
     const totalCount = response.headers.get('X-Total-Count') as string;

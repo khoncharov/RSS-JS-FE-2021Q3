@@ -4,7 +4,7 @@ import { updateCurrentPage } from '../app-state/garage-list-slice';
 import { editor } from '../components/editor';
 import { garageList } from '../components/garage-list';
 import { winnersList } from '../components/winners-list';
-import { c } from '../const';
+import { CARS_PER_PAGE_LIMIT, DEFAULT_COLOR, GENERATE_RANDOM_CARS_NUMBER } from '../const';
 import { store } from '../store';
 import { utils } from '../utils/utils';
 
@@ -17,7 +17,7 @@ export async function createCarHandler(sender: HTMLButtonElement): Promise<void>
     const newCarColor = inputColor.value;
     await createCar(newCarName, newCarColor);
     inputName.value = '';
-    inputColor.value = c.DEFAULT_COLOR;
+    inputColor.value = DEFAULT_COLOR;
     await getCarsList();
     garageList.update();
     sender.disabled = false;
@@ -44,7 +44,7 @@ export async function updateCarHandler(sender: HTMLButtonElement): Promise<void>
 }
 
 export async function genarateCarsHandler(sender: HTMLButtonElement): Promise<void> {
-  const newCarsList = utils.getRandomCars(c.GENERATE_RANDOM_CARS_NUMBER);
+  const newCarsList = utils.getRandomCars(GENERATE_RANDOM_CARS_NUMBER);
   sender.disabled = true;
   await Promise.all(newCarsList.map((car) => createCar(car.name, car.color)));
   await getCarsList();
@@ -60,7 +60,7 @@ export async function deleteCarHandler(sender: HTMLButtonElement): Promise<void>
   await getCarsList();
 
   const page = store.getState().garage.currentPage;
-  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / c.CARS_PER_PAGE_LIMIT);
+  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / CARS_PER_PAGE_LIMIT);
 
   if (page > pageCount) {
     const newPage = page - 1 ? page - 1 : 1;
@@ -98,7 +98,7 @@ export async function getPrevGaragePageHandler(sender: HTMLButtonElement): Promi
 export async function getNextGaragePageHandler(sender: HTMLButtonElement): Promise<void> {
   sender.disabled = true;
   const page = store.getState().garage.currentPage;
-  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / c.CARS_PER_PAGE_LIMIT);
+  const pageCount = Math.ceil(store.getState().garage.totalCarsNumber / CARS_PER_PAGE_LIMIT);
   if (page < pageCount) {
     store.dispatch(updateCurrentPage(page + 1));
     await getCarsList();

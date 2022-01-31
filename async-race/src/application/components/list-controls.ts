@@ -1,4 +1,4 @@
-import { c } from '../const';
+import { CARS_PER_PAGE_LIMIT, WINNERS_PER_PAGE_LIMIT } from '../const';
 
 interface ListControlsState {
   isDisabledPrevBtn: boolean;
@@ -36,9 +36,9 @@ class ListControls {
   evaluateState(name: string, page: number, totalNumber: number): ListControlsState {
     let pageLimit = 1;
     if (name === 'garage') {
-      pageLimit = c.CARS_PER_PAGE_LIMIT;
+      pageLimit = CARS_PER_PAGE_LIMIT;
     } else if (name === 'winners') {
-      pageLimit = c.WINNERS_PER_PAGE_LIMIT;
+      pageLimit = WINNERS_PER_PAGE_LIMIT;
     }
     const pageCount = Math.ceil(totalNumber / pageLimit);
     const isDisabledPrevBtn = page === 1;

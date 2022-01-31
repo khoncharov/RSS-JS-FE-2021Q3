@@ -1,4 +1,4 @@
-import { c } from '../const';
+import { DEFAULT_COLOR } from '../const';
 import { ICar } from '../types';
 
 class Editor {
@@ -10,13 +10,13 @@ class Editor {
         <div class="editor__item">
           <h3 class="ui-caption">Create</h3>
           <input class="ui-input" id="new-car-name-input" type="text" placeholder="Type name" />
-          <input class="ui-input" id="new-car-color-input" type="color" value="${c.DEFAULT_COLOR}" />
+          <input class="ui-input" id="new-car-color-input" type="color" value="${DEFAULT_COLOR}" />
           <button class="ui-btn" id="new-car-submit-btn" type="button">Submit</button>
         </div>
         <div class="editor__item" id="editor-update-car-form">
           <h3 class="ui-caption">Update</h3>
           <input class="ui-input" id="update-car-name-input" type="text" placeholder="Change name" disabled/>
-          <input class="ui-input" id="update-car-color-input" type="color" value="${c.DEFAULT_COLOR}" disabled/>
+          <input class="ui-input" id="update-car-color-input" type="color" value="${DEFAULT_COLOR}" disabled/>
           <button class="ui-btn" id="update-car-submit-btn" type="button" disabled>Submit</button>
         </div>
         <div class="editor__item">
@@ -46,7 +46,7 @@ class Editor {
     const inputEditColor = document.querySelector('#update-car-color-input') as HTMLInputElement;
     const btnEditCarSubmit = document.querySelector(`#update-car-submit-btn`) as HTMLButtonElement;
     inputEditName.value = '';
-    inputEditColor.value = c.DEFAULT_COLOR;
+    inputEditColor.value = DEFAULT_COLOR;
     inputEditName.disabled = true;
     inputEditColor.disabled = true;
     btnEditCarSubmit.disabled = true;
