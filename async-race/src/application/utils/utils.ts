@@ -36,9 +36,4 @@ export const utils = {
 
     return result;
   },
-
-  isBtnOfType(type: string, idStr: string): boolean {
-    const btnType = `${idStr.split('-btn')[0]}`;
-    return btnType === type;
-  },
 };
