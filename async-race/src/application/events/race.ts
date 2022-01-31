@@ -1,4 +1,3 @@
-import { changeEngineStatus, createWinner, getWinner, getWinnersList, updateWinner } from '../api';
 import { updateRaceWinner } from '../app-state/race-slice';
 import { raceCar } from '../components/car';
 import { carItem } from '../components/car-item';
@@ -8,6 +7,8 @@ import { raceControl } from '../components/race-control';
 import { winnersList } from '../components/winners-list';
 import { store } from '../store';
 import { EngineStatus, IWinner } from '../types';
+import { changeEngineStatus } from '../api/engine';
+import { createWinner, getWinner, getWinnersList, updateWinner } from '../api/winners';
 
 interface IRaceParams {
   velocity: number;

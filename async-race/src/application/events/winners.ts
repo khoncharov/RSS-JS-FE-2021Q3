@@ -1,4 +1,4 @@
-import { getWinnersList } from '../api';
+import { getWinnersList } from '../api/winners';
 import {
   SortBy,
   SortOrder,

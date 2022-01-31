@@ -5,3 +5,5 @@ export const c = {
 
   DEFAULT_COLOR: '#ff0000',
 };
+
+export const ORIGIN = 'http://127.0.0.1:3000';

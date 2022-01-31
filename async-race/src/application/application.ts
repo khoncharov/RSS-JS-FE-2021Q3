@@ -1,10 +1,11 @@
-import { getCarsList, getWinnersList } from './api';
 import { garage } from './components/garage';
 import { garageList } from './components/garage-list';
 import { navbar } from './components/navigation';
 import { winners } from './components/winners';
 import { winnersList } from './components/winners-list';
 import { eventsHandler } from './events';
+import { getCarsList } from './api/garage';
+import { getWinnersList } from './api/winners';
 
 class Application {
   protected page = document.querySelector('#app') as HTMLDivElement;

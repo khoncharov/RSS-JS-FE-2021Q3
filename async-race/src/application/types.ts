@@ -19,3 +19,9 @@ export interface IWinner {
 }
 
 export type TWinnersList = IWinner[];
+
+export enum APISource {
+  Garage = 'garage',
+  Winners = 'winners',
+  Engine = 'engine',
+}

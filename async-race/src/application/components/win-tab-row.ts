@@ -1,4 +1,4 @@
-import { getCar } from '../api';
+import { getCar } from '../api/garage';
 import { IWinner } from '../types';
 
 class WinnerTabRow {

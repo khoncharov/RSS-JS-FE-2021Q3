@@ -1,12 +1,5 @@
-import {
-  createCar,
-  deleteCar,
-  deleteWinner,
-  getCar,
-  getCarsList,
-  getWinnersList,
-  updateCar,
-} from '../api';
+import { createCar, deleteCar, getCar, getCarsList, updateCar } from '../api/garage';
+import { deleteWinner, getWinnersList } from '../api/winners';
 import { updateCurrentPage } from '../app-state/garage-list-slice';
 import { editor } from '../components/editor';
 import { garageList } from '../components/garage-list';
